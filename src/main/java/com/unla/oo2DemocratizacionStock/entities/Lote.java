@@ -10,11 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Lote")
+@Table(name="lote")
 public class Lote{
 	
 	@Id
@@ -22,7 +24,8 @@ public class Lote{
 	@Column(name="id")
 	private long id;
 	
-	@Column(name="producto")
+	 @OneToOne(mappedBy = "lote",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY)
+		  
 	private Producto producto;
 	
 	@Column(name="cantidad")
