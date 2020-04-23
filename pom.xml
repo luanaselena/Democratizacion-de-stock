@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.unla</groupId>
-	<artifactId>oo2DemocratizacionStock</artifactId>
+	<artifactId>Grupo-3-OO2-2020</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>oo2DemocratizacionStock</name>
+	<name>Grupo-3-OO2-2020</name>
 	<description>proyecto de democratizacion de stock</description>
 
 	<properties>

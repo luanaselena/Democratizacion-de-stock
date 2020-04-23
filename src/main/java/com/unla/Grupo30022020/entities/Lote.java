@@ -1,4 +1,4 @@
-package com.unla.oo2DemocratizacionStock.entities;
+package com.unla.Grupo30022020.entities;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

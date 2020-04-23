@@ -1,10 +1,10 @@
-package com.unla.oo2DemocratizacionStock;
+package com.unla.Grupo30022020;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Oo2DemocratizacionStockApplicationTests {
+class Grupo30022020ApplicationTests {
 
 	@Test
 	void contextLoads() {

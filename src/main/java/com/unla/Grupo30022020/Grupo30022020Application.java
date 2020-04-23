@@ -1,13 +1,13 @@
-package com.unla.oo2DemocratizacionStock;
+package com.unla.Grupo30022020;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Oo2DemocratizacionStockApplication {
+public class Grupo30022020Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Oo2DemocratizacionStockApplication.class, args);
+		SpringApplication.run(Grupo30022020Application.class, args);
 	}
 
 }
