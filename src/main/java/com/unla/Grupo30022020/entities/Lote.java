@@ -1,8 +1,5 @@
 package com.unla.Grupo30022020.entities;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import java.time.LocalDate;
 
 import javax.persistence.Column;
