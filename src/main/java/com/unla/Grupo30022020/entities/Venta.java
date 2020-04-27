@@ -2,8 +2,6 @@ package com.unla.Grupo30022020.entities;
 
 import java.time.LocalDate;
 import java.util.Set;
-
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,11 +56,10 @@ public class Venta {
 		this.fecha = fecha;
 		this.hora = hora;
 		this.precioTotal = precioTotal;
-		this.vendedorEncargado=vendedorEncargado;
-		this.cliente=cliente;
+		this.vendedorEncargado = vendedorEncargado;
+		this.cliente = cliente;
 	}
 
-	
 	public Vendedor getVendedorEncargado() {
 		return vendedorEncargado;
 	}
