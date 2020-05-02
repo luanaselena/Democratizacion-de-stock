@@ -32,8 +32,15 @@ public class Direccion{
 	
 	public Direccion() {}
 
-	public Direccion(long id, String ciudad, String calle, int numero, long latitud, long longitud) {
-		this.id = id;
+	public Direccion( String ciudad, String calle, int numero, long latitud, long longitud) {
+		this.ciudad = ciudad;
+		this.calle = calle;
+		this.numero = numero;
+		this.latitud = latitud;
+		this.longitud = longitud;
+	}
+	public Direccion(Long id,String ciudad, String calle, int numero, long latitud, long longitud) {
+		this.id =id;
 		this.ciudad = ciudad;
 		this.calle = calle;
 		this.numero = numero;

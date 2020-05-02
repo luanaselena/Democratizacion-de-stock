@@ -10,12 +10,12 @@ public interface IDireccionService {
 
 	public List<Direccion> getAll();
 	
-	public DireccionModel findById(int id);
+	public DireccionModel findById(long id);
 	
 	public DireccionModel findByCalle(String calle);
 	
 	public DireccionModel insertOrUpdate(DireccionModel direccionModel);
 	
-	public boolean remove(int id);
+	public boolean remove(long id);
 	
 }

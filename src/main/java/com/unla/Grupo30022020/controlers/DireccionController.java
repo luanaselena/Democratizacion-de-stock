@@ -46,7 +46,7 @@ public class DireccionController {
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView get(@PathVariable("id") int id) {
+	public ModelAndView get(@PathVariable("id") long id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.DIRECCION_UPDATE);
 		mAV.addObject("direccion", direccionService.findById(id));
 		return mAV;
