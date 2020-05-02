@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPedido;
@@ -20,6 +21,8 @@ public class Pedido {
 	
 	@Column
 	private boolean aceptado;
+	
+
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "productoId", referencedColumnName = "id")

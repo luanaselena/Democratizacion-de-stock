@@ -24,17 +24,16 @@ public class Venta {
 
 	@Column
 	private int nroVenta;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "venta")
-	@JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
+	
+	@OneToMany(fetch = FetchType.LAZY)
 	private Set<Pedido> pedidos;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idPersona", referencedColumnName = "id")
+	@JoinColumn(name = "idVendedor", referencedColumnName = "id")
 	private Vendedor vendedorEncargado;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idPersona", referencedColumnName = "id")
+	@JoinColumn(name = "idCliente", referencedColumnName = "id")
 	private Cliente cliente;
 
 	@Column

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" th:action="@{/direccion/create}" th:object="${direccion}" method="post">
+	<p>Ciudad: <input type="text" th:field="*{ciudad}" /></p>
+	<p>Calle: <input type="text" th:field="*{calle}" /></p>
+	<p>Numero: <input type="text" th:field="*{numero}" /></p>
+	<p>Longitud: <input type="text" th:field="*{longitud}" /></p>
+	<p>Latitud: <input type="text" th:field="*{latitud}" /></p>
+	<input type="submit" value="crear"/>
+</form>
+</body>
+</html>
