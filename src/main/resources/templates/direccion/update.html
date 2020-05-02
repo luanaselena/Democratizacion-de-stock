@@ -15,6 +15,7 @@
         
     </div>
 </header>
+
 <div class="divPrincipal">
 <form action="#" th:action="@{/direccion/update}" th:object="${direccion}" method="post">
 	<p>Ciudad: <input type="text" th:field="*{ciudad}" /></p>
@@ -22,7 +23,7 @@
 	<p>Numero: <input type="text" th:field="*{numero}" /></p>
 	<p>Longitud: <input type="text" th:field="*{longitud}" /></p>
 	<p>Latitud: <input type="text" th:field="*{latitud}" /></p>
-	<p>Latitud: <input type="text" th:field="*{id}" /></p>
+	<p>ID: <input type="text" th:field="*{id}" /></p>
 	
 	<input class="btn btn-success" type="submit" value="Editar"/>
 </form>
