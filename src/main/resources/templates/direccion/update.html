@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Actualizar Direccion</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/style.css}"/>
@@ -22,6 +22,8 @@
 	<p>Numero: <input type="text" th:field="*{numero}" /></p>
 	<p>Longitud: <input type="text" th:field="*{longitud}" /></p>
 	<p>Latitud: <input type="text" th:field="*{latitud}" /></p>
+	<p>Latitud: <input type="text" th:field="*{id}" /></p>
+	
 	<input class="btn btn-success" type="submit" value="Editar"/>
 </form>
 <br>

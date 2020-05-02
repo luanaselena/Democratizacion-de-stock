@@ -29,11 +29,20 @@ public class DireccionService implements IDireccionService {
 	}
 
 	@Override
-	public DireccionModel insertOrUpdate(DireccionModel direccionModel) {
+	public DireccionModel Insert(DireccionModel direccionModel) {
+
 		Direccion direccion = direccionRepository.save(direccionConverter.modelToEntity(direccionModel));
 		return direccionConverter.entityToModel(direccion);
 	}
+	
+	@Override
+	public DireccionModel Update(DireccionModel direccionModel) {
 
+		Direccion direccion = direccionRepository.save(direccionConverter.modelToEntity(direccionModel));
+		return direccionConverter.entityToModel(direccion);
+	}
+	
+	
 	@Override
 	public boolean remove(long id) {
 		try {
