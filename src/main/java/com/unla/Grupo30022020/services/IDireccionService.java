@@ -14,7 +14,9 @@ public interface IDireccionService {
 	
 	public DireccionModel findByCalle(String calle);
 	
-	public DireccionModel insertOrUpdate(DireccionModel direccionModel);
+	public DireccionModel Insert(DireccionModel direccionModel);
+	
+	public DireccionModel Update(DireccionModel direccionModel);
 	
 	public boolean remove(long id);
 	

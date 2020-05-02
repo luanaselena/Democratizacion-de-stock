@@ -41,7 +41,7 @@ public class DireccionController {
 
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("direccion") DireccionModel direccionModel) {
-		direccionService.insertOrUpdate(direccionModel);
+		direccionService.Insert(direccionModel);
 		return new RedirectView(ViewRouteHelper.DIRECCION_ROOT);
 	}
 
@@ -54,13 +54,13 @@ public class DireccionController {
 
 
 	@PostMapping("/update")
-	public RedirectView update(@ModelAttribute("person") DireccionModel direccionModel) {
-		direccionService.insertOrUpdate(direccionModel);
+	public RedirectView update(@ModelAttribute("direccion") DireccionModel direccionModel) {
+		direccionService.Update(direccionModel);
 		return new RedirectView(ViewRouteHelper.DIRECCION_ROOT);
 	}
 
 	@PostMapping("/delete/{id}")
-	public RedirectView delete(@PathVariable("id") int id) {
+	public RedirectView delete(@PathVariable("id") long id) {
 		direccionService.remove(id);
 		return new RedirectView(ViewRouteHelper.DIRECCION_ROOT);
 	}

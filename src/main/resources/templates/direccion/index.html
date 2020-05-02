@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Index Direccion</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -38,6 +38,7 @@
 					<td><span th:text="${direccion.numero}"></span></td>
 					<td><span th:text="${direccion.longitud}"></span></td>
 					<td><span th:text="${direccion.latitud}"></span></td>
+					<td><span th:text="${direccion.id}"></span></td>
 					<td><a th:href="@{/direccion/{id}(id=${direccion.id})}">View</a>
 					</td>
 				</tr>
