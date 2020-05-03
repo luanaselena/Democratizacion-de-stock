@@ -19,8 +19,8 @@ public class Venta {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idVenta")
-	private long idVenta;
+	@Column(name = "id")
+	private long id;
 
 	@Column
 	private int nroVenta;
@@ -46,6 +46,17 @@ public class Venta {
 	private float precioTotal;
 
 	public Venta() {
+	}
+
+	public Venta(long id, int nroVenta, LocalDate fecha, LocalDate hora, float precioTotal, Cliente cliente,
+			Vendedor vendedorEncargado) {
+		this.id=id;
+		this.nroVenta = nroVenta;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.precioTotal = precioTotal;
+		this.vendedorEncargado = vendedorEncargado;
+		this.cliente = cliente;
 	}
 
 	public Venta(int nroVenta, LocalDate fecha, LocalDate hora, float precioTotal, Cliente cliente,
@@ -75,12 +86,12 @@ public class Venta {
 		this.cliente = cliente;
 	}
 
-	public long getIdVenta() {
-		return idVenta;
+	public long getId() {
+		return id;
 	}
 
-	protected void setIdVenta(long idVenta) {
-		this.idVenta = idVenta;
+	protected void setId(long id) {
+		this.id = id;
 	}
 
 	public int getNroVenta() {

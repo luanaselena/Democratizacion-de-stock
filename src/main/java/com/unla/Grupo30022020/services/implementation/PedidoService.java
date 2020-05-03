@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.unla.Grupo30022020.converters.PedidoConverter;
 import com.unla.Grupo30022020.entities.Pedido;
-import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.models.PedidoModel;
-import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.repositories.IPedidoRepository;
 import com.unla.Grupo30022020.services.IPedidoService;
 
@@ -33,7 +31,7 @@ public class PedidoService implements IPedidoService{
 	@Override
 	public PedidoModel findByCantidad(int cantidad) {
 		
-		return pedidoConverter.enityToModel(pedidoRepository.findByCantidad(cantidad));
+		return pedidoConverter.entityToModel(pedidoRepository.findByCantidad(cantidad));
 	}
 
 
@@ -41,16 +39,16 @@ public class PedidoService implements IPedidoService{
 	@Override
 	public PedidoModel insert(PedidoModel pedidoModel) {
 	
-		Pedido pedido = pedidoRepository.save(pedidoConverter.modelToEnity(pedidoModel));
-		return pedidoConverter.enityToModel(pedido);
+		Pedido pedido = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
+		return pedidoConverter.entityToModel(pedido);
 	
 	}
 
 	 @Override
 	    public PedidoModel update(PedidoModel pedidoModel) {
 
-	        Pedido pedido = pedidoRepository.save(pedidoConverter.modelToEnity(pedidoModel));
-	        return pedidoConverter.enityToModel(pedido);
+	        Pedido pedido = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
+	        return pedidoConverter.entityToModel(pedido);
 	    }
 
 	  @Override
@@ -66,7 +64,7 @@ public class PedidoService implements IPedidoService{
 
 	  @Override
 	public PedidoModel findById(long id) {
-		  return pedidoConverter.enityToModel(pedidoRepository.findById(id));
+		  return pedidoConverter.entityToModel(pedidoRepository.findById(id));
 	  }
 	
 

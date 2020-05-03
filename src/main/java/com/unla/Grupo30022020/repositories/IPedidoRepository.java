@@ -10,9 +10,9 @@ import com.unla.Grupo30022020.entities.Pedido;
 @Repository("pedidoRepository")
 public interface IPedidoRepository extends JpaRepository<Pedido, Serializable>{
 	
-	
+	public abstract Pedido findById(long id);
 	public abstract Pedido findByCantidad(int cantidad);
-	public abstract Pedido findById(long idPedido);
+	
 
 	
 }

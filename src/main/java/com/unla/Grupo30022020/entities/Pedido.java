@@ -16,7 +16,7 @@ public class Pedido {
 	
 	@Id
 	@GeneratedValue
-	private long idPedido;
+	private long id;
 	
 	@Column
 	private int cantidad;
@@ -32,20 +32,25 @@ public class Pedido {
 	
 	public Pedido() {}
 
-	public Pedido(long idPedido, int cantidad, Producto producto) {
-		super();
-		this.idPedido = idPedido;
+	public Pedido(int cantidad, Producto producto) {
+		this.cantidad = cantidad;
+		this.aceptado = false;
+		this.producto = producto;
+	}
+	
+	public Pedido(long id, int cantidad, Producto producto) {
+		this.id = id;
 		this.cantidad = cantidad;
 		this.aceptado = false;
 		this.producto = producto;
 	}
 
-	public long getIdPedido() {
-		return idPedido;
+	public long getId() {
+		return id;
 	}
 
-	protected void setIdPedido(long idPedido) {
-		this.idPedido = idPedido;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public int getCantidad() {
