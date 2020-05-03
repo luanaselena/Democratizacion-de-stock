@@ -8,12 +8,10 @@ import org.springframework.stereotype.Component;
 public class ProductoConverter {
 
     public ProductoModel entityToModel(Producto producto){
-        return new ProductoModel(producto.getId(), producto.getDescripcion(), producto.getPrecioUnitario(),
-                producto.getFechaAlta(), producto.getMarca());
+        return new ProductoModel(producto.getId(), producto.getDescripcion(), producto.getPrecioUnitario(), producto.getMarca());
     }
 
     public Producto modelToEntity(ProductoModel productoModel){
-        return new Producto(productoModel.getId(), productoModel.getDescripcion(), productoModel.getPrecioUnitario(),
-                productoModel.getFechaAlta(), productoModel.getMarca());
+        return new Producto(productoModel.getId(), productoModel.getDescripcion(), productoModel.getPrecioUnitario(), productoModel.getMarca());
     }
 }

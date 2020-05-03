@@ -1,24 +1,20 @@
 package com.unla.Grupo30022020.models;
 
-import java.time.LocalDate;
-
 public class ProductoModel {
 
     private long id;
     private boolean status;
     private String descripcion;
     private float precioUnitario;
-    private LocalDate fechaAlta;
     private String marca;
 
     public ProductoModel(){}
 
-    public ProductoModel(long id, String descripcion, float precioUnitario, LocalDate fechaAlta, String marca) {
+    public ProductoModel(long id, String descripcion, float precioUnitario, String marca) {
         this.id = id;
         this.status = true;
         this.descripcion = descripcion;
         this.precioUnitario = precioUnitario;
-        this.fechaAlta = fechaAlta;
         this.marca = marca;
     }
 
@@ -52,14 +48,6 @@ public class ProductoModel {
 
     public void setPrecioUnitario(float precioUnitario) {
         this.precioUnitario = precioUnitario;
-    }
-
-    public LocalDate getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(LocalDate fechaAlta) {
-        this.fechaAlta = fechaAlta;
     }
 
     public String getMarca() {
