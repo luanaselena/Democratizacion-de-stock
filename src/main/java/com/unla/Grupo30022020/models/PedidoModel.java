@@ -12,10 +12,12 @@ public class PedidoModel {
 	public PedidoModel() {
 	}
 
-	public PedidoModel(long id, int cantidad,Producto producto) {
+	public PedidoModel(long id, int cantidad, Producto producto) {
 
 		this.id = id;
 		this.cantidad = cantidad;
+		this.aceptado=false;
+		this.producto= producto;
 	}
 
 	public long getId() {
@@ -50,6 +52,6 @@ public class PedidoModel {
 		this.producto = producto;
 	}
 
-	// FALTA AGREGAR PRODUCTO AL CONSTRUCTOR
+	
 
 }

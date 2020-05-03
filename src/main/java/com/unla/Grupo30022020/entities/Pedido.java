@@ -8,13 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="pedido")
 public class Pedido {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idPedido;
+	@GeneratedValue
+	private long id;
 	
 	@Column
 	private int cantidad;
@@ -25,25 +27,30 @@ public class Pedido {
 
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "productoId", referencedColumnName = "id")
+	@JoinColumn(name = "productoid", referencedColumnName = "id")
 	private Producto producto;	
 	
 	public Pedido() {}
 
-	public Pedido(long idPedido, int cantidad,Producto producto) {
-		super();
-		this.idPedido = idPedido;
+	public Pedido(int cantidad, Producto producto) {
+		this.cantidad = cantidad;
+		this.aceptado = false;
+		this.producto = producto;
+	}
+	
+	public Pedido(long id, int cantidad, Producto producto) {
+		this.id = id;
 		this.cantidad = cantidad;
 		this.aceptado = false;
 		this.producto = producto;
 	}
 
-	public long getIdPedido() {
-		return idPedido;
+	public long getId() {
+		return id;
 	}
 
-	protected void setIdPedido(long idPedido) {
-		this.idPedido = idPedido;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public int getCantidad() {

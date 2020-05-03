@@ -39,7 +39,7 @@ public class Direccion{
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
-	public Direccion(Long id,String ciudad, String calle, int numero, long latitud, long longitud) {
+	public Direccion(long id,String ciudad, String calle, int numero, long latitud, long longitud) {
 		this.id =id;
 		this.ciudad = ciudad;
 		this.calle = calle;
