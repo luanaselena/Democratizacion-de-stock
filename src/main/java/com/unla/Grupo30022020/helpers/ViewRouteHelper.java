@@ -22,4 +22,8 @@ public class ViewRouteHelper {
 	public final static String GERENTE_NEW = "gerente/new";
 	public final static String GERENTE_UPDATE = "gerente/update";
 	public final static String GERENTE_ROOT = "/gerente";
+	public final static String PEDIDO_INDEX = "pedido/index";
+	public final static String PEDIDO_NEW = "pedido/new";
+	public final static String PEDIDO_UPDATE = "pedido/update";
+	public final static String PEDIDO_ROOT = "/pedido";
 }
