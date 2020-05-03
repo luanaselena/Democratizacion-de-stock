@@ -1,5 +1,6 @@
 package com.unla.Grupo30022020.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -27,6 +28,7 @@ public class Producto{
 	private float precioUnitario;
 	
 	@Column(name="fechaAlta")
+	@CreationTimestamp
 	private LocalDate fechaAlta;
 	
 	@Column(name="marca", length=45)
@@ -34,12 +36,20 @@ public class Producto{
 	
 	public Producto() {}
 
-	public Producto(boolean status, String descripcion, float precioUnitario, LocalDate fechaAlta, String marca) {
+	public Producto(String descripcion, float precioUnitario, String marca) {
 		super();
-		this.status = status;
+		this.status = true;
 		this.descripcion = descripcion;
 		this.precioUnitario = precioUnitario;
-		this.fechaAlta = fechaAlta;
+		this.marca = marca;
+	}
+
+	public Producto(Long id, String descripcion, float precioUnitario, String marca) {
+		super();
+		this.id = id;
+		this.status = true;
+		this.descripcion = descripcion;
+		this.precioUnitario = precioUnitario;
 		this.marca = marca;
 	}
 

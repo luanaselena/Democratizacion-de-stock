@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Direccion</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header>
+		<div class="headerbg">
+
+			<h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+		</div>
+	</header>
+	
+	<div class="divPrincipal">
+		<table border="1px">
+
+			<thead>
+				<tr>
+					<th>Ciudad</th>
+					<th>Calle</th>
+					<th>Numero</th>
+					<th>Longitud</th>
+					<th>Latitud</th>
+					<th>Id</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="direccion : ${direcciones}">
+					<td><span th:text="${direccion.ciudad}"></span></td>
+					<td><span th:text="${direccion.calle}"></span></td>
+					<td><span th:text="${direccion.numero}"></span></td>
+					<td><span th:text="${direccion.longitud}"></span></td>
+					<td><span th:text="${direccion.latitud}"></span></td>
+					<td><span th:text="${direccion.id}"></span></td>
+					<td><a th:href="@{/direccion/{id}(id=${direccion.id})}">View</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> <a class="btn btn-primary" href="/direccion/new">Crear
+			nueva direccion</a>
+	</div>
+</body>
+</html>

@@ -22,7 +22,7 @@ public class Lote{
 	private long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "producto_id", referencedColumnName = "id")
+    @JoinColumn(name = "productoid", referencedColumnName = "id")
 	private Producto producto;
 	
 	@Column(name="cantidad")
