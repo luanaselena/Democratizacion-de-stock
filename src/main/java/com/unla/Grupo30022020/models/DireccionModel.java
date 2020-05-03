@@ -1,46 +1,23 @@
-package com.unla.Grupo30022020.entities;
+package com.unla.Grupo30022020.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="direccion")
-public class Direccion{
-	
-	@Id
-	@GeneratedValue
-	@Column(name="id")
+public class DireccionModel {
 	private long id;
 	
-	@Column(name="ciudad", nullable=false, length=30)
 	private String ciudad;
 	
-	@Column(name="calle", nullable=false, length=30)
 	private String calle;
 	
-	@Column(name="numero")
 	private int numero;
 	
-	@Column(name="latitud")
 	private long latitud;
 	
-	@Column(name="longitud")
 	private long longitud;
 	
-	public Direccion() {}
+	public DireccionModel() {}
 
-	public Direccion( String ciudad, String calle, int numero, long latitud, long longitud) {
-		this.ciudad = ciudad;
-		this.calle = calle;
-		this.numero = numero;
-		this.latitud = latitud;
-		this.longitud = longitud;
-	}
-	public Direccion(Long id,String ciudad, String calle, int numero, long latitud, long longitud) {
-		this.id =id;
+	public DireccionModel(long id, String ciudad, String calle, int numero, long latitud, long longitud) {
+		this.id = id;
 		this.ciudad = ciudad;
 		this.calle = calle;
 		this.numero = numero;

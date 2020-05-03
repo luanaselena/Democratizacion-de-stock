@@ -1,6 +1,5 @@
 package com.unla.Grupo30022020.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -34,9 +33,9 @@ public class Sucursal {
 //	@OneToMany(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "vendedorId", referencedColumnName = "id")
 //	private Set<Vendedor> vendedores;
+
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sucursal")
-	@JoinColumn(name = "loteId", referencedColumnName = "id")
+	@OneToMany(fetch = FetchType.LAZY)
 	private Set<Lote> lotes;
 	
 	public Sucursal() {}
