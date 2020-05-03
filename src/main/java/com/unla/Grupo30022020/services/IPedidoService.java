@@ -6,6 +6,7 @@ public interface IPedidoService {
 	
 	 public List<Pedido> getAll();
 	   
+	 public PedidoModel findById(long id);
 	    public PedidoModel findByCantidad(int cantidad);
 	    public PedidoModel insert(PedidoModel pedidoModel);
 	    public PedidoModel update(PedidoModel pedidoModel);

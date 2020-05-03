@@ -47,13 +47,14 @@ public class PedidoController {
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
 	}
 	
-	/*@GetMapping("/{id}")
+	@GetMapping("/{id}")
 	public ModelAndView get(@PathVariable("id") long id) {
 		
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_UPDATE);
-		mAV.addObject("pedido", pedidoService.findByCantidad(cantidad))
+		mAV.addObject("pedido", pedidoService.findById(id));
+		return mAV;
 		
-	}*/
+	}
 	
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("pedido") PedidoModel pedidoModel) {
