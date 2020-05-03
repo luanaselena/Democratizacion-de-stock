@@ -30,11 +30,11 @@ public class Pedido {
 	
 	public Pedido() {}
 
-	public Pedido(long idPedido, int cantidad, boolean aceptado, Producto producto) {
+	public Pedido(long idPedido, int cantidad,Producto producto) {
 		super();
 		this.idPedido = idPedido;
 		this.cantidad = cantidad;
-		this.aceptado = aceptado;
+		this.aceptado = false;
 		this.producto = producto;
 	}
 
