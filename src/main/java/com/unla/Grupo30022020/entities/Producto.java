@@ -34,9 +34,19 @@ public class Producto{
 	
 	public Producto() {}
 
-	public Producto(boolean status, String descripcion, float precioUnitario, LocalDate fechaAlta, String marca) {
+	public Producto(String descripcion, float precioUnitario, LocalDate fechaAlta, String marca) {
 		super();
-		this.status = status;
+		this.status = true;
+		this.descripcion = descripcion;
+		this.precioUnitario = precioUnitario;
+		this.fechaAlta = fechaAlta;
+		this.marca = marca;
+	}
+
+	public Producto(Long id, String descripcion, float precioUnitario, LocalDate fechaAlta, String marca) {
+		super();
+		this.id = id;
+		this.status = true;
 		this.descripcion = descripcion;
 		this.precioUnitario = precioUnitario;
 		this.fechaAlta = fechaAlta;
