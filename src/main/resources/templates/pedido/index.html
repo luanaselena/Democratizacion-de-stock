@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Pedido</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header>
+		<div class="headerbg">
+
+			<h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+		</div>
+	</header>
+	
+	<div class="divPrincipal">
+		<table border="1px">
+
+			<thead>
+				<tr>
+					<th>Cantidad</th>
+					<th>Producto</th>
+					<th>Respuesta</th>
+					<th>Id</th>
+					<th></th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				<tr th:each="pedido : ${pedidos}">
+					<td><span th:text="${pedido.cantidad}"></span></td>
+					<td><span th:text="${pedido.producto}"></span></td>
+					<td><span th:text="${pedido.id}"></span></td>
+					<td><a th:href="@{/pedido/{id}(id=${pedido.id})}">View</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> <a class="btn btn-primary" href="/pedido/new">Realizar nuevo pedido</a>
+	</div>
+</body>
+</html>
