@@ -1,48 +1,24 @@
-package com.unla.Grupo30022020.entities;
-
-
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+package com.unla.Grupo30022020.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
+import com.unla.Grupo30022020.entities.Producto;
 
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+public class LoteModel {
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-@Entity
-@Table(name="lote")
-public class Lote{
-	
-	@Id
-	@GeneratedValue
-	@Column(name="id")
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productoid", referencedColumnName = "id")
 	private Producto producto;
-	
-	@Column(name="cantidad")
-	private int cantidad;
-	
-	@Column(name="cantidadTotal")
-	private int cantidadTotal;
-	
-	@Column(name = "fechaIngreso")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate fechaIngreso;
-	
-	public Lote() {}
 
-	public Lote(long id, Producto producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
+	private int cantidad;
+
+	private int cantidadTotal;
+
+	private LocalDate fechaIngreso;
+
+	public LoteModel() {}
+
+	public LoteModel(long id, Producto producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
@@ -91,4 +67,3 @@ public class Lote{
 	}
 
 }
-	
