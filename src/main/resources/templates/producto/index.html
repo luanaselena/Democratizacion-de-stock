@@ -24,17 +24,17 @@
                 <tr>
                     <th>Descripcion</th>
                     <th>Precio Unitario</th>
-                    <th>Fecha de alta</th>
                     <th>Marca</th>
                     <th>Id</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="producto : ${productos}">
                     <td><span th:text="${producto.descripcion}"></span></td>
                     <td><span th:text="${producto.precioUnitario}"></span></td>
-                    <td><span th:text="${producto.fechaAlta}"></span></td>
                     <td><span th:text="${producto.marca}"></span></td>
+                    <td><span th:text="${producto.id}"></span></td>
                     <td><a th:href="@{/producto/{id}(id=${producto.id})}">View</a>
                     </td>
                 </tr>
