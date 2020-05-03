@@ -20,23 +20,18 @@
 	</header>
 
 	<div class="divPrincipal">
-		<form action="#" th:action="@{/direccion/create}"
-			th:object="${direccion}" method="post">
+		<form action="#" th:action="@{/lote/create}"
+			th:object="${lote}" method="post">
 			<p>
-				Ciudad: <input type="text" th:field="*{ciudad}" />
+				ID de producto: <input type="text" th:field="*{producto}" />
 			</p>
 			<p>
-				Calle: <input type="text" th:field="*{calle}" />
+				Cantidad: <input type="text" th:field="*{cantidad}" />
 			</p>
 			<p>
-				Numero: <input type="text" th:field="*{numero}" />
+				Cantidad Total: <input type="text" th:field="*{cantidadTotal}" />
 			</p>
-			<p>
-				Longitud: <input type="text" th:field="*{longitud}" />
-			</p>
-			<p>
-				Latitud: <input type="text" th:field="*{latitud}" />
-			</p>
+			
 			<input class="btn btn-primary" type="submit" value="crear" />
 		</form>
 	</div>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Actualizar Direccion</title>
+<title>Actualizar Lote</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/style.css}"/>
 
@@ -17,20 +17,18 @@
 </header>
 
 <div class="divPrincipal">
-<form action="#" th:action="@{/direccion/update}" th:object="${direccion}" method="post">
-	<p>Ciudad: <input type="text" th:field="*{ciudad}" /></p>
-	<p>Calle: <input type="text" th:field="*{calle}" /></p>
-	<p>Numero: <input type="text" th:field="*{numero}" /></p>
-	<p>Longitud: <input type="text" th:field="*{longitud}" /></p>
-	<p>Latitud: <input type="text" th:field="*{latitud}" /></p>
+<form action="#" th:action="@{/lote/update}" th:object="${lote}" method="post">
 	<p>ID: <input type="text" th:field="*{id}" /></p>
+	<p>ID de producto: <input type="text" th:field="*{producto}" /></p>
+	<p>Cantidad: <input type="text" th:field="*{cantidad}" /></p>
+	<p>Cantidad Total: <input type="text" th:field="*{cantidadTotal}" /></p>
 	
 	<input class="btn btn-success" type="submit" value="Editar"/>
 </form>
 <br>
 <br>
-	<form action="#" th:action="@{/direccion/delete/{id}(id=${direccion.id})}" method="post">
-	<input class="btn btn-danger" type="submit" value="Eliminar direccion" />
+	<form action="#" th:action="@{/lote/delete/{id}(id=${lote.id})}" method="post">
+	<input class="btn btn-danger" type="submit" value="Eliminar Lote" />
 </form>
 </div>
 </body>
