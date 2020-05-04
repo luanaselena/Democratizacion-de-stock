@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Sucursal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <header>
+        <div class="headerbg">
+
+            <h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+        </div>
+    </header>
+    <div class="divPrincipal">
+        <form action="#" th:action="@{/sucursal/update}" th:object="${sucursal}" method="post">
+            <p>Ubicacion ID: <input type="text" th:field="*{ubicacion}" /></p>
+            <p>Telefono: <input type="text" th:field="*{telefono}" /></p>
+            <p>Gerente: <input type="text" th:field="*{gerente}" /></p>
+            <p>ID: <input type="text" th:field="*{id}" /></p>
+
+            <input class="btn btn-success" type="submit" value="Editar"/>
+        </form>
+        <br>
+        <br>
+        <form action="#" th:action="@{/sucursal/delete/{id}(id=${sucursal.id})}" method="post">
+            <input class="btn btn-danger" type="submit" value="Eliminar sucursal" />
+        </form>
+    </div>
+
+</body>
+</html>
