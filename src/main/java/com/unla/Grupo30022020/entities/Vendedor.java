@@ -2,6 +2,7 @@ package com.unla.Grupo30022020.entities;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ public class Vendedor extends Empleado {
 		
 	}
 
-	public Vendedor(String nombre, String apellido, LocalDate fechaDeNacimiento, long dni, LocalTime horasPorJornada,
+	public Vendedor(String nombre, String apellido, Date fechaDeNacimiento, long dni, LocalTime horasPorJornada,
 			float sueldoBasico, float plus) {
 		super(nombre, apellido, fechaDeNacimiento, dni, horasPorJornada, sueldoBasico);
 		this.plus = plus;

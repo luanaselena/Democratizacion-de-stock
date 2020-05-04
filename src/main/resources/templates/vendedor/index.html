@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Vendedor</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <div class="headerbg">
+
+            <h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+        </div>
+    </header>
+    <div class="divPrincipal">
+        <table border="1px">
+
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>DNI</th>
+                    <th>Horas por Jornada</th>
+                    <th>Sueldo Básico</th>
+                    <th>Plus</th>
+                    <th>Id</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vendedor : ${vendedores}">
+                    <td><span th:text="${vendedor.nombre}"></span></td>
+                    <td><span th:text="${vendedor.apellido}"></span></td>
+                    <td><span th:text="${#dates.format(vendedor.fechaDeNacimiento, 'dd/MMM/yyyy')}"></span></td>
+                    <td><span th:text="${vendedor.dni}"></span></td>
+                    <td><span th:text="${vendedor.horasPorJornada}"></span></td>
+                    <td><span th:text="${vendedor.sueldoBasico}"></span></td>
+                    <td><span th:text="${vendedor.plus}"></span></td>
+                    <td><span th:text="${vendedor.id}"></span></td>
+                    <td><a th:href="@{/vendedor/{id}(id=${vendedor.id})}">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br> <a class="btn btn-primary" href="/vendedor/new">Agregar vendedor</a>
+    </div>
+</body>
+</html>
