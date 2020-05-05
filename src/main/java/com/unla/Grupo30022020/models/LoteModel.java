@@ -8,7 +8,7 @@ public class LoteModel {
 
 	private long id;
 	
-	private Producto producto;
+	private ProductoModel producto;
 
 	private int cantidad;
 
@@ -18,7 +18,7 @@ public class LoteModel {
 
 	public LoteModel() {}
 
-	public LoteModel(long id, Producto producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
+	public LoteModel(long id, ProductoModel producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
@@ -34,11 +34,11 @@ public class LoteModel {
 		this.id = id;
 	}
 
-	public Producto getProducto() {
+	public ProductoModel getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(ProductoModel producto) {
 		this.producto = producto;
 	}
 
