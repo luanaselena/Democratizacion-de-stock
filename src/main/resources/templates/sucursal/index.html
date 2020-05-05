@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Sucursal</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <div class="headerbg">
+
+            <h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+        </div>
+    </header>
+    <div class="divPrincipal">
+        <table border="1px">
+
+            <thead>
+                <tr>
+                    <th>Ubicacion ID</th>
+                    <th>Telefono</th>
+                    <th>Gerente</th>
+                    <th>Id</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="sucursal : ${sucursales}">
+                    <td><span th:text="${sucursal.ubicacion.id}"></span></td>
+                    <td><span th:text="${sucursal.telefono}"></span></td>
+                    <td><span th:text="${sucursal.gerente.apellido}"></span></td>
+                    <td><span th:text="${sucursal.id}"></span></td>
+                    <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br> <a class="btn btn-primary" href="/sucursal/new">Agregar sucursal</a>
+    </div>
+</body>
+</html>
