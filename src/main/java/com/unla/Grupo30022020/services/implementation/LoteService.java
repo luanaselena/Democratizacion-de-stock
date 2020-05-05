@@ -25,6 +25,11 @@ public class LoteService implements ILoteService {
 	@Qualifier("loteConverter")
 	private LoteConverter loteConverter;
 	
+	@Autowired
+	@Qualifier("productoService")
+	private ProductoService productoService;
+
+	
 	@Override
 	public List<Lote> getAll() {
 		return loteRepository.findAll();
@@ -39,7 +44,7 @@ public class LoteService implements ILoteService {
 	
 	@Override
 	public LoteModel Update(LoteModel loteModel) {
-
+		loteModel.setProducto(productoService.findById(loteModel.getProducto().getId()));
 		Lote lote = loteRepository.save(loteConverter.modelToEntity(loteModel));
 		return loteConverter.entityToModel(lote);
 	}

@@ -47,7 +47,6 @@ public class LoteController {
 
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("lote") LoteModel loteModel) {
-		System.out.println("el id es:" + loteModel.getProducto().getId());
 		loteService.Insert(loteModel);
 		return new RedirectView(ViewRouteHelper.LOTE_ROOT);
 	}
@@ -63,7 +62,6 @@ public class LoteController {
 
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("lote") LoteModel loteModel) {
-		System.out.println("el id es:" + loteModel.getProducto().getId());
 		loteService.Update(loteModel);
 		
 		return new RedirectView(ViewRouteHelper.LOTE_ROOT);
