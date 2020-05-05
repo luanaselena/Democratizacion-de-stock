@@ -26,8 +26,7 @@ public class Lote{
 	@Column(name="id")
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productoid", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Producto producto;
 	
 	@Column(name="cantidad")
