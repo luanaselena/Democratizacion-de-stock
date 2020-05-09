@@ -1,6 +1,7 @@
 package com.unla.Grupo30022020.entities;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ public class Venta {
 	private int nroVenta;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Pedido> pedidos;
+	private Set<Pedido> pedidos = new HashSet<>();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idvendedor", referencedColumnName = "id")

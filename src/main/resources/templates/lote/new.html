@@ -22,16 +22,23 @@
 	<div class="divPrincipal">
 		<form action="#" th:action="@{/lote/create}"
 			th:object="${lote}" method="post">
-			<p>
-				ID de producto: <input type="text" th:field="*{producto}" />
-			</p>
+
 			<p>
 				Cantidad: <input type="text" th:field="*{cantidad}" />
 			</p>
 			<p>
 				Cantidad Total: <input type="text" th:field="*{cantidadTotal}" />
 			</p>
-			
+			<p>
+				Producto: <select placeholder="Producto" th:field="*{producto.id}">
+					<option th:each="p : ${productos}" th:value="${p.id}"
+						th:text="${p.descripcion}"></option>
+				</select>
+			</p>
+			<p>Fecha de Ingreso <input type="date" th:field=*{fechaIngreso} /></p>
+
+
+
 			<input class="btn btn-primary" type="submit" value="crear" />
 		</form>
 	</div>

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -26,8 +27,7 @@ public class Lote{
 	@Column(name="id")
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productoid", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Producto producto;
 	
 	@Column(name="cantidad")
@@ -37,12 +37,11 @@ public class Lote{
 	private int cantidadTotal;
 	
 	@Column(name = "fechaIngreso")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate fechaIngreso;
+	private Date fechaIngreso;
 	
 	public Lote() {}
 
-	public Lote(long id, Producto producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
+	public Lote(long id, Producto producto, int cantidad, int cantidadTotal, Date fechaIngreso) {
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
@@ -82,11 +81,11 @@ public class Lote{
 		this.cantidadTotal = cantidadTotal;
 	}
 
-	public LocalDate getFechaIngreso() {
+	public Date getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(LocalDate fechaIngreso) {
+	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 

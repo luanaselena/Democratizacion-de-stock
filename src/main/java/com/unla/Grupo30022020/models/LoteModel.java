@@ -1,5 +1,6 @@
 package com.unla.Grupo30022020.models;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import com.unla.Grupo30022020.entities.Producto;
@@ -8,17 +9,17 @@ public class LoteModel {
 
 	private long id;
 	
-	private Producto producto;
+	private ProductoModel producto;
 
 	private int cantidad;
 
 	private int cantidadTotal;
 
-	private LocalDate fechaIngreso;
+	private Date fechaIngreso;
 
 	public LoteModel() {}
 
-	public LoteModel(long id, Producto producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
+	public LoteModel(long id, ProductoModel producto, int cantidad, int cantidadTotal, Date fechaIngreso) {
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
@@ -34,11 +35,11 @@ public class LoteModel {
 		this.id = id;
 	}
 
-	public Producto getProducto() {
+	public ProductoModel getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(ProductoModel producto) {
 		this.producto = producto;
 	}
 
@@ -58,11 +59,11 @@ public class LoteModel {
 		this.cantidadTotal = cantidadTotal;
 	}
 
-	public LocalDate getFechaIngreso() {
+	public Date getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(LocalDate fechaIngreso) {
+	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 

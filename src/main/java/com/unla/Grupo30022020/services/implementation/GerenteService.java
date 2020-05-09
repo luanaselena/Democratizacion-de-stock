@@ -25,7 +25,6 @@ public class GerenteService implements IGerenteService{
 
 	@Override
 	public List<Gerente> getAll() {
-		// TODO Auto-generated method stub
 		return gerenteRepository.findAll();
 	}
 

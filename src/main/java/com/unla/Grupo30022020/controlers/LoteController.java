@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
 import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.services.ILoteService;
+import com.unla.Grupo30022020.services.IProductoService;
 
 
 @Controller
@@ -24,6 +25,10 @@ public class LoteController {
 	@Autowired
 	@Qualifier("loteService")
 	private ILoteService loteService;
+	
+	@Autowired
+	@Qualifier("productoService")
+	private IProductoService productoService;
 
 	@GetMapping("")
 	public ModelAndView index() {
@@ -36,6 +41,7 @@ public class LoteController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOTE_NEW);
 		mAV.addObject("lote", new LoteModel());
+		mAV.addObject("productos", productoService.getAll());
 		return mAV;
 	}
 
@@ -49,6 +55,7 @@ public class LoteController {
 	public ModelAndView get(@PathVariable("id") long id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOTE_UPDATE);
 		mAV.addObject("lote", loteService.findById(id));
+		mAV.addObject("productos", productoService.getAll());
 		return mAV;
 	}
 
@@ -56,6 +63,7 @@ public class LoteController {
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("lote") LoteModel loteModel) {
 		loteService.Update(loteModel);
+		
 		return new RedirectView(ViewRouteHelper.LOTE_ROOT);
 	}
 

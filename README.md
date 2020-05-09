@@ -1,4 +1,4 @@
--findbyid de un producto adentro del objeto
+POR HACER:
 
 -nico y gabi problema con los updates 
 
