@@ -23,24 +23,28 @@
 
 			<thead>
 				<tr>
-					<th>Cantidad</th>
-					<th>Producto</th>
 					<th>Id</th>
+					<th>Id Producto</th>
+					<th>Cantidad</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="pedido : ${pedidos}">
+				<td><span th:text="${pedido.id}"></span></td>
+				
+				<!-- Esta parte la cambie para que al imprimir el Id tambien genere un link al producto -->
+					<td><a th:href="@{/producto/{id}(id=${pedido.producto.id})}" th:text="${pedido.producto.id}"></td>
 					<td><span th:text="${pedido.cantidad}"></span></td>
-					<td><span th:text="${pedido.producto}"></span></td>
-					<td><span th:text="${pedido.id}"></span></td>
+			
+					
 					<td><a th:href="@{/pedido/{id}(id=${pedido.id})}">View</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<br> <a class="btn btn-primary" href="/pedido/new">Crear
-			nueva direccion</a>
+			nuevo Pedido</a>
 	</div>
 </body>
 </html>

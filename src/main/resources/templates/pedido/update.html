@@ -18,16 +18,20 @@
 
 <div class="divPrincipal">
 <form action="#" th:action="@{/pedido/update}" th:object="${pedido}" method="post">
-	<p>Cantidad: <input type="text" th:field="*{cantidad}" /></p>
-	<p>Producto: <input type="text" th:field="*{producto}" /></p>
-	<p>ID: <input type="text" th:field="*{id}" /></p>
-	
+
+	<p>Cantidad: <input type="text" th:field="*{cantidad}" /></p>	
+	<p>Producto: <select placeholder="Producto" th:field="*{producto.id}">
+					<option th:each="p : ${productos}" th:value="${p.id}"
+						th:text="${p.descripcion}"></option>
+				</select>
+			</p>
+		<input type="hidden" th:value="*{id}" th:field="*{id}" />
 	<input class="btn btn-success" type="submit" value="Editar"/>
 </form>
 <br>
 <br>
 	<form action="#" th:action="@{/pedido/delete/{id}(id=${pedido.id})}" method="post">
-	<input class="btn btn-danger" type="submit" value="Eliminar pedido" />
+	<input class="btn btn-danger" type="submit" value="Eliminar Lote" />
 </form>
 </div>
 </body>

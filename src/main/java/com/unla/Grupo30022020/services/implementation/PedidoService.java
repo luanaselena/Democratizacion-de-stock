@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.unla.Grupo30022020.converters.PedidoConverter;
+import com.unla.Grupo30022020.entities.Lote;
 import com.unla.Grupo30022020.entities.Pedido;
+import com.unla.Grupo30022020.entities.Producto;
+import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.repositories.IPedidoRepository;
 import com.unla.Grupo30022020.services.IPedidoService;
@@ -22,6 +25,12 @@ public class PedidoService implements IPedidoService{
 	@Autowired
 	@Qualifier("pedidoConverter")
 	private PedidoConverter pedidoConverter;
+	
+	@Autowired
+	@Qualifier("productoService")
+	private ProductoService productoService;
+
+	
 	
 	@Override
 	public List<Pedido> getAll(){
@@ -44,13 +53,8 @@ public class PedidoService implements IPedidoService{
 	
 	}
 
-	 @Override
-	    public PedidoModel update(PedidoModel pedidoModel) {
 
-	        Pedido pedido = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
-	        return pedidoConverter.entityToModel(pedido);
-	    }
-
+	
 	  @Override
 	    public boolean remove(long id){
 	        try{
@@ -67,7 +71,19 @@ public class PedidoService implements IPedidoService{
 		  return pedidoConverter.entityToModel(pedidoRepository.findById(id));
 	  }
 	
+	  @Override
+		public PedidoModel findByProducto(Producto producto) {
+			return pedidoConverter.entityToModel(pedidoRepository.findByProducto(producto));
+		}
 
+		@Override
+		public PedidoModel update(PedidoModel pedidoModel) {
+			pedidoModel.setProducto(productoService.findById(pedidoModel.getProducto().getId()));
+			Pedido pedido = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
+			return pedidoConverter.entityToModel(pedido);
+		}
+		
+		
 	
 	
 }

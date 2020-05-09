@@ -3,39 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Actualizar Lote</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/css/style.css}"/>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
 
 </head>
 <body>
-<header>
-    <div class="headerbg">
+	<header>
+		<div class="headerbg">
 
-            <h3>Grupo 3- OO2 Democratizacion de Stock</h3>
-        
-    </div>
-</header>
+			<h3>Grupo 3- OO2 Democratizacion de Stock</h3>
 
-<div class="divPrincipal">
-<form action="#" th:action="@{/lote/update}" th:object="${lote}" method="post">
+		</div>
+	</header>
 
-	<p>Cantidad: <input type="text" th:field="*{cantidad}" /></p>
-	<p>Cantidad Total: <input type="text" th:field="*{cantidadTotal}" /></p>
-	
-	<p>Producto: <select placeholder="Producto" th:field="*{producto.id}">
+	<div class="divPrincipal">
+		<form action="#" th:action="@{/lote/update}" th:object="${lote}"
+			method="post">
+
+			<p>
+				Cantidad: <input type="text" th:field="*{cantidad}" />
+			</p>
+			<p>
+				Cantidad Total: <input type="text" th:field="*{cantidadTotal}" />
+			</p>
+
+			<p>
+				Producto: <select placeholder="Producto" th:field="*{producto.id}">
 					<option th:each="p : ${productos}" th:value="${p.id}"
 						th:text="${p.descripcion}"></option>
 				</select>
 			</p>
-	<p>Fecha de Ingreso: <input type="date" th:field=*{fechaIngreso} /></p>
-		<input type="hidden" th:value="*{id}" th:field="*{id}" />
-	<input class="btn btn-success" type="submit" value="Editar"/>
-</form>
-<br>
-<br>
-	<form action="#" th:action="@{/lote/delete/{id}(id=${lote.id})}" method="post">
-	<input class="btn btn-danger" type="submit" value="Eliminar Lote" />
-</form>
-</div>
+			<p>
+				Fecha de Ingreso: <input type="date" th:field=*{fechaIngreso} />
+			</p>
+			<input type="hidden" th:value="*{id}" th:field="*{id}" /> <input
+				class="btn btn-success" type="submit" value="Editar" />
+		</form>
+		<br> <br>
+		<form action="#" th:action="@{/lote/delete/{id}(id=${lote.id})}"
+			method="post">
+			<input class="btn btn-danger" type="submit" value="Eliminar Lote" />
+		</form>
+	</div>
 </body>
 </html>

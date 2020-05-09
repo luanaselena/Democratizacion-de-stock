@@ -7,12 +7,12 @@ public class PedidoModel {
 	private long id;
 	private int cantidad;
 	private boolean aceptado;
-	private Producto producto;
+	private ProductoModel producto;
 
 	public PedidoModel() {
 	}
 
-	public PedidoModel(long id, int cantidad, Producto producto) {
+	public PedidoModel(long id, int cantidad, ProductoModel producto) {
 
 		this.id = id;
 		this.cantidad = cantidad;
@@ -44,11 +44,11 @@ public class PedidoModel {
 		this.aceptado = aceptado;
 	}
 
-	public Producto getProducto() {
+	public ProductoModel getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(ProductoModel producto) {
 		this.producto = producto;
 	}
 
