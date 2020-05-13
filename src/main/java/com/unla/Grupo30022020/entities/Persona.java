@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Persona {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	@Column(name="id")
 	private long id;
 	
@@ -42,8 +42,9 @@ public class Persona {
 	
 	public Persona() {}
 
-	public Persona(String nombre, String apellido, Date fechaDeNacimiento, long dni) {
+	public Persona(long id,String nombre, String apellido, Date fechaDeNacimiento, long dni) {
 		super();
+		this.id=id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaDeNacimiento = fechaDeNacimiento;

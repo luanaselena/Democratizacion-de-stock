@@ -12,6 +12,6 @@ public class GerenteConverter {
     }
 
     public Gerente modelToEntity(GerenteModel gerenteModel){
-        return new Gerente(gerenteModel.getNombre(), gerenteModel.getApellido(), gerenteModel.getFechaDeNacimiento(), gerenteModel.getDni(), gerenteModel.getHorasPorJornada(), gerenteModel.getSueldoBasico());
+        return new Gerente(gerenteModel.getId(),gerenteModel.getNombre(), gerenteModel.getApellido(), gerenteModel.getFechaDeNacimiento(), gerenteModel.getDni(), gerenteModel.getHorasPorJornada(), gerenteModel.getSueldoBasico());
     }
 }

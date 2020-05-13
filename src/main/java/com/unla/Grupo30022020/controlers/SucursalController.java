@@ -34,7 +34,7 @@ public class SucursalController {
     @GetMapping("")
     public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_INDEX);
-        mAV.addObject("sucursal", sucursalService.getAll());
+        mAV.addObject("sucursales", sucursalService.getAll());
         return mAV;
     }
 
@@ -49,6 +49,7 @@ public class SucursalController {
 
     @PostMapping("/create")
     public RedirectView create(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
+    	System.out.println("El id es:" + sucursalModel.getGerente().getId());
         sucursalService.insert(sucursalModel);
         return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
     }

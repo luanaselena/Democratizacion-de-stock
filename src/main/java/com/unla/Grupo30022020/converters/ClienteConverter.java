@@ -13,6 +13,6 @@ public class ClienteConverter {
 	    }
 
 	    public Cliente modelToEntity(ClienteModel clienteModel){
-	        return new Cliente(clienteModel.getNombre(), clienteModel.getApellido(), clienteModel.getFechaDeNacimiento(), clienteModel.getDni(), clienteModel.getMail());
+	        return new Cliente(clienteModel.getId(),clienteModel.getNombre(), clienteModel.getApellido(), clienteModel.getFechaDeNacimiento(), clienteModel.getDni(), clienteModel.getMail());
 	    }
 }

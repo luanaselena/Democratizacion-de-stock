@@ -17,9 +17,9 @@ public class Vendedor extends Empleado {
 		
 	}
 
-	public Vendedor(String nombre, String apellido, Date fechaDeNacimiento, long dni, LocalTime horasPorJornada,
+	public Vendedor(long id,String nombre, String apellido, Date fechaDeNacimiento, long dni, LocalTime horasPorJornada,
 			float sueldoBasico, float plus) {
-		super(nombre, apellido, fechaDeNacimiento, dni, horasPorJornada, sueldoBasico);
+		super(id,nombre, apellido, fechaDeNacimiento, dni, horasPorJornada, sueldoBasico);
 		this.plus = plus;
 	}
 

@@ -48,7 +48,10 @@ public class SucursalService implements ISucursalService {
 
     @Override
     public SucursalModel insert(SucursalModel sucursalModel) {
-
+    	
+    	sucursalModel.setDireccion(direccionService.findById(sucursalModel.getDireccion().getId()));
+    	sucursalModel.setGerente(gerenteService.findById(sucursalModel.getGerente().getId()));
+    	
         Sucursal sucursal = sucursalRepository.save(sucursalConverter.modelToEntity(sucursalModel));
         return sucursalConverter.entityToModel(sucursal);
     }
