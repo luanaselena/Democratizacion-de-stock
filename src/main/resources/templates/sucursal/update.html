@@ -16,9 +16,14 @@
     </header>
     <div class="divPrincipal">
         <form action="#" th:action="@{/sucursal/update}" th:object="${sucursal}" method="post">
-            <p>Ubicacion ID: <input type="text" th:field="*{ubicacion}" /></p>
+            <p>Direccion ID: <select placeholder="Direccion" th:field="*{direccion.id}">
+					<option th:each="d : ${direcciones}" th:value="${d.id}"
+						th:text="${d.descripcion}"></option>
+				</select></p>
             <p>Telefono: <input type="text" th:field="*{telefono}" /></p>
-            <p>Gerente: <input type="text" th:field="*{gerente}" /></p>
+            <p>Gerente: <select placeholder="Gerente" th:field="*{gerente.id}">
+					<option th:each="d : ${gerentes}" th:value="${d.id}"
+						th:text="${d.gerente}"></option></p>
             <p>ID: <input type="text" th:field="*{id}" /></p>
 
             <input class="btn btn-success" type="submit" value="Editar"/>

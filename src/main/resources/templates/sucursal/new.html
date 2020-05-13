@@ -24,7 +24,7 @@
                 Telefono: <input type="text" th:field="*{telefono}" />
             </p>
             <p>
-                Ubicacion: <select placeholder="Ubicacion" th:field="*{direccion.id}">
+                Direccion: <select placeholder="Direccion" th:field="*{direccion.id}">
 					<option th:each="d : ${direcciones}" th:value="${d.id}"
 						th:text="${d.calle}"></option>
 				</select>
