@@ -22,6 +22,14 @@ public class SucursalService implements ISucursalService {
     @Autowired
     @Qualifier("sucursalConverter")
     private SucursalConverter sucursalConverter;
+    
+    @Autowired
+	@Qualifier("direccionService")
+	private DireccionService direccionService;
+    
+    @Autowired
+	@Qualifier("gerenteService")
+	private GerenteService gerenteService;
 
     @Override
     public List<Sucursal> getAll(){
@@ -34,8 +42,8 @@ public class SucursalService implements ISucursalService {
     }
 
     @Override
-    public SucursalModel findByUbicacion(Direccion ubicacion){
-        return sucursalConverter.entityToModel(sucursalRepository.findByUbicacion(ubicacion));
+    public SucursalModel findByDireccion(Direccion direccion){
+        return sucursalConverter.entityToModel(sucursalRepository.findByDireccion(direccion));
     }
 
     @Override
@@ -47,7 +55,8 @@ public class SucursalService implements ISucursalService {
 
     @Override
     public SucursalModel update(SucursalModel sucursalModel) {
-
+    	sucursalModel.setDireccion(direccionService.findById(sucursalModel.getDireccion().getId()));
+    	sucursalModel.setGerente(gerenteService.findById(sucursalModel.getGerente().getId()));
         Sucursal sucursal = sucursalRepository.save(sucursalConverter.modelToEntity(sucursalModel));
         return sucursalConverter.entityToModel(sucursal);
     }
@@ -62,4 +71,40 @@ public class SucursalService implements ISucursalService {
             return false;
         }
     }
+    
+    @Override
+    public float calcularDistancia(Sucursal sucursal1, Sucursal sucursal2) {
+    	return (float) Math.sqrt((Math.pow((sucursal1.getDireccion().getLatitud() - sucursal2.getDireccion().getLatitud()), 2) +
+				((Math.pow((sucursal1.getDireccion().getLongitud() - sucursal2.getDireccion().getLongitud()), 2)))));
+	}
+    
+    @Override
+    public SucursalModel calcularSucursalMasCercana(SucursalModel sucursalModel) {
+		int indice=0;
+		Sucursal sucMasCercana=null;
+		float distancia=0;
+		Sucursal sucursal = sucursalConverter.modelToEntity(sucursalModel);
+		
+		if(sucursal.equals(this.getAll().get(0))) {
+			distancia=this.calcularDistancia(sucursal,this.getAll().get(1));
+			sucMasCercana=this.getAll().get(1);
+		}
+		
+		else {
+			distancia=this.calcularDistancia(sucursal,this.getAll().get(0));
+			sucMasCercana=this.getAll().get(0);
+		}
+		
+		for(indice=1; indice<this.getAll().size(); indice++) {
+			if(this.calcularDistancia(sucursal,this.getAll().get(indice)) < distancia && sucursal!=this.getAll().get(indice))
+			{
+				distancia=this.calcularDistancia(sucursal,this.getAll().get(indice));
+				sucMasCercana=this.getAll().get(indice);
+			}
+		}
+		
+		SucursalModel sucMasCercanaModel = sucursalConverter.entityToModel(sucMasCercana);
+		
+		return sucMasCercanaModel;
+	}
 }

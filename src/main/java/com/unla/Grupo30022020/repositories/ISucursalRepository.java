@@ -9,5 +9,5 @@ import java.io.Serializable;
 @Repository("sucursalRepository")
 public interface ISucursalRepository extends JpaRepository<Sucursal, Serializable> {
     public abstract Sucursal findById(long id);
-    public abstract Sucursal findByUbicacion(Direccion ubicacion);
+    public abstract Sucursal findByDireccion(Direccion direccion);
 }

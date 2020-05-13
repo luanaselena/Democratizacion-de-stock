@@ -24,16 +24,16 @@
                 <tr>
                     <th>Ubicacion ID</th>
                     <th>Telefono</th>
-                    <th>Gerente</th>
+                    <th>Gerente ID</th>
                     <th>Id</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="sucursal : ${sucursales}">
-                    <td><span th:text="${sucursal.ubicacion.id}"></span></td>
+                	<td><a th:href="@{/direccion/{id}(id=${sucursal.ubicacion.id})}" th:text="${sucursal.ubicacion.id}"></td>
                     <td><span th:text="${sucursal.telefono}"></span></td>
-                    <td><span th:text="${sucursal.gerente.apellido}"></span></td>
+                    <td><a th:href="@{/gerente/{id}(id=${sucursal.gerente.id})}" th:text="${sucursal.gerente.id}"></td>
                     <td><span th:text="${sucursal.id}"></span></td>
                     <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">View</a>
                     </td>

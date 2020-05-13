@@ -21,13 +21,19 @@
         <form action="#" th:action="@{/sucursal/create}"
               th:object="${sucursal}" method="post">
             <p>
-                Ubicación: <input type="text" th:field="*{ubicacion}" />
-            </p>
-            <p>
                 Telefono: <input type="text" th:field="*{telefono}" />
             </p>
             <p>
-                Gerente: <input type="text" th:field="*{gerente}" />
+                Ubicacion: <select placeholder="Ubicacion" th:field="*{direccion.id}">
+					<option th:each="d : ${direcciones}" th:value="${d.id}"
+						th:text="${d.calle}"></option>
+				</select>
+            </p>
+            <p>
+                Gerente: <select placeholder="Gerente" th:field="*{gerente.id}">
+					<option th:each="g : ${gerentes}" th:value="${g.id}"
+						th:text="${g.apellido}"></option>
+				</select>
             </p>
             <input class="btn btn-primary" type="submit" value="crear" />
         </form>

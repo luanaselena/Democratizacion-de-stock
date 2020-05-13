@@ -11,17 +11,17 @@ import java.util.Set;
 public class SucursalModel {
 
     private long id;
-    private Direccion ubicacion;
+    private DireccionModel direccion;
     private long telefono;
-    private Gerente gerente;
+    private GerenteModel gerente;
     private Set<Vendedor> vendedores=new HashSet<>();
     private Set<Lote> lotes=new HashSet<>();
 
     public SucursalModel(){}
 
-    public SucursalModel(long id, Direccion ubicacion, long telefono, Gerente gerente) {
+    public SucursalModel(long id, DireccionModel direccion, long telefono, GerenteModel gerente) {
         this.id = id;
-        this.ubicacion = ubicacion;
+        this.direccion = direccion;
         this.telefono = telefono;
         this.gerente = gerente;
     }
@@ -34,12 +34,12 @@ public class SucursalModel {
         this.id = id;
     }
 
-    public Direccion getUbicacion() {
-        return ubicacion;
+    public DireccionModel getDireccion() {
+        return direccion;
     }
 
-    public void setUbicacion(Direccion ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setDireccion(DireccionModel direccion) {
+        this.direccion = direccion;
     }
 
     public long getTelefono() {
@@ -50,11 +50,11 @@ public class SucursalModel {
         this.telefono = telefono;
     }
 
-    public Gerente getGerente() {
+    public GerenteModel getGerente() {
         return gerente;
     }
 
-    public void setGerente(Gerente gerente) {
+    public void setGerente(GerenteModel gerente) {
         this.gerente = gerente;
     }
 
