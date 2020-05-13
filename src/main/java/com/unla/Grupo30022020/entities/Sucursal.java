@@ -20,7 +20,6 @@ public class Sucursal {
 	private long telefono;
 	
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "gerenteId", referencedColumnName = "id")
 	private Gerente gerente;
 
 	@OneToMany(fetch = FetchType.LAZY)

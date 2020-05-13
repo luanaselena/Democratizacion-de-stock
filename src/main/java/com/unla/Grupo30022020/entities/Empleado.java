@@ -1,6 +1,5 @@
 package com.unla.Grupo30022020.entities;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 

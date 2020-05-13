@@ -1,12 +1,9 @@
 package com.unla.Grupo30022020.controlers;
 
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
-import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.services.IDireccionService;
 import com.unla.Grupo30022020.services.IGerenteService;
-import com.unla.Grupo30022020.services.ILoteService;
-import com.unla.Grupo30022020.services.IProductoService;
 import com.unla.Grupo30022020.services.ISucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,7 +46,6 @@ public class SucursalController {
 
     @PostMapping("/create")
     public RedirectView create(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
-    	System.out.println("El id es:" + sucursalModel.getGerente().getId());
         sucursalService.insert(sucursalModel);
         return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
     }

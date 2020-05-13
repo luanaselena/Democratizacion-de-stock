@@ -1,7 +1,5 @@
 package com.unla.Grupo30022020.models;
 
-import com.unla.Grupo30022020.entities.Direccion;
-import com.unla.Grupo30022020.entities.Gerente;
 import com.unla.Grupo30022020.entities.Lote;
 import com.unla.Grupo30022020.entities.Vendedor;
 
