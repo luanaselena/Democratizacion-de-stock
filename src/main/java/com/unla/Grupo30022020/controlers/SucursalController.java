@@ -1,12 +1,9 @@
 package com.unla.Grupo30022020.controlers;
 
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
-import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.services.IDireccionService;
 import com.unla.Grupo30022020.services.IGerenteService;
-import com.unla.Grupo30022020.services.ILoteService;
-import com.unla.Grupo30022020.services.IProductoService;
 import com.unla.Grupo30022020.services.ISucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,7 +31,7 @@ public class SucursalController {
     @GetMapping("")
     public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_INDEX);
-        mAV.addObject("sucursal", sucursalService.getAll());
+        mAV.addObject("sucursales", sucursalService.getAll());
         return mAV;
     }
 

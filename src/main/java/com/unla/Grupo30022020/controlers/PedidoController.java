@@ -14,7 +14,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
 import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.services.IPedidoService;
-import com.unla.Grupo30022020.services.implementation.ProductoService;
 
 @Controller
 @RequestMapping("/pedido")

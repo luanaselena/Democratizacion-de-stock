@@ -13,7 +13,7 @@ public class VendedorConverter {
     }
 
     public Vendedor modelToEntity(VendedorModel vendedorModel){
-        return new Vendedor(vendedorModel.getNombre(), vendedorModel.getApellido(), vendedorModel.getFechaDeNacimiento(), vendedorModel.getDni(), vendedorModel.getHorasPorJornada(), vendedorModel.getSueldoBasico(), vendedorModel.getPlus());
+        return new Vendedor(vendedorModel.getId(),vendedorModel.getNombre(), vendedorModel.getApellido(), vendedorModel.getFechaDeNacimiento(), vendedorModel.getDni(), vendedorModel.getHorasPorJornada(), vendedorModel.getSueldoBasico(), vendedorModel.getPlus());
     }
     
 }

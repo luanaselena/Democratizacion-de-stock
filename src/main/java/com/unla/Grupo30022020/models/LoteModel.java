@@ -1,9 +1,6 @@
 package com.unla.Grupo30022020.models;
 
 import java.sql.Date;
-import java.time.LocalDate;
-
-import com.unla.Grupo30022020.entities.Producto;
 
 public class LoteModel {
 

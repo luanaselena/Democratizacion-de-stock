@@ -4,13 +4,16 @@ spring:
     #url: jdbc:mysql://localhost:3306/grupo_3_bdd_oo2?serverTimezone=UTC
     url: jdbc:mysql://localhost:3306/grupo-3-bdd-oo2?serverTimezone=UTC
     username: root
-    password: root
+    password:
+    initialization-mode: always
     #password:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       dialect: org.hibernate.dialect.MySQL5Dialect
   thymeleaf:
     cache: false
+server:
+  port : 9090

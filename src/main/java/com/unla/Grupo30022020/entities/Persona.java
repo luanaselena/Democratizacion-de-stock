@@ -1,12 +1,10 @@
 package com.unla.Grupo30022020.entities;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Persona {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	@Column(name="id")
 	private long id;
 	
@@ -42,8 +40,9 @@ public class Persona {
 	
 	public Persona() {}
 
-	public Persona(String nombre, String apellido, Date fechaDeNacimiento, long dni) {
+	public Persona(long id,String nombre, String apellido, Date fechaDeNacimiento, long dni) {
 		super();
+		this.id=id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaDeNacimiento = fechaDeNacimiento;
