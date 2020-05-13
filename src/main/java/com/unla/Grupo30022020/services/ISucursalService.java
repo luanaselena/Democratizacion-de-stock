@@ -12,11 +12,15 @@ public interface ISucursalService {
 
     public SucursalModel findById(long id);
 
-    public SucursalModel findByUbicacion(Direccion ubicacion);
+    public SucursalModel findByDireccion(Direccion direccion);
 
-    public SucursalModel insert(SucursalModel sucursalModelModel);
+    public SucursalModel insert(SucursalModel sucursalModel);
 
     public SucursalModel update(SucursalModel sucursalModel);
 
     public boolean remove(long id);
+    
+    public SucursalModel calcularSucursalMasCercana(SucursalModel sucursalModel);
+    
+    public float calcularDistancia(Sucursal sucursal1, Sucursal sucursal2);
 }

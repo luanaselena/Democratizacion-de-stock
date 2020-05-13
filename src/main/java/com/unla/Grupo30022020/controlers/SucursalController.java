@@ -3,7 +3,10 @@ package com.unla.Grupo30022020.controlers;
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
 import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.SucursalModel;
+import com.unla.Grupo30022020.services.IDireccionService;
+import com.unla.Grupo30022020.services.IGerenteService;
 import com.unla.Grupo30022020.services.ILoteService;
+import com.unla.Grupo30022020.services.IProductoService;
 import com.unla.Grupo30022020.services.ISucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,6 +22,14 @@ public class SucursalController {
     @Autowired
     @Qualifier("sucursalService")
     private ISucursalService sucursalService;
+    
+    @Autowired
+	@Qualifier("gerenteService")
+	private IGerenteService gerenteService;
+    
+    @Autowired
+	@Qualifier("direccionService")
+	private IDireccionService direccionService;
 
     @GetMapping("")
     public ModelAndView index() {
@@ -31,6 +42,8 @@ public class SucursalController {
     public ModelAndView create() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_NEW);
         mAV.addObject("sucursal", new SucursalModel());
+        mAV.addObject("gerentes", gerenteService.getAll());
+        mAV.addObject("direcciones", direccionService.getAll());
         return mAV;
     }
 
@@ -44,6 +57,13 @@ public class SucursalController {
     public ModelAndView get(@PathVariable("id") long id) {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_UPDATE);
         mAV.addObject("sucursal", sucursalService.findById(id));
+        return mAV;
+    }
+    
+    @GetMapping("/cercania")
+    public ModelAndView calcularSucursalMasCercana(@ModelAttribute("sucursal") SucursalModel sucursalModel){
+    	ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_CERCANIA);
+        mAV.addObject("sucursal", sucursalService.calcularSucursalMasCercana(sucursalModel));
         return mAV;
     }
 

@@ -13,15 +13,13 @@ public class Sucursal {
 	@Column(name="id")
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ubicacionId", referencedColumnName = "id")
-	private Direccion ubicacion;
+	@OneToOne(cascade = CascadeType.MERGE)
+	private Direccion direccion;
 	
 	@Column(name="telefono")
 	private long telefono;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "gerenteId", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Gerente gerente;
 
 	@OneToMany(fetch = FetchType.LAZY)
@@ -33,17 +31,17 @@ public class Sucursal {
 	
 	public Sucursal() {}
 
-	public Sucursal(long id, Direccion ubicacion, long telefono, Gerente gerente) {
+	public Sucursal(long id, Direccion direccion, long telefono, Gerente gerente) {
 		super();
 		this.id = id;
-		this.ubicacion = ubicacion;
+		this.direccion = direccion;
 		this.telefono = telefono;
 		this.gerente = gerente;
 	}
 
-	public Sucursal(Direccion ubicacion, long telefono, Gerente gerente) {
+	public Sucursal(Direccion direccion, long telefono, Gerente gerente) {
 		super();
-		this.ubicacion = ubicacion;
+		this.direccion = direccion;
 		this.telefono = telefono;
 		this.gerente = gerente;
 	}
@@ -56,12 +54,12 @@ public class Sucursal {
 		this.id = id;
 	}
 
-	public Direccion getUbicacion() {
-		return ubicacion;
+	public Direccion getDireccion() {
+		return direccion;
 	}
 
-	public void setUbicacion(Direccion ubicacion) {
-		this.ubicacion = ubicacion;
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 	public long getTelefono() {
