@@ -42,4 +42,8 @@ public class ViewRouteHelper {
 	public final static String SUCURSAL_UPDATE = "sucursal/update";
 	public final static String SUCURSAL_ROOT = "/sucursal";
 
+	public final static String VENTA_INDEX = "venta/index";
+	public final static String VENTA_NEW = "venta/new";
+	public final static String VENTA_UPDATE = "venta/update";
+	public final static String VENTA_ROOT = "/venta";
 }

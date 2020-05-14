@@ -1,6 +1,7 @@
 package com.unla.Grupo30022020.entities;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -41,7 +42,7 @@ public class Venta {
 	private LocalDate fecha;
 
 	@Column
-	private LocalDate hora;
+	private LocalTime hora;
 
 	@Column
 	private float precioTotal;
@@ -49,7 +50,7 @@ public class Venta {
 	public Venta() {
 	}
 
-	public Venta(long id, int nroVenta, LocalDate fecha, LocalDate hora, float precioTotal, Cliente cliente,
+	public Venta(long id, int nroVenta, LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,
 			Vendedor vendedorEncargado) {
 		this.id=id;
 		this.nroVenta = nroVenta;
@@ -60,7 +61,7 @@ public class Venta {
 		this.cliente = cliente;
 	}
 
-	public Venta(int nroVenta, LocalDate fecha, LocalDate hora, float precioTotal, Cliente cliente,
+	public Venta(int nroVenta, LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,
 			Vendedor vendedorEncargado) {
 
 		this.nroVenta = nroVenta;
@@ -119,11 +120,11 @@ public class Venta {
 		this.fecha = fecha;
 	}
 
-	public LocalDate getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
 
-	public void setHora(LocalDate hora) {
+	public void setHora(LocalTime hora) {
 		this.hora = hora;
 	}
 

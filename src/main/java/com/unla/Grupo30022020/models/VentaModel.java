@@ -9,7 +9,7 @@ import com.unla.Grupo30022020.entities.*;
 public class VentaModel {
 
 	private long id;
-	private int numVenta;
+	private int nroVenta;
 	private Set<Pedido> pedidos;
 	private Vendedor vendedorEncargado;
 	private Cliente cliente;
@@ -20,11 +20,11 @@ public class VentaModel {
 	public VentaModel() {
 	}
 
-	public VentaModel(long id, int numVenta, Vendedor vendedorEncargado, Cliente cliente, LocalDate fecha,
+	public VentaModel(long id, int nroVenta, Vendedor vendedorEncargado, Cliente cliente, LocalDate fecha,
 			LocalTime hora, float precioTotal) {
 
 		this.id = id;
-		this.numVenta = numVenta;
+		this.nroVenta = nroVenta;
 		this.vendedorEncargado = vendedorEncargado;
 		this.cliente = cliente;
 		this.fecha = fecha;
@@ -41,11 +41,11 @@ public class VentaModel {
 	}
 
 	public int getNumVenta() {
-		return numVenta;
+		return nroVenta;
 	}
 
 	public void setNumVenta(int numVenta) {
-		this.numVenta = numVenta;
+		this.nroVenta = numVenta;
 	}
 
 	public Set<Pedido> getPedidos() {
