@@ -1,7 +1,6 @@
 package com.unla.Grupo30022020.entities;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

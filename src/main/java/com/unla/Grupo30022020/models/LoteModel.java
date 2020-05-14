@@ -1,6 +1,5 @@
 package com.unla.Grupo30022020.models;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
