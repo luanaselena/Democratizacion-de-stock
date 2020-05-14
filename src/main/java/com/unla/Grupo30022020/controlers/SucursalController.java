@@ -3,6 +3,7 @@ package com.unla.Grupo30022020.controlers;
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
 import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.SucursalModel;
+import com.unla.Grupo30022020.models.VendedorModel;
 import com.unla.Grupo30022020.services.IDireccionService;
 import com.unla.Grupo30022020.services.IGerenteService;
 import com.unla.Grupo30022020.services.ILoteService;
@@ -65,8 +66,12 @@ public class SucursalController {
     public ModelAndView get(@PathVariable("id") long id) {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_UPDATE);
         mAV.addObject("loteAgregar", new LoteModel());
-        mAV.addObject("sucursal", sucursalService.findById(id));
+        mAV.addObject("vendedorAgregar", new VendedorModel());
+       
         mAV.addObject("lotesLista", loteService.getAll());
+        mAV.addObject("vendedoresLista", vendedorService.getAll());
+        
+        mAV.addObject("sucursal", sucursalService.findById(id));
         mAV.addObject("gerentes", gerenteService.getAll());
         mAV.addObject("direcciones", direccionService.getAll());
         return mAV;
@@ -108,7 +113,7 @@ public class SucursalController {
     @PostMapping("/{idSucursal}/loteAdd")
     public RedirectView insertLote(@PathVariable("idSucursal") long idSucursal,@ModelAttribute("loteAgregar") LoteModel loteModel) {
        System.out.println("ID sucursal:" + idSucursal + " id lote: " + loteModel.getId());
-       
+       /*
        //Establecer todos los datos del lote
        loteModel = loteService.findById(loteModel.getId());
        
@@ -118,7 +123,37 @@ public class SucursalController {
        //Agregarlo a la lista
        sucursal.getLotes().add(loteModel);
        sucursalService.insert(sucursal);
-    	
+    	*/
+        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
+    }
+    
+  //Borrar un Vendedor de la lista de una sucursal
+    /*
+     * 
+    @PostMapping("/{idSucursal}/vendedorDelete/{idVendedor}")
+    public RedirectView deleteLote(@PathVariable("idSucursal") long idSucursal,@PathVariable("idVendedor") long idVendedor) {
+        sucursalService.remove(idSucursal);
+        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
+    }
+    
+    */
+    
+    //Agregar un Vendedor de la lista de una sucursal
+    
+    @PostMapping("/{idSucursal}/vendedorAdd")
+    public RedirectView insertLote(@PathVariable("idSucursal") long idSucursal,@ModelAttribute("vendedorAgregar") VendedorModel vendedorModel) {
+       System.out.println("ID sucursal:" + idSucursal + " id Vendedor: " + vendedorModel.getId());
+      /* 
+       //Establecer todos los datos del lote
+       vendedorModel = vendedorService.findById(vendedorModel.getId());
+       
+       //Establecer todos los datos de la Sucursal
+       SucursalModel sucursal = sucursalService.findById(idSucursal);
+       
+       //Agregarlo a la lista
+       sucursal.getVendedores().add(vendedorModel);
+       sucursalService.insert(sucursal);
+    	*/
         return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
     }
 }
