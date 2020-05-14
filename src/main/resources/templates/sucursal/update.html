@@ -14,25 +14,142 @@
 
         </div>
     </header>
-    <div class="divPrincipal">
-        <form action="#" th:action="@{/sucursal/update}" th:object="${sucursal}" method="post">
-            <p>Direccion ID: <select placeholder="Direccion" th:field="*{direccion.id}">
-					<option th:each="d : ${direcciones}" th:value="${d.id}"
-						th:text="${d.descripcion}"></option>
-				</select></p>
-            <p>Telefono: <input type="text" th:field="*{telefono}" /></p>
-            <p>Gerente: <select placeholder="Gerente" th:field="*{gerente.id}">
-					<option th:each="d : ${gerentes}" th:value="${d.id}"
-						th:text="${d.gerente}"></option></p>
-            <p>ID: <input type="text" th:field="*{id}" /></p>
-
-            <input class="btn btn-success" type="submit" value="Editar"/>
-        </form>
-        <br>
-        <br>
-        <form action="#" th:action="@{/sucursal/delete/{id}(id=${sucursal.id})}" method="post">
-            <input class="btn btn-danger" type="submit" value="Eliminar sucursal" />
-        </form>
+    <div class="divPrincipal row">
+	    <div class="FormSucursal col-12">
+	        <form action="#" th:action="@{/sucursal/update}" th:object="${sucursal}" method="post">
+	        
+	            <p>Direccion ID: <select placeholder="Direccion" th:field="*{direccion.id}">
+						<option th:each="d : ${direcciones}" th:value="${d.id}"
+							th:text="${d.calle}"></option>
+						</select></p>
+					
+	            <p>Telefono: <input type="text" th:field="*{telefono}" /></p>
+	            
+	            <p>Gerente: <select placeholder="Gerente" th:field="*{gerente.id}">
+						<option th:each="d : ${gerentes}" th:value="${d.id}"
+							th:text="${d.nombre}"></option>
+				</p>
+				
+	            <input type="hidden" th:field="*{id}" />
+	
+	            <br><br><br><input class="btn btn-success" type="submit" value="Editar"/>
+	        </form>
+	        <br>
+	        <br>
+	        <form action="#" th:action="@{/sucursal/delete/{id}(id=${sucursal.id})}" method="post">
+	            <input class="btn btn-danger" type="submit" value="Eliminar sucursal" />
+	        </form>
+	        </div>
+	        
+	        
+	    <!-- --------------------- Div de las 2 listas, para colocarlas con bootstrap --------------------- -->
+	    
+	    <div class="ListasSucursal row">
+	    
+	    <!-- ----------------------------Lista Lote Izquierda----------------------------------	 -->
+		    <div class="ListaLote col-12">
+		    <h2>Lotes (-WIP-)</h2>
+		    <table border="1px">
+	
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Id Producto</th>
+						<th>Cantidad</th>
+						<th>CantidadTotal</th>
+						<th>Fecha de ingreso</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="lote : ${sucursal.lotes}">
+					<td><span th:text="${lote.id}"></span></td>
+					
+						<td><span th:text="${lote.producto.id}"></span></td>
+						<td><span th:text="${lote.cantidad}"></span></td>
+						<td><span th:text="${lote.cantidadTotal}"></span></td>
+						<td><span th:text="${lote.fechaIngreso}"></span></td>
+						
+						<td><a th:href="@{/lote/{id}(id=${lote.id})}">View</a>
+						
+						<!-- Ruta para eliminar un lote de la sucursal actual -->
+						
+						<td><a th:href="@{'/sucursal/' + ${sucursal.id} + '/loteDelete/' + ${lote.id} }">Eliminar de Sucursal</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<!-- --------------Form para ir a Sucursal/id/loteAdd llevandose un Lote --------------------->
+			
+			<form action="#" th:action="@{'/sucursal/' + ${sucursal.id} + '/loteAdd'}"
+				 method="post" th:object="${loteAgregar}">
+      
+				<p>
+					Agregar Lote: <select placeholder="loteAgregar" th:field="${loteAgregar.id}">
+						<option th:each="l : ${lotesLista}" th:value="${l.id}" th:text="${l.id}"></option>
+					</select>
+				</p>
+				
+				<input class="btn btn-primary" type="submit" value="Agregar" />
+			</form>
+			</div>
+			
+	    	<!-- ----------------------------Lista Lote Izquierda----------------------------------	 -->
+	    	
+	    	<!-- ----------------------------Lista Vendedores Derecha----------------------------------	 -->
+		    <div class="ListaVendedores col-12">
+		        <h2>Vendedores (-WIP-)</h2>
+			    <table border="1px">
+		
+		            <thead>
+		                <tr>
+		                    <th>Nombre</th>
+		                    <th>Apellido</th>
+		                    <th>Fecha de Nacimiento</th>
+		                    <th>DNI</th>
+		                    <th>Horas por Jornada</th>
+		                    <th>Sueldo Básico</th>
+		                    <th>Plus</th>
+		                    <th>Id</th>
+		                    <th></th>
+          				    <th></th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		                <tr th:each="vendedor : ${sucursal.vendedores}">
+		                    <td><span th:text="${vendedor.nombre}"></span></td>
+		                    <td><span th:text="${vendedor.apellido}"></span></td>
+		                    <td><span th:text="${vendedor.fechaDeNacimiento}"></span></td>
+		                    <td><span th:text="${vendedor.dni}"></span></td>
+		                    <td><span th:text="${vendedor.horasPorJornada}"></span></td>
+		                    <td><span th:text="${vendedor.sueldoBasico}"></span></td>
+		                    <td><span th:text="${vendedor.plus}"></span></td>
+		                    <td><span th:text="${vendedor.id}"></span></td>
+		                    <td><a th:href="@{/vendedor/{id}(id=${vendedor.id})}">View</a>
+		                    <td><a th:href="@{'/sucursal/' + ${sucursal.id} + '/vendedorDelete/' + ${vendedor.id} }">Eliminar de Sucursal</a>
+		                    </td>
+		                </tr>
+		            </tbody>
+		        </table>
+		        
+		      <!-- --------------Form para ir a Sucursal/id/vendedorAdd llevandose un Vendedor --------------------->
+		        <form action="#" th:action="@{'/sucursal/' + ${sucursal.id} + '/vendedorAdd'}"
+				 method="post" th:object="${vendedorAgregar}">
+      
+				<p>
+					Agregar Vendedor: <select placeholder="vendedorAgregar" th:field="${vendedorAgregar.id}">
+						<option th:each="v : ${vendedoresLista}" th:value="${v.id}" th:text="${v.apellido}"></option>
+					</select>
+				</p>
+				
+				<input class="btn btn-primary" type="submit" value="Agregar" />
+			</form>
+			</div> 
+	     <!-- ----------------------------Lista Vendedores Derecha----------------------------------	 -->
+	    
+	    </div>    
     </div>
 
 </body>

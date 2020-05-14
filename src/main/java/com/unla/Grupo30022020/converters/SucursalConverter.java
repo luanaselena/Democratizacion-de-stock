@@ -25,4 +25,5 @@ public class SucursalConverter {
     public Sucursal modelToEntity(SucursalModel sucursalModel){
         return new Sucursal(sucursalModel.getId(), direccionConverter.modelToEntity(sucursalModel.getDireccion()), sucursalModel.getTelefono(), gerenteConverter.modelToEntity(sucursalModel.getGerente()));
     }
+    
 }
