@@ -21,3 +21,6 @@ INSERT INTO sucursal (id,telefono,direccion_id,gerente_id) VALUES(16,15543245,11
 
 INSERT INTO lote (id,cantidad,cantidad_total,producto_id,fecha_ingreso) VALUES(17,234,235,13,"2020-05-04");
 INSERT INTO lote (id,cantidad,cantidad_total,producto_id,fecha_ingreso) VALUES(18,120,125,14,"2020-05-04");
+
+INSERT INTO persona (dtype,id,nombre,apellido,dni,sueldo_basico,fecha_de_nacimiento,horas_por_jornada,plus) VALUES("Vendedor",19,"Juan","Perez",43243963,25200,"1999-05-04","09:00:00",550);
+INSERT INTO persona (dtype,id,nombre,apellido,dni,sueldo_basico,fecha_de_nacimiento,horas_por_jornada,plus) VALUES("Vendedor",20,"Pedro","Gauna",43242343,25200,"1990-11-04","06:00:00",520);
