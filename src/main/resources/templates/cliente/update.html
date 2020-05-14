@@ -18,10 +18,15 @@
         <form action="#" th:action="@{/cliente/update}" th:object="${cliente}" method="post">
             <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
             <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
-          
+          	
+            <p>Fecha de Nacimiento: <input type="date" th:field="*{fechaDeNacimiento}" /></p>
+             
             <p>DNI: <input type="text" th:field="*{dni}" /></p>
+            
             <p>Mail: <input type="text" th:field="*{mail}" /></p>
-
+            
+			<input type="hidden" th:value="*{id}" th:field="*{id}" />
+			
             <input class="btn btn-success" type="submit" value="Editar"/>
         </form>
         <br>

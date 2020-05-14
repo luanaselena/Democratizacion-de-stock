@@ -35,7 +35,7 @@
                 <tr th:each="cliente : ${clientes}">
                     <td><span th:text="${cliente.nombre}"></span></td>
                     <td><span th:text="${cliente.apellido}"></span></td>
-                    <td><span th:text="${#dates.format(cliente.fechaDeNacimiento, 'dd/MMM/yyyy')}"></span></td>
+                    <td><span th:text="${cliente.fechaDeNacimiento}"></span></td>
                     <td><span th:text="${cliente.dni}"></span></td>
                     <td><span th:text="${cliente.mail}"></span></td>
                     <td><span th:text="${cliente.id}"></span></td>

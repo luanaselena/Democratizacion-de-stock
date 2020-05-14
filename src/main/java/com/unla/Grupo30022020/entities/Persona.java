@@ -1,10 +1,12 @@
 package com.unla.Grupo30022020.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Persona {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private long id;
 	
@@ -30,17 +32,16 @@ public class Persona {
 	@Column(name="apellido", nullable=false, length=30)
 	private String apellido;
 	
-	@Column(name="fechaDeNacimiento", nullable = true)
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date fechaDeNacimiento;
+
+
+	private LocalDate fechaDeNacimiento;
 	
 	@Column(name="dni")
 	private long dni;
 	
 	public Persona() {}
 
-	public Persona(long id,String nombre, String apellido, Date fechaDeNacimiento, long dni) {
+	public Persona(long id,String nombre, String apellido, LocalDate fechaDeNacimiento, long dni) {
 		super();
 		this.id=id;
 		this.nombre = nombre;
@@ -73,11 +74,11 @@ public class Persona {
 		this.apellido = apellido;
 	}
 
-	public Date getFechaDeNacimiento() {
+	public LocalDate getFechaDeNacimiento() {
 		return fechaDeNacimiento;
 	}
 
-	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+	public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 

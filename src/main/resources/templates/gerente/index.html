@@ -36,7 +36,7 @@
                 <tr th:each="gerente : ${gerentes}">
                     <td><span th:text="${gerente.nombre}"></span></td>
                     <td><span th:text="${gerente.apellido}"></span></td>
-                    <td><span th:text="${#dates.format(gerente.fechaDeNacimiento, 'dd/MMM/yyyy')}"></span></td>
+                    <td><span th:text="${gerente.fechaDeNacimiento}"></span></td>
                     <td><span th:text="${gerente.dni}"></span></td>
                     <td><span th:text="${gerente.horasPorJornada}"></span></td>
                     <td><span th:text="${gerente.sueldoBasico}"></span></td>
