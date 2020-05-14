@@ -1,7 +1,5 @@
 package com.unla.Grupo30022020.models;
 
-import com.unla.Grupo30022020.entities.Lote;
-import com.unla.Grupo30022020.entities.Vendedor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +10,8 @@ public class SucursalModel {
     private DireccionModel direccion;
     private long telefono;
     private GerenteModel gerente;
-    private Set<Vendedor> vendedores=new HashSet<>();
-    private Set<Lote> lotes=new HashSet<>();
+    private Set<VendedorModel> vendedores=new HashSet<>();
+    private Set<LoteModel> lotes=new HashSet<>();
 
     public SucursalModel(){}
 
@@ -56,19 +54,19 @@ public class SucursalModel {
         this.gerente = gerente;
     }
 
-    public Set<Vendedor> getVendedores() {
+    public Set<VendedorModel> getVendedores() {
         return vendedores;
     }
 
-    public void setVendedores(Set<Vendedor> vendedores) {
+    public void setVendedores(Set<VendedorModel> vendedores) {
         this.vendedores = vendedores;
     }
 
-    public Set<Lote> getLotes() {
+    public Set<LoteModel> getLotes() {
         return lotes;
     }
 
-    public void setLotes(Set<Lote> lotes) {
+    public void setLotes(Set<LoteModel> lotes) {
         this.lotes = lotes;
     }
 }

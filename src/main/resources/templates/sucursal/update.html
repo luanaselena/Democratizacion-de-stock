@@ -42,11 +42,13 @@
 	        </div>
 	        
 	        
+	    <!-- --------------------- Div de las 2 listas, para colocarlas con bootstrap --------------------- -->
+	    
 	    <div class="ListasSucursal row">
 	    
 	    <!-- ----------------------------Lista Lote Izquierda----------------------------------	 -->
 		    <div class="ListaLote col-12">
-		    <h2>Lotes</h2>
+		    <h2>Lotes (-WIP-)</h2>
 		    <table border="1px">
 	
 				<thead>
@@ -70,12 +72,17 @@
 						<td><span th:text="${lote.fechaIngreso}"></span></td>
 						
 						<td><a th:href="@{/lote/{id}(id=${lote.id})}">View</a>
+						
+						<!-- Ruta para eliminar un lote de la sucursal actual -->
+						
+						<td><a th:href="@{'/sucursal/' + ${sucursal.id} + '/loteDelete/' + ${lote.id} }">Eliminar de Sucursal</a>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			
-			<!-- Form para ir a Sucursal/id/loteAdd -->
+			<!-- --------------Form para ir a Sucursal/id/loteAdd llevandose un Lote --------------------->
+			
 			<form action="#" th:action="@{'/sucursal/' + ${sucursal.id} + '/loteAdd'}"
 				 method="post" th:object="${loteAgregar}">
       
@@ -88,11 +95,13 @@
 				<input class="btn btn-primary" type="submit" value="Agregar" />
 			</form>
 			</div>
+			
 	    	<!-- ----------------------------Lista Lote Izquierda----------------------------------	 -->
 	    	
 	    	<!-- ----------------------------Lista Vendedores Derecha----------------------------------	 -->
-	    	<!--  
+	    	<!--
 		    <div class="ListaVendedores col-12">
+		        <h2>Vendedores</h2>
 			    <table border="1px">
 		
 		            <thead>
