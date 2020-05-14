@@ -5,8 +5,9 @@ package com.unla.Grupo30022020.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 public class Lote{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private long id;
 	
@@ -31,12 +32,11 @@ public class Lote{
 	@Column(name="cantidadTotal")
 	private int cantidadTotal;
 	
-	@Column(name = "fechaIngreso")
-	private Date fechaIngreso;
+	private LocalDate fechaIngreso;
 	
 	public Lote() {}
 
-	public Lote(long id, Producto producto, int cantidad, int cantidadTotal, Date fechaIngreso) {
+	public Lote(long id, Producto producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
@@ -76,11 +76,11 @@ public class Lote{
 		this.cantidadTotal = cantidadTotal;
 	}
 
-	public Date getFechaIngreso() {
+	public LocalDate getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(Date fechaIngreso) {
+	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 

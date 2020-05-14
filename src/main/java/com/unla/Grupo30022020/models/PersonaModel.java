@@ -1,20 +1,23 @@
 package com.unla.Grupo30022020.models;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class PersonaModel {
 	
 	private long id;
 	private String nombre;
 	private String apellido;
-	private Date fechaDeNacimiento;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaDeNacimiento;
 	private long dni;
 	
 	public PersonaModel () {
 		
 	}
 	
-	public PersonaModel(long id, String nombre, String apellido, Date fechaDeNacimiento, long dni) {
+	public PersonaModel(long id, String nombre, String apellido, LocalDate fechaDeNacimiento, long dni) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -47,11 +50,11 @@ public class PersonaModel {
 		this.apellido = apellido;
 	}
 
-	public Date getFechaDeNacimiento() {
+	public LocalDate getFechaDeNacimiento() {
 		return fechaDeNacimiento;
 	}
 
-	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+	public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 

@@ -1,6 +1,6 @@
 package com.unla.Grupo30022020.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +15,7 @@ public class Cliente extends Persona{
 		
 	}
 
-	public Cliente(long id,String nombre, String apellido, Date fechaDeNacimiento, long dni, String mail) {
+	public Cliente(long id,String nombre, String apellido, LocalDate fechaDeNacimiento, long dni, String mail) {
 		super(id, nombre, apellido, fechaDeNacimiento, dni);
 		this.mail = mail;
 	}

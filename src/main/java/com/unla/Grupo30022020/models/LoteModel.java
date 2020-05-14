@@ -1,6 +1,8 @@
 package com.unla.Grupo30022020.models;
 
-import java.sql.Date;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class LoteModel {
 
@@ -11,12 +13,13 @@ public class LoteModel {
 	private int cantidad;
 
 	private int cantidadTotal;
-
-	private Date fechaIngreso;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate fechaIngreso;
 
 	public LoteModel() {}
 
-	public LoteModel(long id, ProductoModel producto, int cantidad, int cantidadTotal, Date fechaIngreso) {
+	public LoteModel(long id, ProductoModel producto, int cantidad, int cantidadTotal, LocalDate fechaIngreso) {
 		this.id = id;
 		this.producto = producto;
 		this.cantidad = cantidad;
@@ -56,11 +59,11 @@ public class LoteModel {
 		this.cantidadTotal = cantidadTotal;
 	}
 
-	public Date getFechaIngreso() {
+	public LocalDate getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(Date fechaIngreso) {
+	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 

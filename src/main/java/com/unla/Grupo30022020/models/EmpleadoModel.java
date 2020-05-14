@@ -1,7 +1,7 @@
 package com.unla.Grupo30022020.models;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 public class EmpleadoModel extends PersonaModel{
 	
@@ -12,7 +12,7 @@ public class EmpleadoModel extends PersonaModel{
 		
 	}
 
-	public EmpleadoModel(long id, String nombre, String apellido, Date fechaDeNacimiento, long dni,
+	public EmpleadoModel(long id, String nombre, String apellido, LocalDate fechaDeNacimiento, long dni,
 			LocalTime horasPorJornada, float sueldoBasico) {
 		super(id, nombre, apellido, fechaDeNacimiento, dni);
 		this.horasPorJornada = horasPorJornada;
