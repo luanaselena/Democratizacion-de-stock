@@ -16,13 +16,32 @@
     </header>
     <div class="divPrincipal">
         <form action="#" th:action="@{/vendedor/update}" th:object="${vendedor}" method="post">
-            <p>Nombre: <input type="text" th:field="*{nombre}" /></p>
-            <p>Apellido: <input type="text" th:field="*{apellido}" /></p>
-          
-            <p>DNI: <input type="text" th:field="*{dni}" /></p>
-            <p>Sueldo Básico: <input type="text" th:field="*{sueldoBasico}" /></p>
-            <p>Plus: <input type="text" th:field="*{plus}" /></p>
-
+            <p>
+                Nombre: <input type="text" th:field="*{nombre}" />
+            </p>
+            <p>
+                Apellido: <input type="text" th:field="*{apellido}" />
+            </p>
+            
+             <p>
+                DNI: <input type="text" th:field="*{dni}" />
+            </p>
+            
+             <p>Horas de Jornada: <input type="time" th:field="*{horasPorJornada}" /></p>
+            
+            <p>
+                Fecha de Nacimiento: <input type="date" th:field="*{fechaDeNacimiento}" />
+            </p>
+            
+             <p>
+                Sueldo Básico: <input type="text" th:field="*{sueldoBasico}" />
+            </p>
+            <p>
+                Plus: <input type="text" th:field="*{plus}" />
+            </p>
+            
+           	<input type="hidden" th:value="*{id}" th:field="*{id}" />
+           	
             <input class="btn btn-success" type="submit" value="Editar"/>
         </form>
         <br>
