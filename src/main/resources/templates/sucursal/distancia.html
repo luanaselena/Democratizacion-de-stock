@@ -30,6 +30,14 @@
                 </tr>
             </thead>
             <tbody>
+                <tr th:each="sucursal : ${sucursales}">
+                	<td><a th:href="@{/direccion/{id}(id=${sucursal.direccion.id})}" th:text="${sucursal.direccion.id}"></td>
+                    <td><span th:text="${sucursal.telefono}"></span></td>
+                    <td><a th:href="@{/gerente/{id}(id=${sucursal.gerente.id})}" th:text="${sucursal.gerente.id}"></td>
+                    <td><span th:text="${sucursal.id}"></span></td>
+                    <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">View</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <br> <a class="btn btn-primary" href="/sucursal/new">Agregar sucursal</a>

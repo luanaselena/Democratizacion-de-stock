@@ -77,6 +77,13 @@ public class SucursalController {
         return mAV;
     }
     
+    @GetMapping("/distancia")
+    public ModelAndView distancia() {
+        ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_DISTANCIA);
+        mAV.addObject("sucursales", sucursalService.getAll());
+        return mAV;
+    }
+    
     @GetMapping("/cercania")
     public ModelAndView calcularSucursalMasCercana(@ModelAttribute("sucursal") SucursalModel sucursalModel){
     	ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_CERCANIA);
