@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Lote</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header>
+		<div class="headerbg">
+
+			<h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+		</div>
+	</header>
+	
+	<div class="divPrincipal home row">
+	
+		<div class="col-6">
+		<h3 class="linksIndex"><a th:href="@{/sucursal}">Sucursales</a></h3>
+		<h3 class="linksIndex"><a th:href="@{/lote}">Lotes</a></h3>
+		<h3 class="linksIndex"><a th:href="@{/direccion}">Direcciones</a></h3>
+		<h3 class="linksIndex"><a th:href="@{/producto}">Productos</a></h3>
+		
+		</div>
+		<div class="col-6">
+		<h3 class="linksIndex"><a th:href="@{/cliente}">Clientes</a></h3>
+		<h3 class="linksIndex"><a th:href="@{/gerente}">Gerentes</a></h3>
+		<h3 class="linksIndex"><a th:href="@{/vendedor}">Vendedores</a></h3>
+		<h3 class="linksIndex"><a th:href="@{/pedido}">Pedidos</a></h3>
+		
+		</div>
+	</div>
+</body>
+</html>

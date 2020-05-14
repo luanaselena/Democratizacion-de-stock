@@ -21,7 +21,16 @@ body{
 		background-color: #ffffff;
 		background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
+/*-------------------------Index-------------------------------*/
+.home{
+	text-align:center;
+}
 
+.linksIndex a{
+	text-align:center;
+	padding:3px;
+	border:black solid 1px;
+}
 /*-------------------------contenido-------------------------------*/
 
 
