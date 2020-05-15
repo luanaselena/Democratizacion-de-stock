@@ -48,6 +48,12 @@ body{
 }
 /*-------------------------contenido-------------------------------*/
 
+.textHome{
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 0;
+	text-color: #FFFFF;
+}
 
 .divPrincipal{
 	text-align:left;
