@@ -17,22 +17,18 @@
 
         </div>
     </header>
-    <div class="divPrincipal">
-        <table border="1px">
-
-            <thead>
-                <tr>
-                    <th>Direccion ID</th>
-                    <th>Telefono</th>
-                    <th>Gerente ID</th>
-                    <th>Id</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-        <br> <a class="btn btn-primary" href="/sucursal/new">Agregar sucursal</a>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-12 form-group mt-4">
+    			<h2>Seleccione una sucursal</h2>
+    			<form action="#" th:action="@{/sucursal/cercania}">
+	    			 <select th:field="*{sucursales}">
+					     <option th:each="sucursal : ${sucursales}" th:value="${sucursal.id}" th:text="${sucursal.id}"></option>
+					 </select>
+					 <input class="btn btn-sm btn-primary" type="submit" value="calcular distancia" />
+    			</form>
+    		</div>
+    	</div>
     </div>
 </body>
 </html>

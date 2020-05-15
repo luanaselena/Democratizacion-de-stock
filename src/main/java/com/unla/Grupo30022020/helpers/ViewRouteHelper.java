@@ -44,6 +44,7 @@ public class ViewRouteHelper {
 	public final static String SUCURSAL_NEW = "sucursal/new";
 	public final static String SUCURSAL_UPDATE = "sucursal/update";
 	public final static String SUCURSAL_CERCANIA = "sucursal/cercania";
+	public final static String SUCURSAL_DISTANCIA = "sucursal/distancia";
 	public final static String SUCURSAL_ROOT = "/sucursal";
 
 }
