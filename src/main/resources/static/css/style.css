@@ -23,13 +23,28 @@ body{
 }
 /*-------------------------Index-------------------------------*/
 .home{
+	
+    width: 50vw;
+	margin:auto;
+	margin-top:8%;
+	padding-top:4%;
+	padding-bottom:4%;
+	text-align:center;
+	border: solid black 1px;
+}
+.indexDivs{
 	text-align:center;
 }
-
-.linksIndex a{
+.CUs{
+	text-aling:center;
+	margin: auto;
+	margin-top:15px;
+}
+.linksIndex{
+	font-size:2rem;
+	margin:10px,0,10px,0,0;
 	text-align:center;
 	padding:3px;
-	border:black solid 1px;
 }
 /*-------------------------contenido-------------------------------*/
 

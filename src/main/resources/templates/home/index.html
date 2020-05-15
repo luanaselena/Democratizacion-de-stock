@@ -7,7 +7,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{css/style.css}" />
 </head>
 <body>
 	<header>
@@ -18,22 +18,24 @@
 		</div>
 	</header>
 	
-	<div class="divPrincipal home row">
-	
-		<div class="col-6">
-		<h3 class="linksIndex"><a th:href="@{/sucursal}">Sucursales</a></h3>
-		<h3 class="linksIndex"><a th:href="@{/lote}">Lotes</a></h3>
-		<h3 class="linksIndex"><a th:href="@{/direccion}">Direcciones</a></h3>
-		<h3 class="linksIndex"><a th:href="@{/producto}">Productos</a></h3>
+	<div class="home row">
+		
+		<div class="indexDivs col-6">
+		<a class="linksIndex" th:href="@{/sucursal}">Sucursales</a><br>
+		<a class="linksIndex" th:href="@{/lote}">Lotes</a><br>
+		<a class="linksIndex" th:href="@{/direccion}">Direcciones</a><br>
+		<a class="linksIndex" th:href="@{/producto}">Productos</a><br>
 		
 		</div>
-		<div class="col-6">
-		<h3 class="linksIndex"><a th:href="@{/cliente}">Clientes</a></h3>
-		<h3 class="linksIndex"><a th:href="@{/gerente}">Gerentes</a></h3>
-		<h3 class="linksIndex"><a th:href="@{/vendedor}">Vendedores</a></h3>
-		<h3 class="linksIndex"><a th:href="@{/pedido}">Pedidos</a></h3>
+		<div class="indexDivs col-6">
+		<a class="linksIndex" th:href="@{/cliente}">Clientes</a><br>
+		<a class="linksIndex" th:href="@{/gerente}">Gerentes</a><br>
+		<a class="linksIndex" th:href="@{/vendedor}">Vendedores</a><br>
+		<a class="linksIndex" th:href="@{/pedido}">Pedidos</a><br>
 		
 		</div>
+		<div class="CUs"> <a  class="linksIndex" th:href="@{/sucursal/distancia}">Calcular Distancia entre Sucursales</a></div>
+		
 	</div>
 </body>
 </html>
