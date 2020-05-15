@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Lote</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{css/style.css}" />
+</head>
+<body>
+	<header>
+		<div class="headerbg">
+
+			<h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+		</div>
+	</header>
+	
+	<div class="home row">
+		
+		<div class="indexDivs col-6">
+		<a class="linksIndex" th:href="@{/sucursal}">Sucursales</a><br>
+		<a class="linksIndex" th:href="@{/lote}">Lotes</a><br>
+		<a class="linksIndex" th:href="@{/direccion}">Direcciones</a><br>
+		<a class="linksIndex" th:href="@{/producto}">Productos</a><br>
+		
+		</div>
+		<div class="indexDivs col-6">
+		<a class="linksIndex" th:href="@{/cliente}">Clientes</a><br>
+		<a class="linksIndex" th:href="@{/gerente}">Gerentes</a><br>
+		<a class="linksIndex" th:href="@{/vendedor}">Vendedores</a><br>
+		<a class="linksIndex" th:href="@{/pedido}">Pedidos</a><br>
+		
+		</div>
+		<div class="CUs"> <a  class="linksIndex" th:href="@{/sucursal/distancia}">Calcular Distancia entre Sucursales</a></div>
+		
+	</div>
+</body>
+</html>
