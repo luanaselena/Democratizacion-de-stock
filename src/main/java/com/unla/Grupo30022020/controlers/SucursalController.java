@@ -80,17 +80,19 @@ public class SucursalController {
     @GetMapping("/distancia")
     public ModelAndView distancia() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_DISTANCIA);
+      //  mAV.addObject("sucursal", new SucursalModel());
         mAV.addObject("sucursales", sucursalService.getAll());
         return mAV;
     }
     
-    @GetMapping("/cercania")
-    public ModelAndView calcularSucursalMasCercana(@ModelAttribute("sucursal") SucursalModel sucursalModel){
+    @GetMapping("/cercania/")
+    public ModelAndView calcularSucursalMasCercana(@RequestParam(value = "id", required = true) long id){
+    	System.out.println("el id es: " + id);
+    	SucursalModel sucursalModel = sucursalService.findById(id);
     	ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_CERCANIA);
-        mAV.addObject("sucursal", sucursalService.calcularSucursalMasCercana(sucursalModel));
+        mAV.addObject("sucursal", sucursalService.calcularSucursalMasCercana(sucursalModel) );
         return mAV;
     }
-
 
     @PostMapping("/update")
     public RedirectView update(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
