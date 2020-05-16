@@ -23,4 +23,8 @@ public interface ISucursalService {
     public SucursalModel calcularSucursalMasCercana(SucursalModel sucursalModel);
     
     public float calcularDistancia(Sucursal sucursal1, Sucursal sucursal2);
+    
+    public SucursalModel EliminarLote(long idSucursal,long idLote);
+    
+    public SucursalModel EliminarVendedor(long idSucursal,long idVendedor);
 }

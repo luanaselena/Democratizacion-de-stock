@@ -8,6 +8,9 @@ INSERT INTO persona (dtype,id,nombre,apellido,dni,mail,fecha_de_nacimiento) VALU
 INSERT INTO persona (dtype,id,nombre,apellido,dni,mail,fecha_de_nacimiento) VALUES("Cliente",7,"Gustavo","Siciliano",32266034,"gussiciliano@gmail.com","2003-05-04");
 INSERT INTO persona (dtype,id,nombre,apellido,dni,mail,fecha_de_nacimiento) VALUES("Cliente",8,"Romina","Mansilla",45234329,"romina.e.mansilla@gmail.com","2002-02-14");
 
+INSERT INTO persona (dtype,id,nombre,apellido,dni,sueldo_basico,fecha_de_nacimiento,horas_por_jornada,plus) VALUES("Vendedor",19,"Juan","Perez",43243963,25200,"1999-05-04","09:00:00",550);
+INSERT INTO persona (dtype,id,nombre,apellido,dni,sueldo_basico,fecha_de_nacimiento,horas_por_jornada,plus) VALUES("Vendedor",20,"Pedro","Gauna",43242343,25200,"1990-11-04","06:00:00",520);
+
 INSERT INTO direccion (id,calle,ciudad,latitud,longitud,numero) VALUES(9,"Estanzuela del Rey","Buenos aires",32454,52453,558);
 INSERT INTO direccion (id,calle,ciudad,latitud,longitud,numero) VALUES(10,"Uriarte","Buenos aires",35654,22453,120);
 INSERT INTO direccion (id,calle,ciudad,latitud,longitud,numero) VALUES(11,"Hipolito Yrigoyen","Buenos aires",42454,82453,420);
@@ -22,5 +25,7 @@ INSERT INTO sucursal (id,telefono,direccion_id,gerente_id) VALUES(16,15543245,11
 INSERT INTO lote (id,cantidad,cantidad_total,producto_id,fecha_ingreso) VALUES(17,234,235,13,"2020-05-04");
 INSERT INTO lote (id,cantidad,cantidad_total,producto_id,fecha_ingreso) VALUES(18,120,125,14,"2020-05-04");
 
-INSERT INTO persona (dtype,id,nombre,apellido,dni,sueldo_basico,fecha_de_nacimiento,horas_por_jornada,plus) VALUES("Vendedor",19,"Juan","Perez",43243963,25200,"1999-05-04","09:00:00",550);
-INSERT INTO persona (dtype,id,nombre,apellido,dni,sueldo_basico,fecha_de_nacimiento,horas_por_jornada,plus) VALUES("Vendedor",20,"Pedro","Gauna",43242343,25200,"1990-11-04","06:00:00",520);
+INSERT INTO sucursal_lotes (sucursal_id,lotes_id) VALUES(15,17);
+INSERT INTO sucursal_lotes (sucursal_id,lotes_id) VALUES(15,18);
+
+INSERT INTO sucursal_vendedores (sucursal_id,vendedores_id) VALUES(15,19);
