@@ -3,4 +3,4 @@ POR HACER:
 
 -Funcionalidad de las Listas de Sucursal
 
--CU para el informe 3
+-Generación del pedido con stock propio
