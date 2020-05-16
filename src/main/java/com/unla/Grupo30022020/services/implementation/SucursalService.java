@@ -83,31 +83,23 @@ public class SucursalService implements ISucursalService {
     
     @Override
     public SucursalModel calcularSucursalMasCercana(SucursalModel sucursalModel) {
-		int indice=0;
-		Sucursal sucMasCercana=null;
-		float distancia=0;
-		Sucursal sucursal = sucursalConverter.modelToEntity(sucursalModel);
+    	Sucursal sucMasCercana=this.getAll().get(0);
+    	Sucursal sucursal = sucursalConverter.modelToEntity(sucursalModel);
+		float distancia=this.calcularDistancia(sucursal,this.getAll().get(0));
 		
-		if(sucursal.equals(this.getAll().get(0))) {
+		if(sucursal.getId() == this.getAll().get(0).getId()) {
 			distancia=this.calcularDistancia(sucursal,this.getAll().get(1));
 			sucMasCercana=this.getAll().get(1);
 		}
 		
-		else {
-			distancia=this.calcularDistancia(sucursal,this.getAll().get(0));
-			sucMasCercana=this.getAll().get(0);
-		}
-		
-		for(indice=1; indice<this.getAll().size(); indice++) {
-			if(this.calcularDistancia(sucursal,this.getAll().get(indice)) < distancia && sucursal!=this.getAll().get(indice))
+		for(int indice=0; indice<this.getAll().size(); indice++) {
+			if(this.calcularDistancia(sucursal,this.getAll().get(indice)) < distancia && (sucursal.getId()!=this.getAll().get(indice).getId()))
 			{
 				distancia=this.calcularDistancia(sucursal,this.getAll().get(indice));
 				sucMasCercana=this.getAll().get(indice);
 			}
 		}
-		
-		SucursalModel sucMasCercanaModel = sucursalConverter.entityToModel(sucMasCercana);
-		
-		return sucMasCercanaModel;
+		SucursalModel sucCercana = sucursalConverter.entityToModel(sucMasCercana);
+		return sucCercana;
 	}
 }
