@@ -20,149 +20,155 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/sucursal")
 public class SucursalController {
 
-    @Autowired
-    @Qualifier("sucursalService")
-    private ISucursalService sucursalService;
-    
-    @Autowired
+	@Autowired
+	@Qualifier("sucursalService")
+	private ISucursalService sucursalService;
+
+	@Autowired
 	@Qualifier("gerenteService")
 	private IGerenteService gerenteService;
-    
-    @Autowired
+
+	@Autowired
 	@Qualifier("direccionService")
 	private IDireccionService direccionService;
-    
-    @Autowired
+
+	@Autowired
 	@Qualifier("loteService")
 	private ILoteService loteService;
-    
-    @Autowired
+
+	@Autowired
 	@Qualifier("vendedorService")
 	private IVendedorService vendedorService;
 
-    @GetMapping("")
-    public ModelAndView index() {
-        ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_INDEX);
-        mAV.addObject("sucursales", sucursalService.getAll());
-        return mAV;
-    }
+	@GetMapping("")
+	public ModelAndView index() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_INDEX);
+		mAV.addObject("sucursales", sucursalService.getAll());
+		return mAV;
+	}
 
-    @GetMapping("/new")
-    public ModelAndView create() {
-        ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_NEW);
-        mAV.addObject("sucursal", new SucursalModel());
-        mAV.addObject("gerentes", gerenteService.getAll());
-        mAV.addObject("direcciones", direccionService.getAll());
-        return mAV;
-    }
+	@GetMapping("/new")
+	public ModelAndView create() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_NEW);
+		mAV.addObject("sucursal", new SucursalModel());
+		mAV.addObject("gerentes", gerenteService.getAll());
+		mAV.addObject("direcciones", direccionService.getAll());
+		return mAV;
+	}
 
-    @PostMapping("/create")
-    public RedirectView create(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
-        sucursalService.insert(sucursalModel);
-        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
-    }
+	@PostMapping("/create")
+	public RedirectView create(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
+		sucursalService.insert(sucursalModel);
+		return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
+	}
 
-    @GetMapping("/{id}")
-    public ModelAndView get(@PathVariable("id") long id) {
-        ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_UPDATE);
-        mAV.addObject("loteAgregar", new LoteModel());
-        mAV.addObject("vendedorAgregar", new VendedorModel());
-       
-        mAV.addObject("lotesLista", loteService.getAll());
-        mAV.addObject("vendedoresLista", vendedorService.getAll());
-        
-        mAV.addObject("sucursal", sucursalService.findById(id));
-        mAV.addObject("gerentes", gerenteService.getAll());
-        mAV.addObject("direcciones", direccionService.getAll());
-        return mAV;
-    }
-    
-    @GetMapping("/distancia")
-    public ModelAndView distancia() {
-        ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_DISTANCIA);
-      //  mAV.addObject("sucursal", new SucursalModel());
-        mAV.addObject("sucursales", sucursalService.getAll());
-        return mAV;
-    }
-    
-    @GetMapping("/cercania/")
-    public ModelAndView calcularSucursalMasCercana(@RequestParam(value = "id", required = true) long id){
-    	System.out.println("el id es: " + id);
-    	SucursalModel sucursalModel = sucursalService.findById(id);
-    	ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_CERCANIA);
-        mAV.addObject("sucursal", sucursalService.calcularSucursalMasCercana(sucursalModel) );
-        return mAV;
-    }
+	@GetMapping("/{id}")
+	public ModelAndView get(@PathVariable("id") long id) {
 
-    @PostMapping("/update")
-    public RedirectView update(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
-        sucursalService.update(sucursalModel);
-        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
-    }
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_UPDATE);
 
-    @PostMapping("/delete/{id}")
-    public RedirectView delete(@PathVariable("id") long id) {
-        sucursalService.remove(id);
-        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
-    }
-    
-    //Borrar un lote de la lista de una sucursal
-    /*
-     * 
-    @PostMapping("/{idSucursal}/loteDelete/{idLote}")
-    public RedirectView deleteLote(@PathVariable("idSucursal") long idSucursal,@PathVariable("idLote") long idLote) {
-        sucursalService.remove(idSucursal);
-        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
-    }
-    
-    */
-    
-    //Agregar un lote de la lista de una sucursal
-    
-    @PostMapping("/{idSucursal}/loteAdd")
-    public RedirectView insertLote(@PathVariable("idSucursal") long idSucursal,@ModelAttribute("loteAgregar") LoteModel loteModel) {
-       System.out.println("ID sucursal:" + idSucursal + " id lote: " + loteModel.getId());
-       /*
-       //Establecer todos los datos del lote
-       loteModel = loteService.findById(loteModel.getId());
-       
-       //Establecer todos los datos de la Sucursal
-       SucursalModel sucursal = sucursalService.findById(idSucursal);
-       
-       //Agregarlo a la lista
-       sucursal.getLotes().add(loteModel);
-       sucursalService.insert(sucursal);
-    	*/
-        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
-    }
-    
-  //Borrar un Vendedor de la lista de una sucursal
-    /*
-     * 
-    @PostMapping("/{idSucursal}/vendedorDelete/{idVendedor}")
-    public RedirectView deleteLote(@PathVariable("idSucursal") long idSucursal,@PathVariable("idVendedor") long idVendedor) {
-        sucursalService.remove(idSucursal);
-        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
-    }
-    
-    */
-    
-    //Agregar un Vendedor de la lista de una sucursal
-    
-    @PostMapping("/{idSucursal}/vendedorAdd")
-    public RedirectView insertLote(@PathVariable("idSucursal") long idSucursal,@ModelAttribute("vendedorAgregar") VendedorModel vendedorModel) {
-       System.out.println("ID sucursal:" + idSucursal + " id Vendedor: " + vendedorModel.getId());
-      /* 
-       //Establecer todos los datos del lote
-       vendedorModel = vendedorService.findById(vendedorModel.getId());
-       
-       //Establecer todos los datos de la Sucursal
-       SucursalModel sucursal = sucursalService.findById(idSucursal);
-       
-       //Agregarlo a la lista
-       sucursal.getVendedores().add(vendedorModel);
-       sucursalService.insert(sucursal);
-    	*/
-        return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
-    }
+		mAV.addObject("loteAgregar", new LoteModel());
+		mAV.addObject("vendedorAgregar", new VendedorModel());
+
+		mAV.addObject("lotesLista", loteService.getAll());
+		mAV.addObject("vendedoresLista", vendedorService.getAll());
+
+		mAV.addObject("sucursal", sucursalService.findById(id));
+		mAV.addObject("gerentes", gerenteService.getAll());
+		mAV.addObject("direcciones", direccionService.getAll());
+		return mAV;
+	}
+
+	@GetMapping("/distancia")
+	public ModelAndView distancia() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_DISTANCIA);
+		//  mAV.addObject("sucursal", new SucursalModel());
+		mAV.addObject("sucursales", sucursalService.getAll());
+		return mAV;
+	}
+
+	@GetMapping("/cercania/")
+	public ModelAndView calcularSucursalMasCercana(@RequestParam(value = "id", required = true) long id){
+		System.out.println("el id es: " + id);
+		SucursalModel sucursalModel = sucursalService.findById(id);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_CERCANIA);
+		mAV.addObject("sucursal", sucursalService.calcularSucursalMasCercana(sucursalModel) );
+		return mAV;
+	}
+
+	@PostMapping("/update")
+	public RedirectView update(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
+		sucursalService.update(sucursalModel);
+		return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
+	}
+
+	@PostMapping("/delete/{id}")
+	public RedirectView delete(@PathVariable("id") long id) {
+		sucursalService.remove(id);
+		return new RedirectView(ViewRouteHelper.SUCURSAL_ROOT);
+	}
+
+	//--------------------------------------------------------- Lista Lotes --------------------------------
+
+	//Borrar un lote de la lista de una sucursal
+
+	@GetMapping("/{idSucursal}/loteDelete/{idLote}")
+	public RedirectView deleteLote(@PathVariable("idSucursal") long idSucursal,@PathVariable("idLote") long idLote) {
+
+		//Agregarlo a la lista
+		// sucursal.getLotes().remove(loteModel);
+
+		SucursalModel sucursal = sucursalService.EliminarLote(idSucursal,idLote);
+
+		sucursalService.insert(sucursal);
+
+		return new RedirectView("/sucursal/" + idSucursal);
+	}
+
+
+
+	//Agregar un lote de la lista de una sucursal
+
+	@PostMapping("/{idSucursal}/loteAdd")
+	public RedirectView insertLote(@PathVariable("idSucursal") long idSucursal,@ModelAttribute("loteAgregar") LoteModel loteModel) {
+		System.out.println("ID sucursal:" + idSucursal + " id lote: " + loteModel.getId());
+
+		loteModel = loteService.findById(loteModel.getId());
+
+		SucursalModel sucursal = sucursalService.findById(idSucursal);
+
+		sucursal.getLotes().add(loteModel);
+		sucursalService.insert(sucursal);
+
+		return new RedirectView("/sucursal/" + idSucursal);
+	}
+
+	//--------------------------------------------------------- Lista Vendedores --------------------------------
+
+	//Borrar un Vendedor de la lista de una sucursal
+	@GetMapping("/{idSucursal}/vendedorDelete/{idVendedor}")
+	public RedirectView deleteVendedor(@PathVariable("idSucursal") long idSucursal,@PathVariable("idVendedor") long idVendedor) {
+
+		SucursalModel sucursal = sucursalService.EliminarVendedor(idSucursal,idVendedor);
+
+		sucursalService.insert(sucursal);
+
+		return new RedirectView("/sucursal/" + idSucursal);
+	}
+
+	//Agregar un Vendedor de la lista de una sucursal
+
+	@PostMapping("/{idSucursal}/vendedorAdd")
+	public RedirectView insertVendedor(@PathVariable("idSucursal") long idSucursal,@ModelAttribute("vendedorAgregar") VendedorModel vendedorModel) {
+
+		vendedorModel = vendedorService.findById(vendedorModel.getId());
+
+		SucursalModel sucursal = sucursalService.findById(idSucursal);
+
+		sucursal.getVendedores().add(vendedorModel);
+
+		sucursalService.insert(sucursal);
+
+		return new RedirectView("/sucursal/" + idSucursal);
+	}
 }

@@ -3,7 +3,9 @@ package com.unla.Grupo30022020.services.implementation;
 import com.unla.Grupo30022020.converters.SucursalConverter;
 import com.unla.Grupo30022020.entities.Direccion;
 import com.unla.Grupo30022020.entities.Sucursal;
+import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.SucursalModel;
+import com.unla.Grupo30022020.models.VendedorModel;
 import com.unla.Grupo30022020.repositories.ISucursalRepository;
 import com.unla.Grupo30022020.services.ISucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,10 @@ public class SucursalService implements ISucursalService {
     @Autowired
 	@Qualifier("gerenteService")
 	private GerenteService gerenteService;
+    
+    @Autowired
+   	@Qualifier("loteService")
+   	private LoteService loteService;
 
     @Override
     public List<Sucursal> getAll(){
@@ -102,4 +108,30 @@ public class SucursalService implements ISucursalService {
 		SucursalModel sucCercana = sucursalConverter.entityToModel(sucMasCercana);
 		return sucCercana;
 	}
+    //Proceso de eliminacion de un lote en la lista
+    public SucursalModel EliminarLote(long idSucursal,long idLote) {
+    	
+         SucursalModel sucursal = this.findById(idSucursal);
+    	
+         for (LoteModel l : sucursal.getLotes() ) {
+        	    if(l.getId() == idLote) {
+        	    	sucursal.getLotes().remove(l);
+        	    }
+        	}
+         
+    	return sucursal;
+    }
+    //Proceso de eliminacion de un Vendedor en la lista
+    public SucursalModel EliminarVendedor(long idSucursal,long idVendedor) {
+    	
+        SucursalModel sucursal = this.findById(idSucursal);
+   	
+        for (VendedorModel v : sucursal.getVendedores() ) {
+       	    if(v.getId() == idVendedor) {
+       	    	sucursal.getVendedores().remove(v);
+       	    }
+       	}
+        
+   	return sucursal;
+   }
 }

@@ -29,6 +29,30 @@ public class Vendedor extends Empleado {
 	public void setPlus(float plus) {
 		this.plus = plus;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Float.floatToIntBits(plus);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vendedor other = (Vendedor) obj;
+		if (Float.floatToIntBits(plus) != Float.floatToIntBits(other.plus))
+			return false;
+		return true;
+	}
+	
+	
 	
 	
 }

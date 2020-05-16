@@ -102,4 +102,52 @@ public class Producto{
 		this.marca = marca;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + ((fechaAlta == null) ? 0 : fechaAlta.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
+		result = prime * result + Float.floatToIntBits(precioUnitario);
+		result = prime * result + (status ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		if (descripcion == null) {
+			if (other.descripcion != null)
+				return false;
+		} else if (!descripcion.equals(other.descripcion))
+			return false;
+		if (fechaAlta == null) {
+			if (other.fechaAlta != null)
+				return false;
+		} else if (!fechaAlta.equals(other.fechaAlta))
+			return false;
+		if (id != other.id)
+			return false;
+		if (marca == null) {
+			if (other.marca != null)
+				return false;
+		} else if (!marca.equals(other.marca))
+			return false;
+		if (Float.floatToIntBits(precioUnitario) != Float.floatToIntBits(other.precioUnitario))
+			return false;
+		if (status != other.status)
+			return false;
+		return true;
+	}
+
+	
+	
 }

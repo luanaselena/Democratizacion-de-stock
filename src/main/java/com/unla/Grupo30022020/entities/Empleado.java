@@ -41,6 +41,35 @@ public class Empleado extends Persona {
 	public void setSueldoBasico(float sueldoBasico) {
 		this.sueldoBasico = sueldoBasico;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((horasPorJornada == null) ? 0 : horasPorJornada.hashCode());
+		result = prime * result + Float.floatToIntBits(sueldoBasico);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empleado other = (Empleado) obj;
+		if (horasPorJornada == null) {
+			if (other.horasPorJornada != null)
+				return false;
+		} else if (!horasPorJornada.equals(other.horasPorJornada))
+			return false;
+		if (Float.floatToIntBits(sueldoBasico) != Float.floatToIntBits(other.sueldoBasico))
+			return false;
+		return true;
+	}
+	
 	
 	
 }

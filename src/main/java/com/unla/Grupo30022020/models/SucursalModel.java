@@ -15,6 +15,15 @@ public class SucursalModel {
 
     public SucursalModel(){}
 
+    public SucursalModel(long id, DireccionModel direccion, long telefono, GerenteModel gerente,Set<LoteModel> lotes,Set<VendedorModel> vendedores) {
+        this.id = id;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.gerente = gerente;
+    	this.lotes=lotes;
+    	this.vendedores=vendedores;
+    }
+    
     public SucursalModel(long id, DireccionModel direccion, long telefono, GerenteModel gerente) {
         this.id = id;
         this.direccion = direccion;

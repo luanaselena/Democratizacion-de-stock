@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name="sucursal")
 public class Sucursal {
@@ -27,20 +28,22 @@ public class Sucursal {
 
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Lote> lotes = new HashSet<>();;
+	private Set<Lote> lotes = new HashSet<>();
 	
 	public Sucursal() {}
 
-	public Sucursal(long id, Direccion direccion, long telefono, Gerente gerente) {
-		super();
+	public Sucursal(long id, Direccion direccion, long telefono, Gerente gerente, Set<Lote> lotes,Set<Vendedor> vendedores) {
 		this.id = id;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.gerente = gerente;
+		this.lotes=lotes;
+		this.vendedores=vendedores;
 	}
 
-	public Sucursal(Direccion direccion, long telefono, Gerente gerente) {
+	public Sucursal(long id, Direccion direccion, long telefono, Gerente gerente) {
 		super();
+		this.id = id;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.gerente = gerente;
