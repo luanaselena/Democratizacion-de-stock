@@ -39,6 +39,12 @@ public class ViewRouteHelper {
 	public final static String LOTE_NEW = "lote/new";
 	public final static String LOTE_UPDATE = "lote/update";
 	public final static String LOTE_ROOT = "/lote";
+	
+	public final static String VENTA_INDEX = "venta/index";
+	public final static String VENTA_NEW = "venta/new";
+	public final static String VENTA_UPDATE = "venta/update";
+	public final static String VENTA_ROOT = "/venta";
+
 
 	public final static String SUCURSAL_INDEX = "sucursal/index";
 	public final static String SUCURSAL_NEW = "sucursal/new";

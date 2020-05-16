@@ -26,7 +26,7 @@ public class Pedido {
 	
 
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "productoid", referencedColumnName = "id")
 	private Producto producto;	
 	

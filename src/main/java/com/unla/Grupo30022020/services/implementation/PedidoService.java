@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.unla.Grupo30022020.converters.PedidoConverter;
 import com.unla.Grupo30022020.entities.Pedido;
+import com.unla.Grupo30022020.entities.Producto;
+import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.repositories.IPedidoRepository;
 import com.unla.Grupo30022020.services.IPedidoService;
@@ -67,7 +69,10 @@ public class PedidoService implements IPedidoService{
 		  return pedidoConverter.entityToModel(pedidoRepository.findById(id));
 	  }
 	
-
+	  @Override
+		public PedidoModel findByProducto(Producto producto) {
+			return pedidoConverter.entityToModel(pedidoRepository.findByProducto(producto));
+		}
 	
 	
 }

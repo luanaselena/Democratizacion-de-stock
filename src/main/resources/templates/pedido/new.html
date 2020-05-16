@@ -25,10 +25,12 @@
 			<p>
 				Cantidad: <input type="text" th:field="*{cantidad}" />
 			</p>
-			<p>
-				Producto: <input type="text" th:field="*{producto}" />
+				<p>
+				Producto: <select placeholder="Producto" th:field="*{producto.id}">
+					<option th:each="p : ${productos}" th:value="${p.id}"
+						th:text="${p.descripcion}"></option>
+				</select>
 			</p>
-			
 			<input class="btn btn-primary" type="submit" value="crear" />
 		</form>
 	</div>
