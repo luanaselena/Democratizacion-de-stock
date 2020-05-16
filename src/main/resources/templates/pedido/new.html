@@ -27,7 +27,7 @@
 				Cantidad: <input type="text" th:field="*{cantidad}" />
 			</p>
 
-			<p>
+				<p>
 				Producto: <select placeholder="Producto" th:field="*{producto.id}">
 					<option th:each="p : ${productos}" th:value="${p.id}"
 						th:text="${p.descripcion}"></option>

@@ -36,7 +36,7 @@
 				
 				<!-- Esta parte la cambie para que al imprimir el Id tambien genere un link al producto -->
 					<td><a th:href="@{/producto/{id}(id=${pedido.producto.id})}" th:text="${pedido.producto.id}"></td>
-					<td><span th:text="${lote.cantidad}"></span></td>
+					<td><span th:text="${pedido.cantidad}"></span></td>
 	
 					<td><a th:href="@{/pedido/{id}(id=${pedido.id})}">View</a>
 					</td>

@@ -14,6 +14,7 @@ import com.unla.Grupo30022020.helpers.ViewRouteHelper;
 import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.services.IPedidoService;
 import com.unla.Grupo30022020.services.IProductoService;
+import com.unla.Grupo30022020.services.implementation.ProductoService;
 
 
 @Controller
@@ -42,7 +43,7 @@ public class PedidoController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_NEW);
 		mAV.addObject("pedido",new PedidoModel());
-		mAV.addObject("productos", pedidoService.getAll());
+		mAV.addObject("productos", productoService.getAll());
 		return mAV;
 	}
 	
