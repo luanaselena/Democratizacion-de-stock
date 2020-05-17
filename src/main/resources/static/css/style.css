@@ -57,7 +57,7 @@ body{
 
 .divPrincipal{
 	text-align:left;
-    width: 50vw;
+    width: 60vw;
 	margin-left:10%;
 	margin-top:4%;
 }
@@ -77,4 +77,13 @@ body{
 .divPrincipal table tbody tr td{
 		background-color:white;
 	padding:10px;
+}
+
+/*-------------------------Sucursal-------------------------------*/
+.ListasSucursal{
+	margin-top:15px;
+	margin-left:0;
+}
+.ListaVendedores{
+	margin-top:15px;
 }
