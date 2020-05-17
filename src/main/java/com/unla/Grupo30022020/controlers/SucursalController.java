@@ -70,8 +70,8 @@ public class SucursalController {
 		mAV.addObject("loteAgregar", new LoteModel());
 		mAV.addObject("vendedorAgregar", new VendedorModel());
 
-		mAV.addObject("lotesLista", loteService.getAll());
-		mAV.addObject("vendedoresLista", vendedorService.getAll());
+		mAV.addObject("lotesLista", sucursalService.TraerLotesDisponibles());
+		mAV.addObject("vendedoresLista", sucursalService.TraerVendedoresDisponibles());
 
 		mAV.addObject("sucursal", sucursalService.findById(id));
 		mAV.addObject("gerentes", gerenteService.getAll());
