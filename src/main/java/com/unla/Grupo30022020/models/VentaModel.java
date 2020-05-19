@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.unla.Grupo30022020.entities.*;
 
 public class VentaModel {
@@ -11,8 +13,10 @@ public class VentaModel {
 	private long id;
 	private int nroVenta;
 	private Set<Pedido> pedidos;
-	private Vendedor vendedorEncargado;
-	private Cliente cliente;
+	private VendedorModel vendedorEncargado;
+	private ClienteModel cliente;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
 	private LocalTime hora;
 	private float precioTotal;
@@ -20,7 +24,7 @@ public class VentaModel {
 	public VentaModel() {
 	}
 
-	public VentaModel(long id, int nroVenta, Vendedor vendedorEncargado, Cliente cliente, LocalDate fecha,
+	public VentaModel(long id, int nroVenta, VendedorModel vendedorEncargado, ClienteModel cliente, LocalDate fecha,
 			LocalTime hora, float precioTotal) {
 
 		this.id = id;
@@ -56,19 +60,19 @@ public class VentaModel {
 		this.pedidos = pedidos;
 	}
 
-	public Vendedor getVendedorEncargado() {
+	public VendedorModel getVendedorEncargado() {
 		return vendedorEncargado;
 	}
 
-	public void setVendedorEncargado(Vendedor vendedorEncargado) {
+	public void setVendedorEncargado(VendedorModel vendedorEncargado) {
 		this.vendedorEncargado = vendedorEncargado;
 	}
 
-	public Cliente getCliente() {
+	public ClienteModel getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(ClienteModel cliente) {
 		this.cliente = cliente;
 	}
 

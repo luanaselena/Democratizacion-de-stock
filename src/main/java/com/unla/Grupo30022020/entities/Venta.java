@@ -31,11 +31,11 @@ public class Venta {
 	@OneToMany(fetch = FetchType.LAZY)
 	private Set<Pedido> pedidos = new HashSet<>();
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idvendedor", referencedColumnName = "id")
 	private Vendedor vendedorEncargado;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idcliente", referencedColumnName = "id")
 	private Cliente cliente;
 
