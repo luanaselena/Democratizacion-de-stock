@@ -6,6 +6,7 @@ import com.unla.Grupo30022020.entities.Lote;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
 import com.unla.Grupo30022020.models.LoteModel;
+import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VendedorModel;
 import com.unla.Grupo30022020.repositories.ISucursalRepository;
