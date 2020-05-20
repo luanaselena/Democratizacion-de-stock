@@ -22,25 +22,23 @@
 		<div class="container">
     	<div class="row">
     		<div class="col-12 form-group mt-4">
-    			<h2>Seleccione un pedido en base al stock disponible</h2>
+    			<h2>Generar pedido</h2>
     			<form action="#" th:action="@{/}">
     			
 	    			 <select class="form-control mb-2" th:name="id">
-	    			 	 <option disabled selected>Selecciona una Sucursal</option>
-					     <option th:each="sucursa : ${sucursales}" placeholder="dadsad" th:value="${sucursa.id}"
-					      th:text="${sucursa.id}"></option>
+	    			 	 <option disabled selected>Seleccionar la sucursal</option>
+					     <option th:each="sucursal : ${sucursales}" placeholder="dadsad" th:value="${sucursal.id}"
+					      th:text="${sucursal.id}"></option>
 					 </select>
 					 <select class="form-control mb-2" th:name="id">
-	    			 	 <option disabled selected>Selecciona el Producto</option>
-					     <option th:each="sucursa : ${sucursales}" placeholder="dadsad" th:value="${sucursa.id}"
-					      th:text="${sucursa.id}"></option>
+	    			 	 <option disabled selected>Seleccionar el producto</option>
+					     <option th:each="producto : ${productos}" placeholder="dadsad" th:value="${producto.id}"
+					      th:text="${producto.id}"></option>
 					 </select>
-					 <select class="form-control mb-2" th:name="id">
-	    			 	 <option disabled selected>Selecciona una Cantidad</option>
-					     <option th:each="sucursa : ${sucursales}" placeholder="dadsad" th:value="${sucursa.id}"
-					      th:text="${sucursa.id}"></option>
-					 </select>
-					 <input class="btn btn-sm btn-primary" type="submit" value="calcular distancia" />
+						 Seleccionar una cantidad <br/>
+						<input type="text"/>
+						<br/>
+					 <input class="btn btn-sm btn-primary" type="submit" value="Generar pedido" />
     			</form>
     		</div>
     	</div>

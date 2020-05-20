@@ -3,6 +3,9 @@ package com.unla.Grupo30022020.services;
 import java.util.List;
 
 import com.unla.Grupo30022020.entities.Venta;
+import com.unla.Grupo30022020.models.ProductoModel;
+import com.unla.Grupo30022020.models.SucursalModel;
+import com.unla.Grupo30022020.models.VendedorModel;
 import com.unla.Grupo30022020.models.VentaModel;
 
 public interface IVentaService {
@@ -18,5 +21,7 @@ public interface IVentaService {
 	public VentaModel update(VentaModel ventaModel);
 
 	public boolean remove(long id);
+
+	//public boolean generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad);
 
 }

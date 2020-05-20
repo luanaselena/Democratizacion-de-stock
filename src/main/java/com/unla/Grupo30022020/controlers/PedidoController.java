@@ -40,6 +40,8 @@ public class PedidoController {
 		
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_INDEX);
 		mAV.addObject("pedidos", pedidoService.getAll());
+		mAV.addObject("sucursales", sucursalService.getAll());
+		mAV.addObject("productos", sucursalService.getAll());
 		return mAV;
 	}
 	
@@ -58,6 +60,7 @@ public class PedidoController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_STOCK);
 		mAV.addObject("pedidos", pedidoService.getAll());
 		mAV.addObject("sucursales", sucursalService.getAll());
+		mAV.addObject("productos", sucursalService.getAll());
 		return mAV;
 	}
 	
