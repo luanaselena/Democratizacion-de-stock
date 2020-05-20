@@ -14,6 +14,7 @@ import com.unla.Grupo30022020.helpers.ViewRouteHelper;
 import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.services.IPedidoService;
 import com.unla.Grupo30022020.services.IProductoService;
+import com.unla.Grupo30022020.services.ISucursalService;
 
 
 
@@ -29,7 +30,10 @@ public class PedidoController {
 	@Autowired
 	@Qualifier("productoService")
 	private IProductoService productoService;
-
+	
+	@Autowired
+	@Qualifier("sucursalService")
+	private ISucursalService sucursalService;
 	
 	@GetMapping("")
 	public ModelAndView index() {
@@ -43,8 +47,17 @@ public class PedidoController {
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_NEW);
-		mAV.addObject("pedido",new PedidoModel());
+		mAV.addObject("pedido", new PedidoModel());
 		mAV.addObject("productos", productoService.getAll());
+		return mAV;
+	}
+	
+	//pedido con stock
+	@GetMapping("/pedido_stock")
+	public ModelAndView pedidoStock() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_STOCK);
+		mAV.addObject("pedidos", pedidoService.getAll());
+		mAV.addObject("sucursales", sucursalService.getAll());
 		return mAV;
 	}
 	
