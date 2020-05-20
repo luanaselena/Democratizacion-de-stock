@@ -78,7 +78,8 @@ public class SucursalController {
 		mAV.addObject("direcciones", direccionService.getAll());
 		return mAV;
 	}
-
+	
+	//vista de distancia
 	@GetMapping("/distancia")
 	public ModelAndView distancia() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_DISTANCIA);
@@ -86,7 +87,8 @@ public class SucursalController {
 		mAV.addObject("sucursales", sucursalService.getAll());
 		return mAV;
 	}
-
+	
+	//calcular la sucursal mas cercana
 	@GetMapping("/cercania/")
 	public ModelAndView calcularSucursalMasCercana(@RequestParam(value = "id", required = true) long id){
 		System.out.println("el id es: " + id);
