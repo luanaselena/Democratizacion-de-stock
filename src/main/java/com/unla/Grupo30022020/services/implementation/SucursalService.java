@@ -3,6 +3,7 @@ package com.unla.Grupo30022020.services.implementation;
 import com.unla.Grupo30022020.converters.SucursalConverter;
 import com.unla.Grupo30022020.entities.Direccion;
 import com.unla.Grupo30022020.entities.Lote;
+import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
 import com.unla.Grupo30022020.models.LoteModel;
@@ -175,6 +176,33 @@ public class SucursalService implements ISucursalService {
    		}
    	}
    	return listaAuxiliar;
+   }
+   
+ //--------------------------------Traer los lotes que no pertenecen a otras listas----------------------------
+   
+   public List<Lote> TraerLotesActivos(Producto producto){	   
+	   List<Lote> listaAuxiliar= new ArrayList<Lote>(); 
+	   List<Sucursal> sucursales=this.getAll();
+	   boolean flag=true;
+   	
+	   for(Lote l: loteService.getAll()) {
+	   		flag=true;	   		
+	   		//Chequeamos que el lote no este en ninguna lista
+	   		for(Sucursal s:sucursales) {
+	   			for(Lote lote :s.getLotes()) {
+	   				if(lote.getId() == l.getId()) {
+	   					flag=false;
+	   				}
+	   			}
+	   		}
+	   		//Si el lote no existe en ninguna lista, esta disponible
+	   		if(flag==true) {
+	   			if(l.getProducto().equals(producto)) {   				
+	   				listaAuxiliar.add(l);
+	   			}
+	   		}
+   		}
+   		return listaAuxiliar;
    }
    
    //--------------------------------Traer los Vendedores que no pertenecen a otras listas----------------------------
