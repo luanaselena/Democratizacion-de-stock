@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
@@ -15,6 +16,7 @@ import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.services.IPedidoService;
 import com.unla.Grupo30022020.services.IProductoService;
 import com.unla.Grupo30022020.services.ISucursalService;
+import com.unla.Grupo30022020.services.IVentaService;
 
 
 
@@ -35,6 +37,10 @@ public class PedidoController {
 	@Qualifier("sucursalService")
 	private ISucursalService sucursalService;
 	
+	@Autowired
+	@Qualifier("ventaService")
+	private IVentaService ventaService;
+	
 	@GetMapping("")
 	public ModelAndView index() {
 		
@@ -48,8 +54,10 @@ public class PedidoController {
 	
 	@GetMapping("/new")
 	public ModelAndView create() {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_NEW);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_STOCK);
 		mAV.addObject("pedido", new PedidoModel());
+		mAV.addObject("ventas", ventaService.getAll());
+		mAV.addObject("sucursales", sucursalService.getAll());
 		mAV.addObject("productos", productoService.getAll());
 		return mAV;
 	}
@@ -64,10 +72,19 @@ public class PedidoController {
 		return mAV;
 	}
 	
+	//---------------------------------------------------------------------
+	//Agregar a los parametros una vez que se cargue una venta
+	//@RequestParam(value = "idVenta", required = false) long idVenta,
+	//---------------------------------------------------------------------
 	
-	@PostMapping("/create")
-	public RedirectView create(@ModelAttribute("pedido") PedidoModel pedidoModel) {
-		pedidoService.insert(pedidoModel);
+	@GetMapping("/create/")
+	public RedirectView create(
+			@RequestParam(value = "idSucursal", required = false) long idSucursal,
+			@RequestParam(value = "idProducto", required = false) long idProducto,
+			@RequestParam(value = "cantidad", required = false) int cantidad) {
+		
+		System.out.println(" "+idSucursal+" "+idProducto+" "+cantidad);
+		
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
 	}
 	
