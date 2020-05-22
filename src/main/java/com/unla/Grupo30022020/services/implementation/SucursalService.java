@@ -1,5 +1,6 @@
 package com.unla.Grupo30022020.services.implementation;
 
+import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
 import com.unla.Grupo30022020.entities.Direccion;
 import com.unla.Grupo30022020.entities.Lote;
@@ -44,6 +45,14 @@ public class SucursalService implements ISucursalService {
     @Autowired
    	@Qualifier("vendedorService")
    	private VendedorService vendedorService;
+    
+    @Autowired
+   	@Qualifier("productoService")
+   	private ProductoService productoService;
+    
+    @Autowired
+   	@Qualifier("productoConverter")
+   	private ProductoConverter productoConverter;
 
     @Override
     public List<Sucursal> getAll(){
@@ -211,15 +220,18 @@ public class SucursalService implements ISucursalService {
    
  //--------------------------------Traer los lotes para un pedido----------------------------
    
-   public List<Lote> TraerLotesActivos(Sucursal sucursal,Producto producto){	   
+   public List<Lote> TraerLotesActivos(long idSucursal,long idProducto){	   
 	   List<Lote> listaAuxiliar= new ArrayList<Lote>(); 
    	
+	   Sucursal sucursal = sucursalConverter.modelToEntity(this.findById(idSucursal));
+	   Producto producto = productoConverter.modelToEntity(productoService.findById(idProducto));
+	   
 	   //se itera entre los lotes de la sucursal dada
 	   for(Lote l: sucursal.getLotes()) {
 		   
 		   
 		   //Si el lote tiene el producto y la cantidad es mayor a 0 se lo agrega
-		   if(l.getProducto().equals(producto) && l.getCantidad()>0) {
+		   if(l.getProducto().getId()== producto.getId() && l.getCantidad()>0) {
 			   listaAuxiliar.add(l);
 	   		}
    		}
