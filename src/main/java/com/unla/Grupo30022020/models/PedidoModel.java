@@ -20,6 +20,12 @@ public class PedidoModel {
 		this.producto= producto;
 	}
 
+	public PedidoModel(int cantidad, ProductoModel producto) {
+
+		this.cantidad = cantidad;
+		this.aceptado=false;
+		this.producto= producto;
+	}
 	public long getId() {
 		return id;
 	}
