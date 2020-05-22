@@ -6,6 +6,7 @@ import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
 import com.unla.Grupo30022020.entities.Pedido;
 import com.unla.Grupo30022020.entities.Sucursal;
+import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VendedorModel;
@@ -45,6 +46,10 @@ public class VentaService implements IVentaService {
 	@Autowired
 	@Qualifier("sucursalService")
 	private SucursalService sucursalService;
+	
+	@Autowired
+	@Qualifier("pedidoService")
+	private PedidoService pedidoService;
 
 	@Override
 	public List<Venta> getAll() {
@@ -89,15 +94,21 @@ public class VentaService implements IVentaService {
 	}
 
 	@Override
-	public boolean generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad) {
-		Sucursal sucursal = sucursalConverter.modelToEntity(sucursalModel);
-		sucursalService.restarLotes(sucursalModel.getId(), productoService.findById(productoModel.getId()).getId(), cantidad);
-
+	public void generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad) {
+	
+		sucursalService.restarLotes(sucursalModel.getId(), productoModel.getId(), cantidad);
+		
 		float plus = ((productoModel.getPrecioUnitario() * 5) / 100) * cantidad;
 
-		this.findById(ventaModel.getId()).getVendedorEncargado().setPlus(this.findById(ventaModel.getId()).getVendedorEncargado().getPlus() + plus);
-
-		this.findById(ventaModel.getId()).getVendedorEncargado().setPlus(this.findById(ventaModel.getId()).getVendedorEncargado().getPlus() + plus);
-		return this.findById(ventaModel.getId()).getPedidos().add(new Pedido(cantidad, productoConverter.modelToEntity(productoModel)));
+		ventaModel.getVendedorEncargado().setPlus(ventaModel.getVendedorEncargado().getPlus() + plus);
+		
+		PedidoModel pedido = new PedidoModel(cantidad,productoModel);
+		
+		pedidoService.insert(pedido);
+		
+		ventaModel.getPedidos().add(pedido);
+		
+		this.update(ventaModel);
+		
 	}
 }

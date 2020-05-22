@@ -46,13 +46,13 @@ public class VentaController {
 	public ModelAndView create() {
 
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_NEW);
-		mAV.addObject("venta", new Venta());
+		mAV.addObject("venta", new VentaModel());
 		mAV.addObject("clientes", clienteService.getAll());
 		mAV.addObject("vendedores", vendedorService.getAll());
 		return mAV;
 	}
 
-	@GetMapping("/crate")
+	@GetMapping("/create")
 	public RedirectView create(@ModelAttribute("venta") VentaModel ventaModel) {
 		ventaService.insert(ventaModel);
 		return new RedirectView(ViewRouteHelper.VENTA_ROOT);

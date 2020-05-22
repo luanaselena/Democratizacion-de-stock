@@ -29,7 +29,7 @@ public class Venta {
 	private int nroVenta;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Pedido> pedidos = new HashSet<>();
+	private Set<Pedido> pedidos;
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idvendedor", referencedColumnName = "id")
@@ -52,7 +52,7 @@ public class Venta {
 	}
 
 	public Venta(long id, int nroVenta, LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,
-			Vendedor vendedorEncargado) {
+			Vendedor vendedorEncargado,Set<Pedido> pedidos) {
 		this.id=id;
 		this.nroVenta = nroVenta;
 		this.fecha = fecha;
@@ -60,6 +60,7 @@ public class Venta {
 		this.precioTotal = precioTotal;
 		this.vendedorEncargado = vendedorEncargado;
 		this.cliente = cliente;
+		this.pedidos=pedidos;
 	}
 
 	public Venta(int nroVenta, LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,

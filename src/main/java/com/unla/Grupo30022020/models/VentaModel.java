@@ -12,7 +12,7 @@ public class VentaModel {
 
 	private long id;
 	private int nroVenta;
-	private Set<Pedido> pedidos;
+	private Set<PedidoModel> pedidos;
 	private VendedorModel vendedorEncargado;
 	private ClienteModel cliente;
 	
@@ -25,7 +25,7 @@ public class VentaModel {
 	}
 
 	public VentaModel(long id, int nroVenta, VendedorModel vendedorEncargado, ClienteModel cliente, LocalDate fecha,
-			LocalTime hora, float precioTotal) {
+			LocalTime hora, float precioTotal,Set<PedidoModel> pedidos) {
 
 		this.id = id;
 		this.nroVenta = nroVenta;
@@ -34,6 +34,7 @@ public class VentaModel {
 		this.fecha = fecha;
 		this.hora = hora;
 		this.precioTotal = precioTotal;
+		this.pedidos=pedidos;
 	}
 
 	public long getId() {
@@ -52,11 +53,11 @@ public class VentaModel {
 		this.nroVenta = numVenta;
 	}
 
-	public Set<Pedido> getPedidos() {
+	public Set<PedidoModel> getPedidos() {
 		return pedidos;
 	}
 
-	public void setPedidos(Set<Pedido> pedidos) {
+	public void setPedidos(Set<PedidoModel> pedidos) {
 		this.pedidos = pedidos;
 	}
 
