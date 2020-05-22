@@ -3,6 +3,7 @@ package com.unla.Grupo30022020.services.implementation;
 import com.unla.Grupo30022020.converters.SucursalConverter;
 import com.unla.Grupo30022020.entities.Direccion;
 import com.unla.Grupo30022020.entities.Lote;
+import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
 import com.unla.Grupo30022020.models.LoteModel;
@@ -207,4 +208,6 @@ public class SucursalService implements ISucursalService {
    	
    	return listaAuxiliar;
    }
+
+
 }

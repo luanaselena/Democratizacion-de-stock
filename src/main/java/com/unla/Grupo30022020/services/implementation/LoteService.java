@@ -69,5 +69,20 @@ public class LoteService implements ILoteService {
 	public LoteModel findByProducto(Producto producto) {
 		return loteConverter.entityToModel(loteRepository.findByProducto(producto));
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
