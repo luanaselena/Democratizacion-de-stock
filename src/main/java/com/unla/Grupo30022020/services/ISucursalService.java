@@ -35,5 +35,5 @@ public interface ISucursalService {
     
     public List<Vendedor> TraerVendedoresDisponibles();
     
-    public List<Lote> TraerLotesActivos(Sucursal sucursal,Producto producto);
+    public List<Lote> TraerLotesActivos(long idSucursal,long idProducto);
 }
