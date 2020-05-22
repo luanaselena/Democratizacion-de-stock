@@ -7,7 +7,6 @@ import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
 import com.unla.Grupo30022020.models.LoteModel;
-import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VendedorModel;
 import com.unla.Grupo30022020.repositories.ISucursalRepository;
@@ -178,34 +177,7 @@ public class SucursalService implements ISucursalService {
    	return listaAuxiliar;
    }
    
- //--------------------------------Traer los lotes que no pertenecen a otras listas----------------------------
-   
-   public List<Lote> TraerLotesActivos(Producto producto){	   
-	   List<Lote> listaAuxiliar= new ArrayList<Lote>(); 
-	   List<Sucursal> sucursales=this.getAll();
-	   boolean flag=true;
-   	
-	   for(Lote l: loteService.getAll()) {
-	   		flag=true;	   		
-	   		//Chequeamos que el lote no este en ninguna lista
-	   		for(Sucursal s:sucursales) {
-	   			for(Lote lote :s.getLotes()) {
-	   				if(lote.getId() == l.getId()) {
-	   					flag=false;
-	   				}
-	   			}
-	   		}
-	   		//Si el lote no existe en ninguna lista, esta disponible
-	   		if(flag==true) {
-	   			if(l.getProducto().equals(producto)) {   				
-	   				listaAuxiliar.add(l);
-	   			}
-	   		}
-   		}
-   		return listaAuxiliar;
-   }
-   
-   //--------------------------------Traer los Vendedores que no pertenecen a otras listas----------------------------
+ //--------------------------------Traer los Vendedores que no pertenecen a otras listas----------------------------
    
    public List<Vendedor> TraerVendedoresDisponibles(){
 	   
@@ -236,4 +208,23 @@ public class SucursalService implements ISucursalService {
    	
    	return listaAuxiliar;
    }
+   
+ //--------------------------------Traer los lotes para un pedido----------------------------
+   
+   public List<Lote> TraerLotesActivos(Sucursal sucursal,Producto producto){	   
+	   List<Lote> listaAuxiliar= new ArrayList<Lote>(); 
+   	
+	   //se itera entre los lotes de la sucursal dada
+	   for(Lote l: sucursal.getLotes()) {
+		   
+		   
+		   //Si el lote tiene el producto y la cantidad es mayor a 0 se lo agrega
+		   if(l.getProducto().equals(producto) && l.getCantidad()>0) {
+			   listaAuxiliar.add(l);
+	   		}
+   		}
+   		return listaAuxiliar;
+   }
+   
+  
 }

@@ -2,6 +2,7 @@ package com.unla.Grupo30022020.services;
 
 import com.unla.Grupo30022020.entities.Direccion;
 import com.unla.Grupo30022020.entities.Lote;
+import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
 import com.unla.Grupo30022020.models.SucursalModel;
@@ -33,4 +34,6 @@ public interface ISucursalService {
     public List<Lote> TraerLotesDisponibles();
     
     public List<Vendedor> TraerVendedoresDisponibles();
+    
+    public List<Lote> TraerLotesActivos(Sucursal sucursal,Producto producto);
 }
