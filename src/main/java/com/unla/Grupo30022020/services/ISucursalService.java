@@ -36,4 +36,6 @@ public interface ISucursalService {
     public List<Vendedor> TraerVendedoresDisponibles();
     
     public List<Lote> TraerLotesActivos(long idSucursal,long idProducto);
+
+    public void restarLotes(long idSucursal, long idProducto, int cantidad);
 }

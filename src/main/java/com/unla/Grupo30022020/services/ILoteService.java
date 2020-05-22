@@ -8,6 +8,8 @@ import com.unla.Grupo30022020.models.LoteModel;
 
 public interface ILoteService {
 
+	
+	
 	public List<Lote> getAll();
 	
 	public LoteModel findById(long id);

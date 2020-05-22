@@ -1,5 +1,6 @@
 package com.unla.Grupo30022020.services.implementation;
 
+import com.unla.Grupo30022020.converters.LoteConverter;
 import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
 import com.unla.Grupo30022020.entities.Direccion;
@@ -53,6 +54,10 @@ public class SucursalService implements ISucursalService {
     @Autowired
    	@Qualifier("productoConverter")
    	private ProductoConverter productoConverter;
+
+    @Autowired
+   	@Qualifier("loteConverter")
+   	private LoteConverter loteConverter;
 
     @Override
     public List<Sucursal> getAll(){
@@ -217,6 +222,9 @@ public class SucursalService implements ISucursalService {
    	
    	return listaAuxiliar;
    }
+
+
+
    
  //--------------------------------Traer los lotes para un pedido----------------------------
    
@@ -237,6 +245,31 @@ public class SucursalService implements ISucursalService {
    		}
    		return listaAuxiliar;
    }
+
+@Override
+public void restarLotes(long idSucursal, long idProducto, int cantidad) {
+	
+		
+	int indice=0;
+	
+	List<Lote> activos = this.TraerLotesActivos(idSucursal, idProducto);
+	
+	while(cantidad > 0) {
+			if(activos.get(indice).getCantidadTotal() > cantidad) {
+				activos.get(indice).setCantidadTotal(activos.get(indice).getCantidadTotal()-cantidad);
+				loteService.Update(loteConverter.entityToModel(activos.get(indice)));
+				cantidad=0;
+			}
+			else {
+				cantidad -= activos.get(indice).getCantidadTotal();
+				activos.get(indice).setCantidadTotal(0);
+				loteService.Update(loteConverter.entityToModel(activos.get(indice)));
+			}
+			indice++;
+		}
+	
+}
    
-  
+   
+   
 }
