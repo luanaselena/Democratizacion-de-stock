@@ -33,6 +33,7 @@ public class ViewRouteHelper {
 	public final static String PEDIDO_INDEX = "pedido/index";
 	public final static String PEDIDO_NEW = "pedido/new";
 	public final static String PEDIDO_UPDATE = "pedido/update";
+	public final static String PEDIDO_STOCK = "pedido/pedido_stock";
 	public final static String PEDIDO_ROOT = "/pedido";
 	
 	public final static String LOTE_INDEX = "lote/index";
@@ -52,5 +53,4 @@ public class ViewRouteHelper {
 	public final static String SUCURSAL_CERCANIA = "sucursal/cercania";
 	public final static String SUCURSAL_DISTANCIA = "sucursal/distancia";
 	public final static String SUCURSAL_ROOT = "/sucursal";
-
 }
