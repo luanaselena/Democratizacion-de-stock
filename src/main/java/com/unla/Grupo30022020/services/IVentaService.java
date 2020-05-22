@@ -22,6 +22,6 @@ public interface IVentaService {
 
 	public boolean remove(long id);
 
-	//public boolean generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad);
+	public boolean generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad);
 
 }

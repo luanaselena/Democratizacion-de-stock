@@ -88,10 +88,10 @@ public class VentaService implements IVentaService {
 
 	}
 
-	/*@Override
+	@Override
 	public boolean generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad) {
 		Sucursal sucursal = sucursalConverter.modelToEntity(sucursalModel);
-		sucursalService.restarLotes(productoService.findById(productoModel.getId()), cantidad);
+		sucursalService.restarLotes(sucursalModel.getId(), productoService.findById(productoModel.getId()).getId(), cantidad);
 
 		float plus = ((productoModel.getPrecioUnitario() * 5) / 100) * cantidad;
 
@@ -99,5 +99,5 @@ public class VentaService implements IVentaService {
 
 		this.findById(ventaModel.getId()).getVendedorEncargado().setPlus(this.findById(ventaModel.getId()).getVendedorEncargado().getPlus() + plus);
 		return this.findById(ventaModel.getId()).getPedidos().add(new Pedido(cantidad, productoConverter.modelToEntity(productoModel)));
-	}*/
+	}
 }
