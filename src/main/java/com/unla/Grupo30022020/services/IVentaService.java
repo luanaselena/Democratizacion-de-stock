@@ -13,8 +13,6 @@ public interface IVentaService {
 	public List<Venta> getAll();
 
 	public VentaModel findById(long id);
-	
-	public VentaModel findByNroVenta(int nroVenta);
 
 	public VentaModel insert(VentaModel ventaModel);
 

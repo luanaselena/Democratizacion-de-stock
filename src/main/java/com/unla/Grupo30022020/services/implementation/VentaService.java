@@ -4,12 +4,9 @@ import java.util.List;
 
 import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
-import com.unla.Grupo30022020.entities.Pedido;
-import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
-import com.unla.Grupo30022020.models.VendedorModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -50,6 +47,14 @@ public class VentaService implements IVentaService {
 	@Autowired
 	@Qualifier("pedidoService")
 	private PedidoService pedidoService;
+	
+	@Autowired
+	@Qualifier("vendedorService")
+	private VendedorService vendedorService;
+	
+	@Autowired
+	@Qualifier("clienteService")
+	private ClienteService clienteService;
 
 	@Override
 	public List<Venta> getAll() {
@@ -63,20 +68,23 @@ public class VentaService implements IVentaService {
 		return ventaConverter.entityToModel(ventaRepository.findById(id));
 	}
 
-	@Override
-	public VentaModel findByNroVenta(int nroVenta) {
-
-		return ventaConverter.entityToModel(ventaRepository.findByNroVenta(nroVenta));
-	}
 
 	@Override
 	public VentaModel insert(VentaModel ventaModel) {
+		
+		ventaModel.setVendedorEncargado(vendedorService.findById(ventaModel.getVendedorEncargado().getId()));
+		ventaModel.setCliente(clienteService.findById(ventaModel.getCliente().getId()));
+		
 		Venta venta = ventaRepository.save(ventaConverter.modelToEntity(ventaModel));
 		return ventaConverter.entityToModel(venta);
 	}
 
 	@Override
 	public VentaModel update(VentaModel ventaModel) {
+		
+		ventaModel.setVendedorEncargado(vendedorService.findById(ventaModel.getVendedorEncargado().getId()));
+		ventaModel.setCliente(clienteService.findById(ventaModel.getCliente().getId()));
+		
 		Venta venta = ventaRepository.save(ventaConverter.modelToEntity(ventaModel));
 		return ventaConverter.entityToModel(venta);
 	}

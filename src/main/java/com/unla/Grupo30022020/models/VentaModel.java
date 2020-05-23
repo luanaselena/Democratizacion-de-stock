@@ -2,17 +2,16 @@ package com.unla.Grupo30022020.models;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.unla.Grupo30022020.entities.*;
 
 public class VentaModel {
 
 	private long id;
-	private int nroVenta;
-	private Set<PedidoModel> pedidos;
+	private Set<PedidoModel> pedidos= new HashSet<>();
 	private VendedorModel vendedorEncargado;
 	private ClienteModel cliente;
 	
@@ -24,11 +23,10 @@ public class VentaModel {
 	public VentaModel() {
 	}
 
-	public VentaModel(long id, int nroVenta, VendedorModel vendedorEncargado, ClienteModel cliente, LocalDate fecha,
+	public VentaModel(long id, VendedorModel vendedorEncargado, ClienteModel cliente, LocalDate fecha,
 			LocalTime hora, float precioTotal,Set<PedidoModel> pedidos) {
 
 		this.id = id;
-		this.nroVenta = nroVenta;
 		this.vendedorEncargado = vendedorEncargado;
 		this.cliente = cliente;
 		this.fecha = fecha;
@@ -43,14 +41,6 @@ public class VentaModel {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public int getNumVenta() {
-		return nroVenta;
-	}
-
-	public void setNumVenta(int numVenta) {
-		this.nroVenta = numVenta;
 	}
 
 	public Set<PedidoModel> getPedidos() {

@@ -52,17 +52,21 @@ public class VentaController {
 		return mAV;
 	}
 
-	@GetMapping("/create")
+	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("venta") VentaModel ventaModel) {
+		System.out.println(ventaModel.getCliente().getId() + " " + ventaModel.getVendedorEncargado().getId() );
 		ventaService.insert(ventaModel);
 		return new RedirectView(ViewRouteHelper.VENTA_ROOT);
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView get(@PathVariable("{id}") long id) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENDEDOR_UPDATE);
+	public ModelAndView get(@PathVariable("id") long id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_UPDATE);
+		
 		mAV.addObject("venta", ventaService.findById(id));
+		
 		mAV.addObject("clientes", clienteService.getAll());
+		
 		mAV.addObject("vendedores", vendedorService.getAll());
 		return mAV;
 	}
@@ -77,7 +81,7 @@ public class VentaController {
 	@PostMapping("/delete/{id}")
 	public RedirectView delete(@PathVariable("id") long id) {
 		ventaService.remove(id);
-		return new RedirectView(ViewRouteHelper.LOTE_ROOT);
+		return new RedirectView(ViewRouteHelper.VENTA_ROOT);
 	}
 
 }
