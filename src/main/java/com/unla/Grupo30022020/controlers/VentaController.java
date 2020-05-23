@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.Grupo30022020.entities.Venta;
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
+import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VentaModel;
 import com.unla.Grupo30022020.services.IClienteService;
 import com.unla.Grupo30022020.services.IVendedorService;
@@ -52,17 +53,21 @@ public class VentaController {
 		return mAV;
 	}
 
-	@GetMapping("/create")
+	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("venta") VentaModel ventaModel) {
+		System.out.println(ventaModel.getCliente().getId() + " " + ventaModel.getVendedorEncargado().getId() );
 		ventaService.insert(ventaModel);
 		return new RedirectView(ViewRouteHelper.VENTA_ROOT);
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView get(@PathVariable("{id}") long id) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENDEDOR_UPDATE);
+	public ModelAndView get(@PathVariable("id") long id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_UPDATE);
+		
 		mAV.addObject("venta", ventaService.findById(id));
+		
 		mAV.addObject("clientes", clienteService.getAll());
+		
 		mAV.addObject("vendedores", vendedorService.getAll());
 		return mAV;
 	}
@@ -77,7 +82,21 @@ public class VentaController {
 	@PostMapping("/delete/{id}")
 	public RedirectView delete(@PathVariable("id") long id) {
 		ventaService.remove(id);
-		return new RedirectView(ViewRouteHelper.LOTE_ROOT);
+		return new RedirectView(ViewRouteHelper.VENTA_ROOT);
 	}
+	
+	//--------------------------------------------------------- Lista Pedidos --------------------------------
+
+		//Borrar un Pedido de la lista de una sucursal
+
+		@GetMapping("/{idVenta}/pedidoDelete/{idPedido}")
+		public RedirectView deleteLote(@PathVariable("idVenta") long idVenta,@PathVariable("idPedido") long idPedido) {
+			
+			VentaModel venta = ventaService.EliminarPedido(idVenta,idPedido);
+
+			ventaService.insert(venta);
+
+			return new RedirectView("/venta/" + idVenta);
+		}
 
 }

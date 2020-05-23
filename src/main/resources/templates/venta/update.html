@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Venta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <header>
+        <div class="headerbg">
+
+           <a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+
+        </div>
+    </header>
+    <div class="divPrincipal row">
+	    <div class="FormSucursal col-12">
+	        <form action="#" th:action="@{/venta/update}" th:object="${venta}" method="post">
+	        
+	        <p> 
+	           Vendedor Encargado: <select placeholder="Vendedor" th:field="*{vendedorEncargado.id}">
+					<option th:each="v : ${vendedores}" th:value="${v.id}"
+						th:text="${v.apellido}"></option>
+				</select>
+			</p>
+			<p>
+				Cliente: <select placeholder="Cliente" th:field="*{cliente.id}">
+					<option th:each="c : ${clientes}" th:value="${c.id}"
+						th:text="${c.apellido}"></option>
+				</select>
+			</p>
+			<p>
+				Fecha: <input type="date" th:field=*{fecha} />
+			</p>
+			<p>
+				Hora: <input type="time" th:field="*{hora}" />
+			</p>
+			
+			<input type="hidden" th:value="*{id}" th:field="*{id}" />
+
+	            <br><br><br><input class="btn btn-success" type="submit" value="Editar"/>
+	        </form>
+	        <br>
+	        <br>
+	        <form action="#" th:action="@{/venta/delete/{id}(id=${venta.id})}" method="post">
+	            <input class="btn btn-danger" type="submit" value="Eliminar Venta" />
+	        </form>
+	        </div>
+	        
+	        
+	    <!-- --------------------- Div de las 2 listas, para colocarlas con bootstrap --------------------- -->
+	    
+	    <div class="ListaLote col-12">
+		    <h2>Pedidos</h2>
+		    <table border="1px">
+
+			<thead>
+				<tr>
+					<th>Cantidad</th>
+					<th>Producto</th>
+					<th>Respuesta</th>
+					<th>Id</th>
+					<th></th>
+					<th></th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				<tr th:each="pedido : ${venta.pedidos}">
+					<td><span th:text="${pedido.cantidad}"></span></td>
+					<td><a th:href="@{/producto/{id}(id=${pedido.producto.id})}" th:text="${pedido.producto.id}"></td>
+					<td><span th:text="${pedido.aceptado}"></span></td>
+					<td><span th:text="${pedido.id}"></span></td>
+					<td><a th:href="@{/pedido/{id}(id=${pedido.id})}">View</a></td>
+					<td><a th:href="@{'/venta/' + ${venta.id} + '/pedidoDelete/' + ${pedido.id} }">Eliminar de Venta</a>
+				</tr>
+			</tbody>
+		</table>
+						
+						
+						
+					
+    </div>
+
+</body>
+</html>

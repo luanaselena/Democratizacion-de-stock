@@ -24,12 +24,9 @@ public class Venta {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
 	private long id;
-
-	@Column
-	private int nroVenta;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<Pedido> pedidos;
+	private Set<Pedido> pedidos= new HashSet<>();
 
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idvendedor", referencedColumnName = "id")
@@ -51,10 +48,9 @@ public class Venta {
 	public Venta() {
 	}
 
-	public Venta(long id, int nroVenta, LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,
+	public Venta(long id, LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,
 			Vendedor vendedorEncargado,Set<Pedido> pedidos) {
 		this.id=id;
-		this.nroVenta = nroVenta;
 		this.fecha = fecha;
 		this.hora = hora;
 		this.precioTotal = precioTotal;
@@ -63,10 +59,9 @@ public class Venta {
 		this.pedidos=pedidos;
 	}
 
-	public Venta(int nroVenta, LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,
+	public Venta(LocalDate fecha, LocalTime hora, float precioTotal, Cliente cliente,
 			Vendedor vendedorEncargado) {
 
-		this.nroVenta = nroVenta;
 		this.fecha = fecha;
 		this.hora = hora;
 		this.precioTotal = precioTotal;
@@ -96,14 +91,6 @@ public class Venta {
 
 	protected void setId(long id) {
 		this.id = id;
-	}
-
-	public int getNroVenta() {
-		return nroVenta;
-	}
-
-	public void setNroVenta(int nroVenta) {
-		this.nroVenta = nroVenta;
 	}
 
 	public Set<Pedido> getPedidos() {

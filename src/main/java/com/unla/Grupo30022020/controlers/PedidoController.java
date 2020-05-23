@@ -72,18 +72,15 @@ public class PedidoController {
 		return mAV;
 	}
 	
-	//---------------------------------------------------------------------
-	//Agregar a los parametros una vez que se cargue una venta
-	//@RequestParam(value = "idVenta", required = false) long idVenta,
-	//---------------------------------------------------------------------
-	
+	//-------------------------Generar pedido con stock
 	@GetMapping("/create/")
 	public RedirectView create(
+			@RequestParam(value = "idVenta", required = false) long idVenta,
 			@RequestParam(value = "idSucursal", required = false) long idSucursal,
 			@RequestParam(value = "idProducto", required = false) long idProducto,
 			@RequestParam(value = "cantidad", required = false) int cantidad) {
 		
-		System.out.println(" "+idSucursal+" "+idProducto+" "+cantidad);
+		System.out.println(idVenta + " "+idSucursal+" "+idProducto+" "+cantidad);
 		
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
 	}

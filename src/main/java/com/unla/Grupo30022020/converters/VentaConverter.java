@@ -30,12 +30,12 @@ public class VentaConverter {
 	private PedidoConverter pedidoConverter;
 	
 	public VentaModel entityToModel(Venta venta) {
-		return new VentaModel(venta.getId(), venta.getNroVenta(), vendedorConverter.entityToModel(venta.getVendedorEncargado()), clienteConverter.entityToModel( venta.getCliente()),
+		return new VentaModel(venta.getId(), vendedorConverter.entityToModel(venta.getVendedorEncargado()), clienteConverter.entityToModel( venta.getCliente()),
 				venta.getFecha(), venta.getHora(), venta.getPrecioTotal(),this.PedidosEntityToModel(venta.getPedidos()));
 	}
 
 	public Venta modelToEntity(VentaModel ventaModel) {
-		return new Venta(ventaModel.getId(), ventaModel.getNumVenta(), ventaModel.getFecha(), ventaModel.getHora(),
+		return new Venta(ventaModel.getId(), ventaModel.getFecha(), ventaModel.getHora(),
 				ventaModel.getPrecioTotal(), clienteConverter.modelToEntity( ventaModel.getCliente()),
 				vendedorConverter.modelToEntity(ventaModel.getVendedorEncargado()),this.PedidosModelToEntity(ventaModel.getPedidos()));
 	}

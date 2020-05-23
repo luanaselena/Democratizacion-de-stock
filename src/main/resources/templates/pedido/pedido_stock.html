@@ -25,12 +25,12 @@
     			<h2>Generar pedido</h2>
     			<form action="#" th:action="@{/pedido/create/}">
     			
-	    		<!--Descomentar una vez haya ventas para elegir, sino lanza error
+	    		
 	    		  	<select class="form-control mb-2" th:name="idVenta">
 		    			  <option disabled selected>Seleccionar la Venta</option>
 						    <option th:each="venta : ${ventas}" placeholder="venta" th:value="${venta.id}"
 						     th:text="${venta.id}"></option>
-					 </select> --> 
+					 </select>
     			
 	    			 <select class="form-control mb-2" th:name="idSucursal">
 	    			 	 <option disabled selected>Seleccionar la sucursal</option>

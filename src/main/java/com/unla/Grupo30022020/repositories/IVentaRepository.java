@@ -8,6 +8,5 @@ import com.unla.Grupo30022020.entities.Venta;
 public interface IVentaRepository extends JpaRepository<Venta, Serializable> {
 	
 	public abstract Venta findById(long id);
-    public abstract Venta findByNroVenta(int nroVenta);
     
 }

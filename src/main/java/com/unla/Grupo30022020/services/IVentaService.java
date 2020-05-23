@@ -13,8 +13,6 @@ public interface IVentaService {
 	public List<Venta> getAll();
 
 	public VentaModel findById(long id);
-	
-	public VentaModel findByNroVenta(int nroVenta);
 
 	public VentaModel insert(VentaModel ventaModel);
 
@@ -23,5 +21,7 @@ public interface IVentaService {
 	public boolean remove(long id);
 
 	public void generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad);
+	
+	public VentaModel EliminarPedido(long idVenta,long idPedido);
 
 }

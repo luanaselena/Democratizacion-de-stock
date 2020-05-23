@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Venta</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <div class="headerbg">
+
+          <a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+
+        </div>
+    </header>
+    <div class="divPrincipal">
+        <table border="1px">
+
+            <thead>
+                <tr>
+                	<th>ID</th>
+                    <th>Vendedor Encargado</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Precio Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="venta : ${ventas}">
+               		<td><span th:text="${venta.id}"></span></td>
+                	<td><a th:href="@{/vendedor/{id}(id=${venta.vendedorEncargado.id})}" th:text="${venta.vendedorEncargado.id}"></td>
+                    <td><a th:href="@{/cliente/{id}(id=${venta.cliente.id})}" th:text="${venta.cliente.id}"></td>
+                    <td><span th:text="${venta.fecha}"></span></td>
+                    <td><span th:text="${venta.hora}"></span></td>
+                    <td><span th:text="${venta.precioTotal}"></span></td>
+                    <td><a th:href="@{/venta/{id}(id=${venta.id})}">View</a>
+                </tr>
+            </tbody>
+        </table>
+        <br> <a class="btn btn-primary" href="/venta/new">Agregar Venta</a>
+    </div>
+</body>
+</html>
