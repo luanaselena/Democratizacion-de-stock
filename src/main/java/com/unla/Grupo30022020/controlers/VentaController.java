@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.unla.Grupo30022020.entities.Venta;
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
+import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VentaModel;
 import com.unla.Grupo30022020.services.IClienteService;
 import com.unla.Grupo30022020.services.IVendedorService;
@@ -83,5 +84,20 @@ public class VentaController {
 		ventaService.remove(id);
 		return new RedirectView(ViewRouteHelper.VENTA_ROOT);
 	}
+	
+	//--------------------------------------------------------- Lista Pedidos --------------------------------
+
+		//Borrar un Pedido de la lista de una sucursal
+
+		@GetMapping("/{idVenta}/pedidoDelete/{idPedido}")
+		public RedirectView deleteLote(@PathVariable("idVenta") long idVenta,@PathVariable("idPedido") long idPedido) {
+
+			
+			VentaModel venta = ventaService.EliminarPedido(idVenta,idPedido);
+
+			ventaService.insert(venta);
+
+			return new RedirectView("/venta/" + idVenta);
+		}
 
 }

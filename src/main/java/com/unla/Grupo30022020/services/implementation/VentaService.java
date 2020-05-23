@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
+import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
@@ -119,4 +120,19 @@ public class VentaService implements IVentaService {
 		this.update(ventaModel);
 		
 	}
+	
+	//-----------------------------Proceso de eliminacion de un pedido en la lista
+    public VentaModel EliminarPedido(long idVenta,long idPedido) {
+    	
+         VentaModel venta = this.findById(idVenta);
+    	
+         for (PedidoModel p : venta.getPedidos() ) {
+        	    if(p.getId() == idPedido) {
+        	    	venta.getPedidos().remove(p);
+        	    	//agregar logica para cambiar la respuesta ya que se da por hecho que este pedido fue completado
+        	    }
+        	}
+         
+    	return venta;
+    }
 }

@@ -51,7 +51,36 @@
 	        
 	    <!-- --------------------- Div de las 2 listas, para colocarlas con bootstrap --------------------- -->
 	    
-	    
+	    <div class="ListaLote col-12">
+		    <h2>Pedidos</h2>
+		    <table border="1px">
+
+			<thead>
+				<tr>
+					<th>Cantidad</th>
+					<th>Producto</th>
+					<th>Respuesta</th>
+					<th>Id</th>
+					<th></th>
+					<th></th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				<tr th:each="pedido : ${venta.pedidos}">
+					<td><span th:text="${pedido.cantidad}"></span></td>
+					<td><a th:href="@{/producto/{id}(id=${pedido.producto.id})}" th:text="${pedido.producto.id}"></td>
+					<td><span th:text="${pedido.aceptado}"></span></td>
+					<td><span th:text="${pedido.id}"></span></td>
+					<td><a th:href="@{/pedido/{id}(id=${pedido.id})}">View</a></td>
+					<td><a th:href="@{'/venta/' + ${venta.id} + '/pedidoDelete/' + ${pedido.id} }">Eliminar de Venta</a>
+				</tr>
+			</tbody>
+		</table>
+						
+						
+						
+					
     </div>
 
 </body>

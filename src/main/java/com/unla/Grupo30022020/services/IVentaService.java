@@ -21,5 +21,7 @@ public interface IVentaService {
 	public boolean remove(long id);
 
 	public void generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad);
+	
+	public VentaModel EliminarPedido(long idVenta,long idPedido);
 
 }
