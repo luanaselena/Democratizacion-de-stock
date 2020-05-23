@@ -91,7 +91,6 @@ public class VentaController {
 
 		@GetMapping("/{idVenta}/pedidoDelete/{idPedido}")
 		public RedirectView deleteLote(@PathVariable("idVenta") long idVenta,@PathVariable("idPedido") long idPedido) {
-
 			
 			VentaModel venta = ventaService.EliminarPedido(idVenta,idPedido);
 

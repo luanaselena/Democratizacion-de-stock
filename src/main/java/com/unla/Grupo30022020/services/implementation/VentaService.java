@@ -113,6 +113,11 @@ public class VentaService implements IVentaService {
 		
 		PedidoModel pedido = new PedidoModel(cantidad,productoModel);
 		
+		/*
+		 * Hay que modificar el precio total de la venta sumando el precio de este pedido
+		 * 
+		 */
+		
 		pedidoService.insert(pedido);
 		
 		ventaModel.getPedidos().add(pedido);
@@ -129,7 +134,9 @@ public class VentaService implements IVentaService {
          for (PedidoModel p : venta.getPedidos() ) {
         	    if(p.getId() == idPedido) {
         	    	venta.getPedidos().remove(p);
-        	    	//agregar logica para cambiar la respuesta ya que se da por hecho que este pedido fue completado
+        	    	//Se cambia el estado de aceptado del pedido
+        	    	p.setAceptado(true);
+        	    	pedidoService.update(p);
         	    }
         	}
          
