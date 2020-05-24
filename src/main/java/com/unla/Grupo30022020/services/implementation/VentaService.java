@@ -4,17 +4,13 @@ import java.util.List;
 
 import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
-import com.unla.Grupo30022020.models.LoteModel;
-import com.unla.Grupo30022020.models.PedidoModel;
-import com.unla.Grupo30022020.models.ProductoModel;
-import com.unla.Grupo30022020.models.SucursalModel;
+import com.unla.Grupo30022020.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.unla.Grupo30022020.converters.VentaConverter;
 import com.unla.Grupo30022020.entities.Venta;
-import com.unla.Grupo30022020.models.VentaModel;
 import com.unla.Grupo30022020.repositories.IVentaRepository;
 import com.unla.Grupo30022020.services.IVentaService;
 
@@ -106,11 +102,12 @@ public class VentaService implements IVentaService {
 	public void generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad) {
 	
 		sucursalService.restarLotes(sucursalModel.getId(), productoModel.getId(), cantidad);
-		
-		float plus = ((productoModel.getPrecioUnitario() * 5) / 100) * cantidad;
 
-		ventaModel.getVendedorEncargado().setPlus(ventaModel.getVendedorEncargado().getPlus() + plus);
-		
+		float plus = ((productoModel.getPrecioUnitario() * 5) / 100) * cantidad;
+		VendedorModel vendedorModel = vendedorService.findById(ventaModel.getVendedorEncargado().getId());
+		vendedorModel.setPlus(ventaModel.getVendedorEncargado().getPlus() + plus);
+		vendedorService.update(vendedorModel);
+
 		PedidoModel pedido = new PedidoModel(cantidad,productoModel);
 		
 		/*
@@ -121,6 +118,7 @@ public class VentaService implements IVentaService {
 		pedidoService.insert(pedido);
 		
 		ventaModel.getPedidos().add(pedido);
+		ventaModel.setVendedorEncargado(vendedorModel);
 		
 		this.update(ventaModel);
 		

@@ -25,7 +25,7 @@ public class Venta {
 	@Column(name = "id")
 	private long id;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.MERGE)
 	private Set<Pedido> pedidos= new HashSet<>();
 
 	@OneToOne(cascade = CascadeType.MERGE)

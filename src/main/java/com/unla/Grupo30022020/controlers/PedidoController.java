@@ -62,16 +62,6 @@ public class PedidoController {
 		return mAV;
 	}
 	
-	//pedido con stock
-	@GetMapping("/pedido_stock")
-	public ModelAndView pedidoStock() {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_STOCK);
-		mAV.addObject("pedidos", pedidoService.getAll());
-		mAV.addObject("sucursales", sucursalService.getAll());
-		mAV.addObject("productos", sucursalService.getAll());
-		return mAV;
-	}
-	
 	//-------------------------Generar pedido con stock
 	@GetMapping("/create/")
 	public RedirectView create(
@@ -80,7 +70,7 @@ public class PedidoController {
 			@RequestParam(value = "idProducto", required = false) long idProducto,
 			@RequestParam(value = "cantidad", required = false) int cantidad) {
 		
-		System.out.println(idVenta + " "+idSucursal+" "+idProducto+" "+cantidad);
+		ventaService.generarPedidoConStockPropio(ventaService.findById(idVenta), productoService.findById(idProducto), sucursalService.findById(idSucursal), cantidad);
 		
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
 	}
