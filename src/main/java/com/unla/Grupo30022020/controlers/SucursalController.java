@@ -152,7 +152,7 @@ public class SucursalController {
 	public RedirectView deleteVendedor(@PathVariable("idSucursal") long idSucursal,@PathVariable("idVendedor") long idVendedor) {
 
 		SucursalModel sucursal = sucursalService.EliminarVendedor(idSucursal,idVendedor);
-
+		
 		sucursalService.insert(sucursal);
 
 		return new RedirectView("/sucursal/" + idSucursal);

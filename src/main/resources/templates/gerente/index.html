@@ -28,7 +28,6 @@
                     <th>DNI</th>
                     <th>Horas por Jornada</th>
                     <th>Sueldo Básico</th>
-                    <th>Id</th>
                     <th></th>
                 </tr>
             </thead>
@@ -40,7 +39,6 @@
                     <td><span th:text="${gerente.dni}"></span></td>
                     <td><span th:text="${gerente.horasPorJornada}"></span></td>
                     <td><span th:text="${gerente.sueldoBasico}"></span></td>
-                    <td><span th:text="${gerente.id}"></span></td>
                     <td><a th:href="@{/gerente/{id}(id=${gerente.id})}">View</a>
                     </td>
                 </tr>

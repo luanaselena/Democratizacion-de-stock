@@ -27,7 +27,6 @@
                     <th>Fecha de Nacimiento</th>
                     <th>DNI</th>
                     <th>Mail</th>
-                    <th>Id</th>
                     <th></th>
                 </tr>
             </thead>
@@ -38,7 +37,6 @@
                     <td><span th:text="${cliente.fechaDeNacimiento}"></span></td>
                     <td><span th:text="${cliente.dni}"></span></td>
                     <td><span th:text="${cliente.mail}"></span></td>
-                    <td><span th:text="${cliente.id}"></span></td>
                     <td><a th:href="@{/cliente/{id}(id=${cliente.id})}">View</a>
                     </td>
                 </tr>

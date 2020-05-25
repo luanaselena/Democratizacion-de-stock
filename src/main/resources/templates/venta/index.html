@@ -22,7 +22,6 @@
 
             <thead>
                 <tr>
-                	<th>ID</th>
                     <th>Vendedor Encargado</th>
                     <th>Cliente</th>
                     <th>Fecha</th>
@@ -33,9 +32,8 @@
             </thead>
             <tbody>
                 <tr th:each="venta : ${ventas}">
-               		<td><span th:text="${venta.id}"></span></td>
-                	<td><a th:href="@{/vendedor/{id}(id=${venta.vendedorEncargado.id})}" th:text="${venta.vendedorEncargado.id}"></td>
-                    <td><a th:href="@{/cliente/{id}(id=${venta.cliente.id})}" th:text="${venta.cliente.id}"></td>
+                	<td><a th:href="@{/vendedor/{id}(id=${venta.vendedorEncargado.id})}" th:text="${venta.vendedorEncargado.nombre}+ ' '+ ${venta.vendedorEncargado.apellido}"></td>
+                    <td><a th:href="@{/cliente/{id}(id=${venta.cliente.id})}" th:text="${venta.cliente.nombre}+ ' '+ ${venta.cliente.apellido}"></td>
                     <td><span th:text="${venta.fecha}"></span></td>
                     <td><span th:text="${venta.hora}"></span></td>
                     <td><span th:text="${venta.precioTotal}"></span></td>
