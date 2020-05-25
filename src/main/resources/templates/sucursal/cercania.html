@@ -37,6 +37,7 @@
                     <td><a th:href="@{/gerente/{id}(id=${sucursal.gerente.id})}" th:text="${sucursal.gerente.nombre}+ ' '+ ${sucursal.gerente.apellido}"></td>
              
                     <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">View</a>
+                    <a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
                     </td>
                 </tr>
             </tbody>

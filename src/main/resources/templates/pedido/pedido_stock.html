@@ -35,13 +35,13 @@
 	    			 <select class="form-control mb-2" th:name="idSucursal">
 	    			 	 <option disabled selected>Seleccionar la sucursal</option>
 					     <option th:each="sucursal : ${sucursales}" placeholder="sucursal" th:value="${sucursal.id}"
-					      th:text="${sucursal.id}"></option>
+					      th:text="${sucursal.direccion.calle}+ ' ' + ${sucursal.direccion.numero}"></option>
 					 </select>
 					 
 					 <select class="form-control mb-2" th:name="idProducto">
 	    			 	 <option disabled selected>Seleccionar el producto</option>
 					     <option th:each="producto : ${productos}" placeholder="sucursal" th:value="${producto.id}"
-					      th:text="${producto.id}"></option>
+					      th:text="${producto.descripcion}"></option>
 					 </select>
 					 
 						 Seleccionar una cantidad <br/>
