@@ -33,7 +33,7 @@
                 	<td><a th:href="@{/direccion/{id}(id=${sucursal.direccion.id})}" th:text="${sucursal.direccion.calle }+ ' '+ ${ sucursal.direccion.numero}"></td>
                     <td><span th:text="${sucursal.telefono}"></span></td>
                     <td><a th:href="@{/gerente/{id}(id=${sucursal.gerente.id})}" th:text="${sucursal.gerente.nombre}+ ' '+${sucursal.gerente.apellido} "></td>
-                    <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">View</a>
+                    <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">Ver</a>
                     </td>
                 </tr>
             </tbody>
