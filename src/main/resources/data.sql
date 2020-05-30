@@ -16,7 +16,7 @@ INSERT INTO direccion (id,calle,ciudad,latitud,longitud,numero) VALUES(10,"Uriar
 INSERT INTO direccion (id,calle,ciudad,latitud,longitud,numero) VALUES(11,"Hipolito Yrigoyen","Buenos aires",42454,82453,420);
 
 INSERT INTO producto (id,descripcion,marca,precio_unitario,status)VALUES(12,"Microfono","Samson",450,1);
-INSERT INTO producto (id,descripcion,marca,precio_unitario,status)VALUES(13,"Microfono","Shure",750,1);
+INSERT INTO producto (id,descripcion,marca,precio_unitario,status)VALUES(13,"Microfono2","Shure",750,1);
 INSERT INTO producto (id,descripcion,marca,precio_unitario,status)VALUES(14,"Auriculares","AudioTechnica",1150,1);
 
 INSERT INTO sucursal (id,telefono,direccion_id,gerente_id) VALUES(15,15543245,9,1);

@@ -117,12 +117,11 @@ public class SucursalController {
 	@GetMapping("/{idSucursal}/loteDelete/{idLote}")
 	public RedirectView deleteLote(@PathVariable("idSucursal") long idSucursal,@PathVariable("idLote") long idLote) {
 
-		//Agregarlo a la lista
-		// sucursal.getLotes().remove(loteModel);
+		System.out.println(idSucursal +" "+ idLote);
 
 		SucursalModel sucursal = sucursalService.EliminarLote(idSucursal,idLote);
 
-		sucursalService.insert(sucursal);
+		sucursalService.update(sucursal);
 
 		return new RedirectView("/sucursal/" + idSucursal);
 	}

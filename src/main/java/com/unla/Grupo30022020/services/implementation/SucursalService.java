@@ -136,11 +136,9 @@ public class SucursalService implements ISucursalService {
     	
          SucursalModel sucursal = this.findById(idSucursal);
     	
-         for (LoteModel l : sucursal.getLotes() ) {
-        	    if(l.getId() == idLote) {
-        	    	sucursal.getLotes().remove(l);
-        	    }
-        	}
+         LoteModel loteModel = loteService.findById(idLote);
+         
+         sucursal.getLotes().remove(loteModel);
          
     	return sucursal;
     }
@@ -149,12 +147,11 @@ public class SucursalService implements ISucursalService {
     public SucursalModel EliminarVendedor(long idSucursal,long idVendedor) {
     	
         SucursalModel sucursal = this.findById(idSucursal);
-   	
-        for (VendedorModel v : sucursal.getVendedores() ) {
-       	    if(v.getId() == idVendedor) {
-       	    	sucursal.getVendedores().remove(v);
-       	    }
-       	}
+        
+        VendedorModel vendedorModel = vendedorService.findById(idVendedor);
+        
+        sucursal.getVendedores().remove(vendedorModel);
+        
         
    	return sucursal;
    }

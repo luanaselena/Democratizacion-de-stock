@@ -101,6 +101,11 @@ public class VentaService implements IVentaService {
 	@Override
 	public void generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad) {
 	
+		//------------------------------------------------------------------------------------------
+		//Agregar chequeo en restar, por el largo de lotes y por cantidad menor a la pedida,
+		//si no se cumplen derivar a la oportunidad de generar el pedido con otro local
+		//------------------------------------------------------------------------------------------
+		
 		sucursalService.restarLotes(sucursalModel.getId(), productoModel.getId(), cantidad);
 
 		float plus = ((productoModel.getPrecioUnitario() * 5) / 100) * cantidad;
@@ -115,7 +120,6 @@ public class VentaService implements IVentaService {
 		 * 
 		 */
 		
-		pedidoService.insert(pedido);
 		
 		ventaModel.getPedidos().add(pedido);
 		ventaModel.setVendedorEncargado(vendedorModel);
@@ -128,15 +132,15 @@ public class VentaService implements IVentaService {
     public VentaModel EliminarPedido(long idVenta,long idPedido) {
     	
          VentaModel venta = this.findById(idVenta);
-    	
-         for (PedidoModel p : venta.getPedidos() ) {
-        	    if(p.getId() == idPedido) {
-        	    	venta.getPedidos().remove(p);
-        	    	//Se cambia el estado de aceptado del pedido
-        	    	p.setAceptado(true);
-        	    	pedidoService.update(p);
-        	    }
-        	}
+         
+         venta.getPedidos().remove(pedidoService.findById(idPedido));
+         
+         PedidoModel pedido = pedidoService.findById(idPedido);
+         
+         pedido.setAceptado(true);
+         
+         pedidoService.update(pedido);
+        
          
     	return venta;
     }
