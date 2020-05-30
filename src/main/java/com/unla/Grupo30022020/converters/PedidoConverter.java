@@ -16,12 +16,12 @@ public class PedidoConverter {
 		private ProductoConverter productoConverter;
 		
 		public PedidoModel entityToModel(Pedido pedido){
-		return new PedidoModel(pedido.getId(), pedido.getCantidad(), productoConverter.entityToModel(pedido.getProducto()));
+		return new PedidoModel(pedido.getId(), pedido.getCantidad(), productoConverter.entityToModel(pedido.getProducto()),pedido.isAceptado());
 	}
 	
 	public Pedido modelToEntity (PedidoModel pedidoModel) {
 		
-		return new Pedido(pedidoModel.getId(), pedidoModel.getCantidad(), productoConverter.modelToEntity(pedidoModel.getProducto()));
+		return new Pedido(pedidoModel.getId(), pedidoModel.getCantidad(), productoConverter.modelToEntity(pedidoModel.getProducto()),pedidoModel.isAceptado());
 	
 	
 }

@@ -92,9 +92,11 @@ public class VentaController {
 		@GetMapping("/{idVenta}/pedidoDelete/{idPedido}")
 		public RedirectView deleteLote(@PathVariable("idVenta") long idVenta,@PathVariable("idPedido") long idPedido) {
 			
+			System.out.println(idVenta + " " + idPedido);
+			
 			VentaModel venta = ventaService.EliminarPedido(idVenta,idPedido);
 
-			ventaService.insert(venta);
+			ventaService.update(venta);
 
 			return new RedirectView("/venta/" + idVenta);
 		}

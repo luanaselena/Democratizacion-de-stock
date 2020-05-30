@@ -22,7 +22,7 @@ public class Pedido {
 	private int cantidad;
 	
 	@Column
-	private boolean aceptado;
+	private boolean aceptado = false;
 	
 
 	
@@ -38,10 +38,10 @@ public class Pedido {
 		this.producto = producto;
 	}
 	
-	public Pedido(long id, int cantidad, Producto producto) {
+	public Pedido(long id, int cantidad, Producto producto,boolean aceptado) {
 		this.id = id;
 		this.cantidad = cantidad;
-		this.aceptado = false;
+		this.aceptado = aceptado;
 		this.producto = producto;
 	}
 

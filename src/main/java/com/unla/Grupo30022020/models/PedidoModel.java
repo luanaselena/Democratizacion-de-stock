@@ -5,24 +5,23 @@ public class PedidoModel {
 
 	private long id;
 	private int cantidad;
-	private boolean aceptado;
+	private boolean aceptado =false;
 	private ProductoModel producto;
 
 	public PedidoModel() {
 	}
 
-	public PedidoModel(long id, int cantidad, ProductoModel producto) {
+	public PedidoModel(long id, int cantidad, ProductoModel producto,boolean aceptado) {
 
 		this.id = id;
 		this.cantidad = cantidad;
-		this.aceptado=false;
+		this.aceptado=aceptado;
 		this.producto= producto;
 	}
 
 	public PedidoModel(int cantidad, ProductoModel producto) {
 
 		this.cantidad = cantidad;
-		this.aceptado=false;
 		this.producto= producto;
 	}
 	public long getId() {
@@ -48,6 +47,7 @@ public class PedidoModel {
 	public void setAceptado(boolean aceptado) {
 		this.aceptado = aceptado;
 	}
+	
 
 	public ProductoModel getProducto() {
 		return producto;
