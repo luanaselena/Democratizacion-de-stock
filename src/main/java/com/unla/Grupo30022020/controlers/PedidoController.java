@@ -69,10 +69,15 @@ public class PedidoController {
 			@RequestParam(value = "idSucursal", required = false) long idSucursal,
 			@RequestParam(value = "idProducto", required = false) long idProducto,
 			@RequestParam(value = "cantidad", required = false) int cantidad) {
+		if(sucursalService.TraerLotesActivosConStock(idSucursal, idProducto, cantidad).isEmpty()) {
+			return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
+		}
+		else {
+			ventaService.generarPedidoConStockPropio(ventaService.findById(idVenta), productoService.findById(idProducto), sucursalService.findById(idSucursal), cantidad);
+			return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
+		}
 		
-		ventaService.generarPedidoConStockPropio(ventaService.findById(idVenta), productoService.findById(idProducto), sucursalService.findById(idSucursal), cantidad);
 		
-		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
 	}
 	
 	@GetMapping("/{id}")
