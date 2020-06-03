@@ -33,7 +33,8 @@ public class ViewRouteHelper {
 	public final static String PEDIDO_INDEX = "pedido/index";
 	public final static String PEDIDO_NEW = "pedido/new";
 	public final static String PEDIDO_UPDATE = "pedido/update";
-	public final static String PEDIDO_STOCK = "pedido/pedido_stock";
+	public final static String PEDIDO_STOCK = "pedido/pedido_stockInterno";
+	public final static String PEDIDO_NOSTOCK = "pedido/pedido_stockExterno";
 	public final static String PEDIDO_ROOT = "/pedido";
 	
 	public final static String LOTE_INDEX = "lote/index";

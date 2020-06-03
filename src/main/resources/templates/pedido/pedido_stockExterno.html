@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Pedido</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header>
+		<div class="headerbg">
+
+			<a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+
+		</div>
+	</header>
+	
+	<div class="divPrincipal">
+		<div class="container">
+    	<div class="row">
+    		<div class="col-12 form-group mt-4">
+    			<h2>Generar pedido</h2>
+    			<form action="#" th:action="@{/pedido/create/}">
+    			
+	    		
+	    		  	<select class="form-control mb-2" th:name="idVenta">
+		    			  <option disabled selected>Seleccionar la Venta</option>
+						    <option th:each="venta : ${ventas}" placeholder="venta" th:value="${venta.id}"
+						     th:text="${venta.id}"></option>
+					 </select>
+    			
+	    			 <select class="form-control mb-2" th:name="idSucursal">
+	    			 	 <option disabled selected>Seleccionar la sucursal</option>
+					     <option th:each="sucursal : ${sucursales}" placeholder="sucursal" th:value="${sucursal.id}"
+					      th:text="${sucursal.direccion.calle}+ ' ' + ${sucursal.direccion.numero}"></option>
+					 </select>
+					 
+					 <select class="form-control mb-2" th:name="idProducto">
+	    			 	 <option disabled selected>Seleccionar el producto</option>
+					     <option th:each="producto : ${productos}" placeholder="sucursal" th:value="${producto.id}"
+					      th:text="${producto.descripcion}"></option>
+					 </select>
+					 
+						 Seleccionar una cantidad <br/>
+						<input type="text" th:name="cantidad"/>
+						
+					 <br/>
+					 <input class="btn btn-sm btn-primary" type="submit" value="Generar pedido" />
+    			</form>
+    			</div>
+    			</div>
+    		</div>
+    	</div>
+</body>
+</html>
