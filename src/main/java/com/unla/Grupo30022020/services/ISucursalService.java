@@ -38,4 +38,8 @@ public interface ISucursalService {
     public List<Lote> TraerLotesActivos(long idSucursal,long idProducto);
 
     public void restarLotes(long idSucursal, long idProducto, int cantidad);
+    
+    public List<Sucursal> calcularSucursalesConStockDisponible(Producto producto, int cantidad);
+    
+    public List<Lote> TraerLotesActivosConStock(long idSucursal,long idProducto, int cantidad);
 }

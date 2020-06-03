@@ -129,6 +129,20 @@ public class SucursalService implements ISucursalService {
 		return sucCercana;
 	}
     
+    //-----------------------------Calcular sucursales con un determinado producto disponible
+    public List<Sucursal> calcularSucursalesConStockDisponible(Producto producto, int cantidad){
+    	List<Sucursal> sucursales = this.getAll();
+    	List<Sucursal> sucursalesConStock = new ArrayList<>();
+    	
+    	//itero en todas las sucursales
+    	for(int i=0; i<sucursales.size(); i++) {
+    		if(!this.TraerLotesActivosConStock(sucursales.get(i).getId(), producto.getId(), cantidad).isEmpty()) {
+    			sucursalesConStock.add(sucursales.get(i));
+    		}
+    	}    	
+    	return sucursalesConStock;
+    }
+    
     //-----------------------------Proceso de eliminacion de un lote en la lista
     public SucursalModel EliminarLote(long idSucursal,long idLote) {
     	
@@ -235,6 +249,25 @@ public class SucursalService implements ISucursalService {
 		   
 		   //Si el lote tiene el producto y la cantidad es mayor a 0 se lo agrega
 		   if(l.getProducto().getId()== producto.getId() && l.getCantidad()>0) {
+			   listaAuxiliar.add(l);
+	   		}
+   		}
+   		return listaAuxiliar;
+   }
+   
+//--------------------------------Traer los lotes para un pedido con stock disponible----------------------------
+   public List<Lote> TraerLotesActivosConStock(long idSucursal,long idProducto, int cantidad){	   
+	   List<Lote> listaAuxiliar= new ArrayList<Lote>(); 
+   	
+	   Sucursal sucursal = sucursalConverter.modelToEntity(this.findById(idSucursal));
+	   Producto producto = productoConverter.modelToEntity(productoService.findById(idProducto));
+	   
+	   //se itera entre los lotes de la sucursal dada
+	   for(Lote l: sucursal.getLotes()) {
+		   
+		   
+		   //Si el lote tiene el producto y la cantidad es mayor al stock pedido se agrega a la lista aux
+		   if(l.getProducto().getId()== producto.getId() && l.getCantidadTotal() > cantidad) {
 			   listaAuxiliar.add(l);
 	   		}
    		}
