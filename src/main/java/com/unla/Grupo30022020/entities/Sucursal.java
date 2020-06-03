@@ -14,7 +14,7 @@ public class Sucursal {
 	@Column(name="id")
 	private long id;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Direccion direccion;
 	
 	@Column(name="telefono")

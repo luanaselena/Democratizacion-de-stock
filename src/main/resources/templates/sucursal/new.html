@@ -18,19 +18,27 @@
         </div>
     </header>
     <div class="divPrincipal">
-        <form action="#" th:action="@{/sucursal/create}"
-              th:object="${sucursal}" method="post">
+        <form action="#" th:action="@{/sucursal/create}" method="post">
             <p>
-                Telefono: <input type="text" th:field="*{telefono}" />
+                Telefono: <input type="text" th:field="*{sucursal.telefono}" />
             </p>
             <p>
-                Direccion: <select placeholder="Direccion" th:field="*{direccion.id}">
-					<option th:each="d : ${direcciones}" th:value="${d.id}"
-						th:text="${d.calle}"></option>
-				</select>
-            </p>
+				Ciudad: <input type="text" th:field="*{sucursal.direccion.ciudad}" />
+			</p>
+			<p>
+				Calle: <input type="text" th:field="*{sucursal.direccion.calle}" />
+			</p>
+			<p>
+				Numero: <input type="text" th:field="*{sucursal.direccion.numero}" />
+			</p>
+			<p>
+				Longitud: <input type="text" th:field="*{sucursal.direccion.longitud}" />
+			</p>
+			<p>
+				Latitud: <input type="text" th:field="*{sucursal.direccion.latitud}" />
+			</p>
             <p>
-                Gerente: <select placeholder="Gerente" th:field="*{gerente.id}">
+                Gerente: <select placeholder="Gerente" th:field="*{sucursal.gerente.id}">
 					<option th:each="g : ${gerentes}" th:value="${g.id}"
 						th:text="${g.apellido}"></option>
 				</select>
