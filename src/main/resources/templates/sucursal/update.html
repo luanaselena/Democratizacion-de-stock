@@ -18,10 +18,20 @@
 	    <div class="FormSucursal col-12">
 	        <form action="#" th:action="@{/sucursal/update}" th:object="${sucursal}" method="post">
 	        
-	            <p>Direccion ID: <select placeholder="Direccion" th:field="*{direccion.id}">
-						<option th:each="d : ${direcciones}" th:value="${d.id}"
-							th:text="${d.calle}"></option>
-						</select></p>
+				Ciudad: <input type="text" th:field="*{direccion.ciudad}" />
+			</p>
+			<p>
+				Calle: <input type="text" th:field="*{direccion.calle}" />
+			</p>
+			<p>
+				Numero: <input type="text" th:field="*{direccion.numero}" />
+			</p>
+			<p>
+				Longitud: <input type="text" th:field="*{direccion.longitud}" />
+			</p>
+			<p>
+				Latitud: <input type="text" th:field="*{direccion.latitud}" />
+			</p>
 					
 	            <p>Telefono: <input type="text" th:field="*{telefono}" /></p>
 	            
@@ -31,6 +41,7 @@
 				</p>
 				
 	            <input type="hidden" th:field="*{id}" />
+	            <input type="hidden" th:field="*{direccion.id}" />
 	
 	            <br><br><br><input class="btn btn-success" type="submit" value="Editar"/>
 	        </form>

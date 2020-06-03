@@ -1,6 +1,7 @@
 package com.unla.Grupo30022020.controlers;
 
 import com.unla.Grupo30022020.helpers.ViewRouteHelper;
+import com.unla.Grupo30022020.models.DireccionModel;
 import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VendedorModel;
@@ -50,9 +51,10 @@ public class SucursalController {
 	@GetMapping("/new")
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_NEW);
-		mAV.addObject("sucursal", new SucursalModel());
+		SucursalModel s = new SucursalModel();
+		s.setDireccion(new DireccionModel());
+		mAV.addObject("sucursal", s);
 		mAV.addObject("gerentes", gerenteService.getAll());
-		mAV.addObject("direcciones", direccionService.getAll());
 		return mAV;
 	}
 
