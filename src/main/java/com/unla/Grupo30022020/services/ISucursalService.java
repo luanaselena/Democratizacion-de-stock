@@ -42,4 +42,6 @@ public interface ISucursalService {
     public List<Sucursal> calcularSucursalesConStockDisponible(Producto producto, int cantidad);
     
     public List<Lote> TraerLotesActivosConStock(long idSucursal,long idProducto, int cantidad);
+    
+    public SucursalModel calcularSucursalesCercanasConStockDisponible(Producto producto, int cantidad, SucursalModel sucursal);
 }

@@ -297,6 +297,30 @@ public void restarLotes(long idSucursal, long idProducto, int cantidad) {
 		}
 	
 }
+
+@Override
+public SucursalModel calcularSucursalesCercanasConStockDisponible(Producto producto, int cantidad,
+		SucursalModel sucursalModel) {
+	
+	Sucursal sucMasCercana=this.calcularSucursalesConStockDisponible(producto, cantidad).get(0);
+	Sucursal sucursal = sucursalConverter.modelToEntity(sucursalModel);
+	float distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(0));
+	
+	if(sucursal.getId() == this.calcularSucursalesConStockDisponible(producto, cantidad).get(0).getId()) {
+		distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(1));
+		sucMasCercana=this.calcularSucursalesConStockDisponible(producto, cantidad).get(1);
+	}
+	
+	for(int indice=0; indice<this.calcularSucursalesConStockDisponible(producto, cantidad).size(); indice++) {
+		if(this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice)) < distancia && (sucursal.getId()!=this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice).getId()))
+		{
+			distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice));
+			sucMasCercana=this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice);
+		}
+	}
+	SucursalModel sucCercana = sucursalConverter.entityToModel(sucMasCercana);
+	return sucCercana;
+}
    
    
    
