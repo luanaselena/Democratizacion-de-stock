@@ -22,7 +22,10 @@
 		<div class="container">
     	<div class="row">
     		<div class="col-12 form-group mt-4">
-    			<h2>Generar pedido</h2>
+    			
+    			<h4 style="color:red; font-size:15px;">No hay stock disponible en la sucursal <a th:href="@{/sucursal/{id}(id=${sucursalnostock.id})}" th:text="${sucursalnostock.direccion.calle }+ ' '+ ${ sucursalnostock.direccion.numero}"> </h4>
+    			
+    			<h2>Generar pedido con otra sucursal</h2>
     			<form action="#" th:action="@{/pedido/create/}">
     			
 	    		

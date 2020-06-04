@@ -99,15 +99,13 @@ public class VentaService implements IVentaService {
 	}
 
 	@Override
-	public void generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad) {
+	public boolean generarPedidoConStockPropio(VentaModel ventaModel, ProductoModel productoModel, SucursalModel sucursalModel, int cantidad) {
 	
-		//------------------------------------------------------------------------------------------
-		//Agregar chequeo en restar, por el largo de lotes y por cantidad menor a la pedida,
-		//si no se cumplen derivar a la oportunidad de generar el pedido con otro local
-		//------------------------------------------------------------------------------------------
 		
-		sucursalService.restarLotes(sucursalModel.getId(), productoModel.getId(), cantidad);
-
+		//se chequea si se va a poder abastecer con los lotes que tenemos
+		boolean flag = sucursalService.restarLotes(sucursalModel.getId(), productoModel.getId(), cantidad);
+		
+		if(flag==true) {
 		float plus = ((productoModel.getPrecioUnitario() * 5) / 100) * cantidad;
 		VendedorModel vendedorModel = vendedorService.findById(ventaModel.getVendedorEncargado().getId());
 		vendedorModel.setPlus(ventaModel.getVendedorEncargado().getPlus() + plus);
@@ -115,10 +113,8 @@ public class VentaService implements IVentaService {
 
 		PedidoModel pedido = new PedidoModel(cantidad,productoModel);
 		
-		/*
-		 * Hay que modificar el precio total de la venta sumando el precio de este pedido
-		 * 
-		 */
+		//se setea el precio total a el precio anterior sumado al total del nuevo pedido
+		ventaModel.setPrecioTotal(ventaModel.getPrecioTotal()+(pedido.getCantidad()*pedido.getProducto().getPrecioUnitario()));
 		
 		
 		ventaModel.getPedidos().add(pedido);
@@ -126,6 +122,9 @@ public class VentaService implements IVentaService {
 		
 		this.update(ventaModel);
 		
+		}
+		//se devuelve el valor de flag
+		return flag;
 	}
 	
 	//-----------------------------Proceso de eliminacion de un pedido en la lista
