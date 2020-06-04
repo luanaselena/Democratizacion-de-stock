@@ -275,12 +275,22 @@ public class SucursalService implements ISucursalService {
    }
 
 @Override
-public void restarLotes(long idSucursal, long idProducto, int cantidad) {
+public boolean restarLotes(long idSucursal, long idProducto, int cantidad) {
 	
-		
+	boolean bandera = false;
 	int indice=0;
 	
 	List<Lote> activos = this.TraerLotesActivos(idSucursal, idProducto);
+	
+	int totalDeLotes=0;
+	
+	//se calcula el total de cantidad de todos los lotes
+	for(Lote lote : activos) {
+		totalDeLotes+=lote.getCantidad();
+	}
+	
+	//si hay cantidad suficiente para abastecer la orden se hace, sino se devuelve en false
+	if(totalDeLotes>=cantidad) {
 	
 	while(cantidad > 0) {
 			if(activos.get(indice).getCantidadTotal() > cantidad) {
@@ -296,6 +306,11 @@ public void restarLotes(long idSucursal, long idProducto, int cantidad) {
 			indice++;
 		}
 	
+	bandera=true;
+	}else {
+		bandera=false;
+	}
+	return bandera;
 }
 
 @Override

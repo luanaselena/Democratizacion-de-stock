@@ -64,20 +64,37 @@ public class PedidoController {
 	
 	//-------------------------Generar pedido con stock
 	@GetMapping("/create/")
-	public RedirectView create(
+	public ModelAndView create(
 			@RequestParam(value = "idVenta", required = false) long idVenta,
 			@RequestParam(value = "idSucursal", required = false) long idSucursal,
 			@RequestParam(value = "idProducto", required = false) long idProducto,
 			@RequestParam(value = "cantidad", required = false) int cantidad) {
-		if(sucursalService.TraerLotesActivosConStock(idSucursal, idProducto, cantidad).isEmpty()) {
-			return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
-		}
-		else {
-			ventaService.generarPedidoConStockPropio(ventaService.findById(idVenta), productoService.findById(idProducto), sucursalService.findById(idSucursal), cantidad);
-			return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
+		
+		//Se intenta realizar el pedido, si el pedido fue satisfecho devuelve un true, si no lo fue devuelve false
+		boolean bandera= ventaService.generarPedidoConStockPropio(ventaService.findById(idVenta),productoService.findById(idProducto)
+				,sucursalService.findById(idSucursal), cantidad);
+		
+		ModelAndView mAV;
+		if(bandera==true) {
+		mAV = new ModelAndView(ViewRouteHelper.PEDIDO_INDEX);
+		mAV.addObject("pedidos", pedidoService.getAll());
+		mAV.addObject("sucursales", sucursalService.getAll());
+		mAV.addObject("productos", sucursalService.getAll());
+		}else {
+			mAV = new ModelAndView(ViewRouteHelper.PEDIDO_NOSTOCK);
+			
+			//envio la sucursal que se intento usar para notificar cual es la que no tiene stock
+			mAV.addObject("sucursalnostock",sucursalService.findById(idSucursal));
+			mAV.addObject("pedido", new PedidoModel());
+			mAV.addObject("ventas", ventaService.getAll());
+			
+			//----reemplazar estas sucursales por las sucursales cercanas---
+			mAV.addObject("sucursales", sucursalService.getAll());
+			
+			mAV.addObject("productos", productoService.getAll());
 		}
 		
-		
+		return mAV;
 	}
 	
 	@GetMapping("/{id}")
