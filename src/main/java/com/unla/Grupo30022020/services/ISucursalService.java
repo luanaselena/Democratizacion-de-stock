@@ -5,6 +5,7 @@ import com.unla.Grupo30022020.entities.Lote;
 import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
+import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 
 import java.util.List;
@@ -43,5 +44,5 @@ public interface ISucursalService {
     
     public List<Lote> TraerLotesActivosConStock(long idSucursal,long idProducto, int cantidad);
     
-    public SucursalModel calcularSucursalesCercanasConStockDisponible(Producto producto, int cantidad, SucursalModel sucursal);
+    public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(ProductoModel productoModel, int cantidad, SucursalModel sucursal);
 }

@@ -9,6 +9,7 @@ import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
 import com.unla.Grupo30022020.models.LoteModel;
+import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VendedorModel;
 import com.unla.Grupo30022020.repositories.ISucursalRepository;
@@ -314,16 +315,19 @@ public boolean restarLotes(long idSucursal, long idProducto, int cantidad) {
 }
 
 @Override
-public SucursalModel calcularSucursalesCercanasConStockDisponible(Producto producto, int cantidad,
-		SucursalModel sucursalModel) {
-	
+public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(ProductoModel productoModel, int cantidad,SucursalModel sucursalModel) {
+
+    List<SucursalModel> sucursales = new ArrayList<>();
+    Producto producto = productoConverter.modelToEntity(productoModel);
 	Sucursal sucMasCercana=this.calcularSucursalesConStockDisponible(producto, cantidad).get(0);
+    Sucursal sucMasCercana2=this.calcularSucursalesConStockDisponible(producto, cantidad).get(0);
 	Sucursal sucursal = sucursalConverter.modelToEntity(sucursalModel);
 	float distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(0));
 	
 	if(sucursal.getId() == this.calcularSucursalesConStockDisponible(producto, cantidad).get(0).getId()) {
 		distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(1));
 		sucMasCercana=this.calcularSucursalesConStockDisponible(producto, cantidad).get(1);
+		sucMasCercana2 = sucMasCercana;
 	}
 	
 	for(int indice=0; indice<this.calcularSucursalesConStockDisponible(producto, cantidad).size(); indice++) {
@@ -334,9 +338,19 @@ public SucursalModel calcularSucursalesCercanasConStockDisponible(Producto produ
 		}
 	}
 	SucursalModel sucCercana = sucursalConverter.entityToModel(sucMasCercana);
-	return sucCercana;
+	sucursales.add(sucCercana);
+    distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(0));
+
+    for(int indice=0; indice<this.calcularSucursalesConStockDisponible(producto, cantidad).size(); indice++) {
+        if((this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice)!=sucMasCercana)&& (this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice)) < distancia) && (sucursal.getId()!=this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice).getId()))
+        {
+            distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice));
+            sucMasCercana2=this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice);
+        }
+    }
+    SucursalModel sucCercana2 = sucursalConverter.entityToModel(sucMasCercana2);
+    sucursales.add(sucCercana2);
+
+    return sucursales;
 }
-   
-   
-   
 }
