@@ -87,9 +87,7 @@ public class PedidoController {
 			mAV.addObject("sucursalnostock",sucursalService.findById(idSucursal));
 			mAV.addObject("pedido", new PedidoModel());
 			mAV.addObject("ventas", ventaService.getAll());
-			
-			//----reemplazar estas sucursales por las sucursales cercanas---
-			mAV.addObject("sucursales", sucursalService.getAll());
+			mAV.addObject("sucursales", sucursalService.calcularSucursalesCercanasConStockDisponible(productoService.findById(idProducto), cantidad, sucursalService.findById(idSucursal)));
 			
 			mAV.addObject("productos", productoService.getAll());
 		}
