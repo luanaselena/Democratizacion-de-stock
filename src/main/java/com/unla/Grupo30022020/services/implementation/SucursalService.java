@@ -327,7 +327,7 @@ public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(Producto
 	if(sucursal.getId() == this.calcularSucursalesConStockDisponible(producto, cantidad).get(0).getId()) {
 		distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(1));
 		sucMasCercana=this.calcularSucursalesConStockDisponible(producto, cantidad).get(1);
-		sucMasCercana2 = sucMasCercana;
+        sucMasCercana2=this.calcularSucursalesConStockDisponible(producto, cantidad).get(1);
 	}
 	
 	for(int indice=0; indice<this.calcularSucursalesConStockDisponible(producto, cantidad).size(); indice++) {
@@ -342,7 +342,7 @@ public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(Producto
     distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(0));
 
     for(int indice=0; indice<this.calcularSucursalesConStockDisponible(producto, cantidad).size(); indice++) {
-        if((this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice)!=sucMasCercana)&& (this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice)) < distancia) && (sucursal.getId()!=this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice).getId()))
+        if((!this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice).equals(sucMasCercana))&& (this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice)) < distancia) && (sucursal.getId()!=this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice).getId()))
         {
             distancia=this.calcularDistancia(sucursal,this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice));
             sucMasCercana2=this.calcularSucursalesConStockDisponible(producto, cantidad).get(indice);
