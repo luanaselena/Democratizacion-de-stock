@@ -2,6 +2,7 @@ package com.unla.Grupo30022020.models;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class SucursalModel {
@@ -77,5 +78,14 @@ public class SucursalModel {
 
     public void setLotes(Set<LoteModel> lotes) {
         this.lotes = lotes;
+    }
+
+    public boolean equals(SucursalModel sucursalModel) {
+        return id == sucursalModel.id &&
+                telefono == sucursalModel.telefono &&
+                Objects.equals(direccion, sucursalModel.direccion) &&
+                Objects.equals(gerente, sucursalModel.gerente) &&
+                Objects.equals(vendedores, sucursalModel.vendedores) &&
+                Objects.equals(lotes, sucursalModel.lotes);
     }
 }
