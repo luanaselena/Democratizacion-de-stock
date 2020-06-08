@@ -27,7 +27,7 @@
     			
 	    		
 	    		  	<select class="form-control mb-2" th:name="idVenta">
-		    			  <option disabled selected>Seleccionar la Venta</option>
+		    			  <option disabled selected>Seleccionar el Nro de Venta</option>
 						    <option th:each="venta : ${ventas}" placeholder="venta" th:value="${venta.id}"
 						     th:text="${venta.id}"></option>
 					 </select>

@@ -86,10 +86,11 @@ public class PedidoController {
 			//envio la sucursal que se intento usar para notificar cual es la que no tiene stock
 			mAV.addObject("sucursalnostock",sucursalService.findById(idSucursal));
 			mAV.addObject("pedido", new PedidoModel());
-			mAV.addObject("ventas", ventaService.getAll());
+			mAV.addObject("venta", ventaService.findById(idVenta));
 			mAV.addObject("sucursales", sucursalService.calcularSucursalesCercanasConStockDisponible(productoService.findById(idProducto), cantidad, sucursalService.findById(idSucursal)));
 			
-			mAV.addObject("productos", productoService.getAll());
+			mAV.addObject("producto", productoService.findById(idProducto));
+			mAV.addObject("cantidad", cantidad);
 		}
 		
 		return mAV;
