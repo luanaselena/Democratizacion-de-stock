@@ -249,7 +249,7 @@ public class SucursalService implements ISucursalService {
 		   
 		   
 		   //Si el lote tiene el producto y la cantidad es mayor a 0 se lo agrega
-		   if(l.getProducto().getId()== producto.getId() && l.getCantidad()>0) {
+		   if(l.getProducto().getId()== producto.getId() && l.getCantidadTotal()>0) {
 			   listaAuxiliar.add(l);
 	   		}
    		}
@@ -287,7 +287,7 @@ public boolean restarLotes(long idSucursal, long idProducto, int cantidad) {
 	
 	//se calcula el total de cantidad de todos los lotes
 	for(Lote lote : activos) {
-		totalDeLotes+=lote.getCantidad();
+		totalDeLotes+=lote.getCantidadTotal();
 	}
 	
 	//si hay cantidad suficiente para abastecer la orden se hace, sino se devuelve en false
@@ -349,7 +349,9 @@ public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(Producto
         }
     }
     SucursalModel sucCercana2 = sucursalConverter.entityToModel(sucMasCercana2);
-    sucursales.add(sucCercana2);
+    
+    if(sucCercana2.getId()!=sucCercana.getId()) {
+    sucursales.add(sucCercana2);}
 
     return sucursales;
 }

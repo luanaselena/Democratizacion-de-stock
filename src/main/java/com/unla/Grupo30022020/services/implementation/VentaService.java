@@ -114,7 +114,7 @@ public class VentaService implements IVentaService {
 		PedidoModel pedido = new PedidoModel(cantidad,productoModel);
 		
 		//se setea el precio total a el precio anterior sumado al total del nuevo pedido
-		ventaModel.setPrecioTotal(ventaModel.getPrecioTotal()+(pedido.getCantidad()*pedido.getProducto().getPrecioUnitario()));
+		ventaModel.setPrecioTotal(ventaModel.getPrecioTotal()+(pedido.getCantidad()*productoModel.getPrecioUnitario()));
 		
 		
 		ventaModel.getPedidos().add(pedido);
