@@ -4,6 +4,8 @@ public class ViewRouteHelper {
 	
 	public final static String INDEX = "home/index";
 	public final static String ROUTE = "/index";
+	public final static String RANKINGPRODUCTOVENDIDO = "home/rankingproductovendidos";
+	
 	
 	public final static String DIRECCION_INDEX = "direccion/index";
 	public final static String DIRECCION_NEW = "direccion/new";
@@ -54,4 +56,6 @@ public class ViewRouteHelper {
 	public final static String SUCURSAL_CERCANIA = "sucursal/cercania";
 	public final static String SUCURSAL_DISTANCIA = "sucursal/distancia";
 	public final static String SUCURSAL_ROOT = "/sucursal";
+	
+	
 }
