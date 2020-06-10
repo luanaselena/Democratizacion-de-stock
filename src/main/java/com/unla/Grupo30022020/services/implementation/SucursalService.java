@@ -1,6 +1,7 @@
 package com.unla.Grupo30022020.services.implementation;
 
 import com.unla.Grupo30022020.converters.LoteConverter;
+import com.unla.Grupo30022020.converters.PedidoConverter;
 import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
 import com.unla.Grupo30022020.converters.VentaConverter;
@@ -11,6 +12,7 @@ import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
 import com.unla.Grupo30022020.entities.Venta;
 import com.unla.Grupo30022020.models.LoteModel;
+import com.unla.Grupo30022020.models.PedidoModel;
 import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VendedorModel;
@@ -71,6 +73,10 @@ public class SucursalService implements ISucursalService {
     @Autowired
    	@Qualifier("ventaConverter")
    	private VentaConverter ventaConverter;
+    
+    @Autowired
+   	@Qualifier("pedidoConverter")
+   	private PedidoConverter pedidoConverter;
 
     @Override
     public List<Sucursal> getAll(){
@@ -384,6 +390,7 @@ public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(Producto
     return sucursales;
 }
 
+	//----------------------------------Consigue las ventas de una sucursal filtrando entre dos fechas
 	@Override
 	public List<VentaModel> conseguirVentasSucursalYFecha(SucursalModel sucursalModel, LocalDate fechaInicio,
 		LocalDate fechaFin) {
@@ -395,5 +402,21 @@ public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(Producto
 			}
 		}
 	return ventasPorFecha;
+	}
+	
+	//----------------------------------Consigue los productos ventas de una sucursal filtrando entre dos fechas
+	public List<ProductoModel> conseguirProductosPorFecha(SucursalModel sucursalModel, LocalDate fechaInicio, LocalDate fechaFin){
+		List<VentaModel> ventas = this.conseguirVentasSucursalYFecha(sucursalModel, fechaInicio, fechaFin);
+		List<ProductoModel> productos = new ArrayList<>();
+		
+		for(VentaModel venta: ventas) {
+			for(PedidoModel pedido: venta.getPedidos()) {
+				if(!productos.contains(pedido.getProducto())) {
+					productos.add(pedido.getProducto());
+				}
+			}
+		}
+		
+		return productos;
 	}
 }
