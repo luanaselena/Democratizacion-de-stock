@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -382,4 +383,17 @@ public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(Producto
 
     return sucursales;
 }
+
+	@Override
+	public List<VentaModel> conseguirVentasSucursalYFecha(SucursalModel sucursalModel, LocalDate fechaInicio,
+		LocalDate fechaFin) {
+		List<VentaModel> ventas = this.conseguirVentasSucursal(sucursalModel);
+		List<VentaModel> ventasPorFecha = new ArrayList<>();
+		for(VentaModel v: ventas) {
+			if( (v.getFecha().isAfter(fechaInicio) && v.getFecha().isBefore(fechaFin)) || v.getFecha().isEqual(fechaInicio) || v.getFecha().isEqual(fechaFin) ) {
+				ventasPorFecha.add(v);
+			}
+		}
+	return ventasPorFecha;
+	}
 }
