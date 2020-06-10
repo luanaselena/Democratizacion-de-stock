@@ -9,6 +9,7 @@ import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VentaModel;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ISucursalService {
@@ -48,4 +49,6 @@ public interface ISucursalService {
     public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(ProductoModel productoModel, int cantidad, SucursalModel sucursal);
     
     public List<VentaModel>  conseguirVentasSucursal(SucursalModel sucursalModel);
+    
+    public List<VentaModel> conseguirVentasSucursalYFecha(SucursalModel sucursalModel, LocalDate fechaInicio, LocalDate fechaFin);
 }
