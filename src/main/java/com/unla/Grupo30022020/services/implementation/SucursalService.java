@@ -3,15 +3,18 @@ package com.unla.Grupo30022020.services.implementation;
 import com.unla.Grupo30022020.converters.LoteConverter;
 import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
+import com.unla.Grupo30022020.converters.VentaConverter;
 import com.unla.Grupo30022020.entities.Direccion;
 import com.unla.Grupo30022020.entities.Lote;
 import com.unla.Grupo30022020.entities.Producto;
 import com.unla.Grupo30022020.entities.Sucursal;
 import com.unla.Grupo30022020.entities.Vendedor;
+import com.unla.Grupo30022020.entities.Venta;
 import com.unla.Grupo30022020.models.LoteModel;
 import com.unla.Grupo30022020.models.ProductoModel;
 import com.unla.Grupo30022020.models.SucursalModel;
 import com.unla.Grupo30022020.models.VendedorModel;
+import com.unla.Grupo30022020.models.VentaModel;
 import com.unla.Grupo30022020.repositories.ISucursalRepository;
 import com.unla.Grupo30022020.services.ISucursalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +52,10 @@ public class SucursalService implements ISucursalService {
    	private VendedorService vendedorService;
     
     @Autowired
+   	@Qualifier("ventaService")
+   	private VentaService ventaService;
+    
+    @Autowired
    	@Qualifier("productoService")
    	private ProductoService productoService;
     
@@ -59,6 +66,10 @@ public class SucursalService implements ISucursalService {
     @Autowired
    	@Qualifier("loteConverter")
    	private LoteConverter loteConverter;
+    
+    @Autowired
+   	@Qualifier("ventaConverter")
+   	private VentaConverter ventaConverter;
 
     @Override
     public List<Sucursal> getAll(){
@@ -168,6 +179,22 @@ public class SucursalService implements ISucursalService {
         
    	return sucursal;
    }
+    
+   //----------------------Conseguir todas las ventas de sucursales
+    public List<VentaModel>  conseguirVentasSucursal(SucursalModel sucursalModel){
+    	List<VentaModel> ventasPorSucursal = new ArrayList<>();
+    	
+    	for(Venta venta: ventaService.getAll()) {
+    		for(VendedorModel vendedor: sucursalModel.getVendedores()) {
+    			if(venta.getVendedorEncargado().getId() == vendedor.getId() ) {
+    				VentaModel ventaModel = ventaConverter.entityToModel(venta);
+    				ventasPorSucursal.add(ventaModel);
+    			}
+    		}
+    	}
+    	
+    	return ventasPorSucursal;
+    }
     
     
    //--------------------------------Traer los lotes que no pertenecen a otras listas----------------------------
