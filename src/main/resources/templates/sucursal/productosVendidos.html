@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos Vendidos</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <div class="headerbg">
+
+          <a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+
+        </div>
+    </header>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-12 form-group mt-4">
+    			<h2>Seleccione la Sucursal y entre qué fechas quiere obtener los productos vendidos</h2>
+    			<form action="#" th:action="@{/sucursal/cercania/}">
+    			
+	    			 <select th:name="id">
+					     <option th:each="sucursa : ${sucursales}" th:value="${sucursa.id}"
+					      th:text="${sucursa.id}"></option>
+					 </select>
+					 
+					 <p>
+						Fecha Inicio: <input type="date" th:field=${fechaI} />
+					</p>
+					 <p>
+						Fecha Fin: <input type="date" th:field=${fechaF} />
+					</p>
+					 
+					 <input class="btn btn-sm btn-primary" type="submit" value="calcular distancia" />
+					 <br/><br/>
+					 <a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
+    			</form>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>
