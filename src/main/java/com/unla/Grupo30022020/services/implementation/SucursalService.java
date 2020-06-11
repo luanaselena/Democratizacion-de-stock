@@ -190,7 +190,6 @@ public class SucursalService implements ISucursalService {
    //----------------------Conseguir todas las ventas de sucursales
     public List<VentaModel>  conseguirVentasSucursal(SucursalModel sucursalModel){
     	List<VentaModel> ventasPorSucursal = new ArrayList<>();
-    	
     	for(Venta venta: ventaService.getAll()) {
     		for(VendedorModel vendedor: sucursalModel.getVendedores()) {
     			if(venta.getVendedorEncargado().getId() == vendedor.getId() ) {

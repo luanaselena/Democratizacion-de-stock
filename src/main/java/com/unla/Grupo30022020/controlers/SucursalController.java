@@ -8,6 +8,7 @@ import com.unla.Grupo30022020.models.VendedorModel;
 import com.unla.Grupo30022020.services.IDireccionService;
 import com.unla.Grupo30022020.services.IGerenteService;
 import com.unla.Grupo30022020.services.ILoteService;
+import com.unla.Grupo30022020.services.IProductoService;
 import com.unla.Grupo30022020.services.ISucursalService;
 import com.unla.Grupo30022020.services.IVendedorService;
 
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,6 +45,10 @@ public class SucursalController {
 	@Autowired
 	@Qualifier("vendedorService")
 	private IVendedorService vendedorService;
+	
+	@Autowired
+	@Qualifier("productoService")
+	private IProductoService productoService;
 
 	@GetMapping("")
 	public ModelAndView index() {
@@ -88,7 +94,6 @@ public class SucursalController {
 	@GetMapping("/distancia")
 	public ModelAndView distancia() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_DISTANCIA);
-		//  mAV.addObject("sucursal", new SucursalModel());
 		mAV.addObject("sucursales", sucursalService.getAll());
 		return mAV;
 	}
@@ -104,29 +109,26 @@ public class SucursalController {
 	}
 	
 	//vista de seleccion de sucursal y fecha
-		@GetMapping("/sucursalYFecha")
-		public ModelAndView traerProdcutosPorFechaYSucursal() {
-			ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_PRODUCTOSFECHA);
-			//  mAV.addObject("sucursal", new SucursalModel());
-			mAV.addObject("sucursales", sucursalService.getAll());
-			LocalDate fechaI = LocalDate.now();
-			LocalDate fechaF = LocalDate.now();
-			mAV.addObject("fechaI", fechaI);
-			mAV.addObject("fechaF", fechaF);
-			return mAV;
-		}
-		
-		//calcular la sucursal mas cercana
-		@GetMapping("/sucursalYFechaResultado/")
-		public ModelAndView calcularProductosVendidos(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "fechaI", required = true) LocalDate fechaI, @RequestParam(value = "fechaF", required = true) LocalDate fechaF){
-			System.out.println("el id es: " + id);
-			System.out.println("la fecha inicial es: " + fechaI);
-			System.out.println("la fecha final es: " + fechaF);
-			SucursalModel sucursalModel = sucursalService.findById(id);
-			ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_TRAERPRODUCTOS);
-			mAV.addObject("productos", sucursalService.conseguirProductosPorFecha(sucursalModel, fechaI, fechaF) );
-			return mAV;
-		}
+	@GetMapping("/sucursalYFecha")
+	public ModelAndView traerProdcutosPorFechaYSucursal() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_PRODUCTOSFECHA);
+		//  mAV.addObject("sucursal", new SucursalModel());
+		mAV.addObject("sucursales", sucursalService.getAll());
+		LocalDate fechaI = LocalDate.now();
+		LocalDate fechaF = LocalDate.now();
+		mAV.addObject("fechaI", fechaI);
+		mAV.addObject("fechaF", fechaF);
+		return mAV;
+	}
+	
+	//calcular la sucursal mas cercana
+	@GetMapping("/sucursalYFechaResultado/")
+	public ModelAndView calcularProductosVendidos(@RequestParam(value = "id", required = true) long id, @RequestParam(value = "fechaI", required = true)@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaI, @RequestParam(value = "fechaF", required = true)@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaF){
+		SucursalModel sucursalModel = sucursalService.findById(id);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_TRAERPRODUCTOS);
+		mAV.addObject("productos", sucursalService.conseguirProductosPorFecha(sucursalModel, fechaI, fechaF) );
+		return mAV;
+	}
 
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("sucursal") SucursalModel sucursalModel) {
