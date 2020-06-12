@@ -53,4 +53,6 @@ public interface ISucursalService {
     public List<VentaModel> conseguirVentasSucursalYFecha(SucursalModel sucursalModel, LocalDate fechaInicio, LocalDate fechaFin);
     
     public List<ProductoModel> conseguirProductosPorFecha(SucursalModel sucursalModel, LocalDate fechaInicio, LocalDate fechaFin);
+
+    public List<Vendedor> cierreDelMes(long idSucursal);
 }

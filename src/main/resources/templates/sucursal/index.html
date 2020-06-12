@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index Sucursal</title>
@@ -25,7 +25,8 @@
                     <th>Direccion </th>
                     <th>Telefono</th>
                     <th>Gerente</th>
-                    <th></th>
+                    <th>Sucursal</th>
+                    <th>Cierre del mes</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,8 @@
                     <td><span th:text="${sucursal.telefono}"></span></td>
                     <td><a th:href="@{/gerente/{id}(id=${sucursal.gerente.id})}" th:text="${sucursal.gerente.nombre}+ ' '+${sucursal.gerente.apellido} "></td>
                     <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">Ver</a>
+                     <td><a th:href="@{/sucursal/cierre/{id}(id=${sucursal.id})}">Ver Cierre del mes</a>
+                    
                     </td>
                 </tr>
             </tbody>
