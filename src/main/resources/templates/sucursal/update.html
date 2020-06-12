@@ -64,7 +64,7 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Id Producto</th>
+						<th>Producto</th>
 						<th>Cantidad</th>
 						<th>CantidadTotal</th>
 						<th>Fecha de ingreso</th>
@@ -76,7 +76,7 @@
 					<tr th:each="lote : ${sucursal.lotes}">
 					<td><span th:text="${lote.id}"></span></td>
 					
-						<td><span th:text="${lote.producto.id}"></span></td>
+						<td><span th:text="${lote.producto.descripcion}"></span></td>
 						<td><span th:text="${lote.cantidad}"></span></td>
 						<td><span th:text="${lote.cantidadTotal}"></span></td>
 						<td><span th:text="${lote.fechaIngreso}"></span></td>

@@ -20,12 +20,12 @@
     <div class="container">
     	<div class="row">
     		<div class="col-12 form-group mt-4">
-    			<h2>Seleccione la Sucursal y entre qué fechas quiere obtener los productos vendidos</h2>
+    			<h2>Productos vendidos entre fechas por sucursal</h2><br/><br/>
     			<form action="#" th:action="@{/sucursal/sucursalYFechaResultado/}">
-    			
+
 	    			 <select th:name="id">
-					     <option th:each="sucursa : ${sucursales}" th:value="${sucursa.id}"
-					      th:text="${sucursa.id}"></option>
+					     <option th:each="sucursal : ${sucursales}" th:value="${sucursal.id}"
+					      th:text="${sucursal.id}"></option>
 					 </select>
 					 
 					 <p>
@@ -35,7 +35,7 @@
 						Fecha Fin: <input type="date" name="fechaF" th:value="${{fechaF}}" />
 					</p>
 					 
-					 <input class="btn btn-sm btn-primary" type="submit" value="Calcular productos vendidos" />
+					 <input class="btn btn-sm btn-primary" type="submit" value="Calcular" />
 					 <br/><br/>
 					 <a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
     			</form>
