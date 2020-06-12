@@ -4,6 +4,7 @@ import com.unla.Grupo30022020.converters.LoteConverter;
 import com.unla.Grupo30022020.converters.PedidoConverter;
 import com.unla.Grupo30022020.converters.ProductoConverter;
 import com.unla.Grupo30022020.converters.SucursalConverter;
+import com.unla.Grupo30022020.converters.VendedorConverter;
 import com.unla.Grupo30022020.converters.VentaConverter;
 import com.unla.Grupo30022020.entities.Direccion;
 import com.unla.Grupo30022020.entities.Lote;
@@ -37,6 +38,10 @@ public class SucursalService implements ISucursalService {
     @Autowired
     @Qualifier("sucursalConverter")
     private SucursalConverter sucursalConverter;
+    
+    @Autowired
+    @Qualifier("vendedorConverter")
+    private VendedorConverter vendedorConverter;
     
     @Autowired
 	@Qualifier("direccionService")
@@ -418,4 +423,24 @@ public List<SucursalModel> calcularSucursalesCercanasConStockDisponible(Producto
 		
 		return productos;
 	}
+	
+
+
+@Override
+public List<Vendedor> cierreDelMes(long idSucursal) {
+	
+
+	Sucursal sucursal = sucursalConverter.modelToEntity(this.findById(idSucursal));	
+	List<Vendedor> lista = new ArrayList<>();
+	
+	for(Vendedor indice: sucursal.getVendedores()) {
+		
+		indice.setSueldoBasico(indice.getSueldoBasico()+indice.getPlus());
+		lista.add(indice);
+	}
+	
+	return lista;
+}
+
+
 }
