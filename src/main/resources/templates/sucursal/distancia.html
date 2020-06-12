@@ -20,15 +20,15 @@
     <div class="container">
     	<div class="row">
     		<div class="col-12 form-group mt-4">
-    			<h2>Seleccione una sucursal para obtener la sucursal vecina mas cercana</h2>
+    			<h2>Obtener sucursales cercanas</h2><br/><br/>
     			<form action="#" th:action="@{/sucursal/cercania/}">
     			
 	    			 <select th:name="id">
-					     <option th:each="sucursa : ${sucursales}" th:value="${sucursa.id}"
-					      th:text="${sucursa.id}"></option>
+					     <option th:each="sucursal : ${sucursales}" th:value="${sucursal.id}"
+					      th:text="${sucursal.direccion.calle}+ ' '+ ${sucursal.direccion.numero}"></option>
 					 </select>
 					 
-					 <input class="btn btn-sm btn-primary" type="submit" value="calcular distancia" />
+					 <input class="btn btn-sm btn-primary" type="submit" value="Calcular" />
 					 <br/><br/>
 					 <a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
     			</form>
