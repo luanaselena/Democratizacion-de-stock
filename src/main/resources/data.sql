@@ -58,7 +58,7 @@ INSERT INTO sucursal_vendedores (sucursal_id,vendedores_id) VALUES(29,30);
 INSERT INTO sucursal_vendedores (sucursal_id,vendedores_id) VALUES(24,31);
 INSERT INTO sucursal_vendedores (sucursal_id,vendedores_id) VALUES(25,32);
 
-INSERT INTO venta (id, fecha, hora, precio_total, idcliente,idvendedor) VALUES(19,"2020-05-04","09:00:00",0,6,19);
+INSERT INTO venta (id, fecha, hora, precio_total, idcliente,idvendedor) VALUES(19,"2020-05-04","09:00:00",14400,6,19);
 
 INSERT INTO pedido (id,aceptado,cantidad,productoid) VALUES(20,false,32,12);
 

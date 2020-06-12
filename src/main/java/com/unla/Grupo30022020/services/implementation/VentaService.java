@@ -81,11 +81,25 @@ public class VentaService implements IVentaService {
 		
 		ventaModel.setVendedorEncargado(vendedorService.findById(ventaModel.getVendedorEncargado().getId()));
 		ventaModel.setCliente(clienteService.findById(ventaModel.getCliente().getId()));
+		ventaModel.setPedidos(this.findById(ventaModel.getId()).getPedidos());
+		ventaModel.setPrecioTotal(this.findById(ventaModel.getId()).getPrecioTotal());
+		ventaModel.setFecha(this.findById(ventaModel.getId()).getFecha().plusDays(1));
 		
 		Venta venta = ventaRepository.save(ventaConverter.modelToEntity(ventaModel));
 		return ventaConverter.entityToModel(venta);
 	}
 
+	@Override
+	public VentaModel updateParaPedido(VentaModel ventaModel) {
+		
+		ventaModel.setVendedorEncargado(vendedorService.findById(ventaModel.getVendedorEncargado().getId()));
+		ventaModel.setCliente(clienteService.findById(ventaModel.getCliente().getId()));
+		ventaModel.setFecha(this.findById(ventaModel.getId()).getFecha().plusDays(1));
+		
+		Venta venta = ventaRepository.save(ventaConverter.modelToEntity(ventaModel));
+		return ventaConverter.entityToModel(venta);
+	}
+	
 	@Override
 	public boolean remove(long id) {
 
@@ -120,7 +134,7 @@ public class VentaService implements IVentaService {
 		ventaModel.getPedidos().add(pedido);
 		ventaModel.setVendedorEncargado(vendedorModel);
 		
-		this.update(ventaModel);
+		this.updateParaPedido(ventaModel);
 		
 		}
 		//se devuelve el valor de flag

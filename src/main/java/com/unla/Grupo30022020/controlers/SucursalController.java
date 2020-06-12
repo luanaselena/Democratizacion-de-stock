@@ -104,10 +104,7 @@ public class SucursalController {
 	@GetMapping("/distancia")
 	public ModelAndView distancia() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.SUCURSAL_DISTANCIA);
-<<<<<<< HEAD
-		// mAV.addObject("sucursal", new SucursalModel());
-=======
->>>>>>> 23fa79781126dd05ed3404adf7ade4b2e7a7cd6a
+
 		mAV.addObject("sucursales", sucursalService.getAll());
 		return mAV;
 	}
