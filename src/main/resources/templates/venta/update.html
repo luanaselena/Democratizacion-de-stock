@@ -69,7 +69,7 @@
 			<tbody>
 				<tr th:each="pedido : ${venta.pedidos}">
 					<td><span th:text="${pedido.cantidad}"></span></td>
-					<td><a th:href="@{/producto/{id}(id=${pedido.producto.id})}" th:text="${pedido.producto.id}"></td>
+					<td><a th:href="@{/producto/{id}(id=${pedido.producto.id})}" th:text="${pedido.producto.descripcion}"></td>
 					<td><span th:text="${pedido.aceptado}"></span></td>
 					<td><span th:text="${pedido.id}"></span></td>
 					<td><a th:href="@{/pedido/{id}(id=${pedido.id})}">View</a></td>
