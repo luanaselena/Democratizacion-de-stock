@@ -24,4 +24,5 @@ public interface IVentaService {
 	
 	public VentaModel EliminarPedido(long idVenta,long idPedido);
 
+	public VentaModel updateParaPedido(VentaModel ventaModel);
 }
