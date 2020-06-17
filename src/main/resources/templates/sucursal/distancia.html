@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index Sucursal</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-</head>
-<body>
-    <header>
-        <div class="headerbg">
+	<head>
+		<meta charset="UTF-8">
+		<title>Index Sucursal</title>
+		<link rel="stylesheet"
+			  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			  crossorigin="anonymous">
+		<link rel="stylesheet" th:href="@{/css/style.css}" />
+	</head>
+	<body>
+		<header>
+			<div class="headerbg">
 
-          <a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+			  <a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
 
-        </div>
-    </header>
-    <div class="container">
-    	<div class="row">
-    		<div class="col-12 form-group mt-4">
-    			<h2>Obtener sucursales cercanas</h2><br/><br/>
-    			<form action="#" th:action="@{/sucursal/cercania/}">
-    			
-	    			 <select th:name="id">
-					     <option th:each="sucursal : ${sucursales}" th:value="${sucursal.id}"
-					      th:text="${sucursal.direccion.calle}+ ' '+ ${sucursal.direccion.numero}"></option>
-					 </select>
-					 
-					 <input class="btn btn-sm btn-primary" type="submit" value="Calcular" />
-					 <br/><br/>
-					 <a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
-    			</form>
-    		</div>
-    	</div>
-    </div>
-</body>
+			</div>
+		</header>
+		<div class="divPrincipal">
+			<h2>Obtener sucursales cercanas</h2><br/><br/>
+			<form action="#" th:action="@{/sucursal/cercania/}">
+
+				<p>
+					Sucursal:
+					<select th:name="id">
+						<option th:each="sucursal : ${sucursales}" th:value="${sucursal.id}"
+								th:text="${sucursal.direccion.calle}+ ' '+ ${sucursal.direccion.numero}"></option>
+					</select>
+				</p>
+
+				<input class="btn btn-sm btn-primary" type="submit" value="Calcular" />
+				<br/><br/>
+				<a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
+			</form>
+		</div>
+	</body>
 </html>

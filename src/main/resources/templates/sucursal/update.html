@@ -98,7 +98,7 @@
       
 				<p>
 					Agregar Lote: <select placeholder="loteAgregar" th:field="${loteAgregar.id}">
-						<option th:each="l : ${lotesLista}" th:value="${l.id}" th:text="${l.id}"></option>
+						<option th:each="l : ${lotesLista}" th:value="${l.id}" th:text="${l.producto.descripcion}"></option>
 					</select>
 				</p>
 				
