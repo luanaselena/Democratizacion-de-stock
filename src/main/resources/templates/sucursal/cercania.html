@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Sucursal</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <header>
+        <div class="headerbg">
+
+           <a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+
+        </div>
+    </header>
+    <div class="divPrincipal">
+    <h2>La sucursal mas cercana es:</h2>
+        <table border="1px">
+
+            <thead>
+                <tr>
+                    <th>Direccion ID</th>
+                    <th>Telefono</th>
+                    <th>Gerente ID</th>
+          
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:object="${sucursal}">
+                	<td><a th:href="@{/direccion/{id}(id=${sucursal.direccion.id})}" th:text="${sucursal.direccion.calle}+ ' '+ ${sucursal.direccion.numero}"></td>
+                    <td><span th:text="${sucursal.telefono}"></span></td>
+                    <td><a th:href="@{/gerente/{id}(id=${sucursal.gerente.id})}" th:text="${sucursal.gerente.nombre}+ ' '+ ${sucursal.gerente.apellido}"></td>
+             
+                    <td><a th:href="@{/sucursal/{id}(id=${sucursal.id})}">View</a>
+                    <a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+</body>
+</html>

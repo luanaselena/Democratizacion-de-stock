@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{css/style.css}" />
+</head>
+<body>
+	<header>
+		<div class="headerbg">
+
+			<h3>Grupo 3- OO2 Democratizacion de Stock</h3>
+
+		</div>
+	</header>
+	<div class="textHome">
+  		<h2>ABM's de Democratización de Stock </h2>
+  	</div>
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-12 text-center">
+  				<div class="table-responsive">
+  				<table class="table">
+				  <thead>
+				    <tr>
+				      <th colspan="2">Seleccione una opción</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td><a class="linksIndex" th:href="@{/sucursal}">Sucursales</a></td>
+				      <td><a class="linksIndex" th:href="@{/lote}">Lotes</a></td>
+				    </tr>
+				    <tr>
+				      <td><a class="linksIndex" th:href="@{/direccion}">Direcciones</a></td>
+				      <td><a class="linksIndex" th:href="@{/producto}">Productos</a></td>
+				    </tr>
+				    <tr>
+				      <td><a class="linksIndex" th:href="@{/cliente}">Clientes</a></td>
+				      <td><a class="linksIndex" th:href="@{/gerente}">Gerentes</a></td>
+				    </tr>
+				    <tr>
+				      <td><a class="linksIndex" th:href="@{/vendedor}">Vendedores</a></td>
+				      <td><a class="linksIndex" th:href="@{/pedido}">Pedidos</a></td>
+				    </tr>
+					<tr>
+						<td><a class="linksIndex" th:href="@{/venta}">Venta</a></td>
+					</tr>
+				    <tr>
+				      <td colspan="2"><a  class="linksIndex" th:href="@{/sucursal/distancia}">Saber la sucursal más cercana</a></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2"><a  class="linksIndex" th:href="@{/rankingproductosvendidos}">Emitir ranking de producto mas vendido</a></td>
+				    </tr>
+				    <tr>
+				      <td colspan="2"><a  class="linksIndex" th:href="@{/sucursal/sucursalYFecha}">Productos vendidos entre fechas</a></td>
+				    </tr>
+				  </tbody>
+				</table>
+				</div>
+  			</div>
+  		</div>
+  	</div>
+</body>
+</html>

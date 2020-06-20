@@ -1,1 +1,1 @@
-# oo2DemocratizacionStock
+

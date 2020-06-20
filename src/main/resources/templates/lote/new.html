@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nueva Direccion</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+	<header>
+		<div class="headerbg">
+
+			<a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+
+		</div>
+	</header>
+
+	<div class="divPrincipal">
+		<form action="#" th:action="@{/lote/create}"
+			th:object="${lote}" method="post">
+
+			<p>
+				Cantidad: <input type="text" th:field="*{cantidad}" />
+			</p>
+			<p>
+				Cantidad Total: <input type="text" th:field="*{cantidadTotal}" />
+			</p>
+			<p>
+				Producto: <select placeholder="Producto" th:field="*{producto.id}">
+					<option th:each="p : ${productos}" th:value="${p.id}"
+						th:text="${p.descripcion}"></option>
+				</select>
+			</p>
+			<p>Fecha de Ingreso <input type="date" th:field=*{fechaIngreso} /></p>
+
+
+
+			<input class="btn btn-primary" type="submit" value="crear" />
+		</form>
+	</div>
+</body>
+</html>

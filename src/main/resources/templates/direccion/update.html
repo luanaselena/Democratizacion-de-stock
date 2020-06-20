@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Actualizar Direccion</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+</head>
+<body>
+<header>
+    <div class="headerbg">
+
+            <a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+        
+    </div>
+</header>
+
+<div class="divPrincipal">
+<form action="#" th:action="@{/direccion/update}" th:object="${direccion}" method="post">
+	<p>Ciudad: <input type="text" th:field="*{ciudad}" /></p>
+	<p>Calle: <input type="text" th:field="*{calle}" /></p>
+	<p>Numero: <input type="text" th:field="*{numero}" /></p>
+	<p>Longitud: <input type="text" th:field="*{longitud}" /></p>
+	<p>Latitud: <input type="text" th:field="*{latitud}" /></p>
+	<p>ID: <input type="text" th:field="*{id}" /></p>
+	
+	<input class="btn btn-success" type="submit" value="Editar"/>
+</form>
+<br>
+<br>
+	<form action="#" th:action="@{/direccion/delete/{id}(id=${direccion.id})}" method="post">
+	<input class="btn btn-danger" type="submit" value="Eliminar direccion" />
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Lote</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header>
+		<div class="headerbg">
+
+			<a th:href="@{/}"><h3>Grupo 3- OO2 Democratizacion de Stock</h3></a>
+
+		</div>
+	</header>
+	
+	<div class="divPrincipal">
+		<table border="1px">
+
+			<thead>
+				<tr>
+					<th>Id Producto</th>
+					<th>Cantidad</th>
+					<th>CantidadTotal</th>
+					<th>Fecha de ingreso</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lote : ${lotes}">
+				<!-- Esta parte la cambie para que al imprimir el Id tambien genere un link al producto -->
+					<td><a th:href="@{/producto/{id}(id=${lote.producto.id})}" th:text="${lote.producto.descripcion}"></td>
+					<td><span th:text="${lote.cantidad}"></span></td>
+					<td><span th:text="${lote.cantidadTotal}"></span></td>
+					<td><span th:text="${lote.fechaIngreso}"></span></td>
+					<td><a th:href="@{/lote/{id}(id=${lote.id})}">Ver</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> <a class="btn btn-primary" href="/lote/new">Crear
+			nuevo lote</a>
+			<a class="btn btn-primary" th:href="@{/}">Volver al menú principal</a>
+	</div>
+</body>
+</html>
